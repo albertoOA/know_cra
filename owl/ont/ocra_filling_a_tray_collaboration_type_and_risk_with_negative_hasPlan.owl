@@ -1,0 +1,330 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#"
+     xml:base="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl"
+     xmlns:DUL="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:ocra="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl">
+        <owl:imports rdf:resource="package://iri_corota_kb/owl/ont/ocra.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#executesPlan -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#executesPlan"/>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#hasGoal -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#hasGoal"/>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#hasPlan -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#hasPlan"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#classifies -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#classifies"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasComponent -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasComponent"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isLocationOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isLocationOf"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isQualityOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isQualityOf"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#Collaboration -->
+
+    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#Collaboration"/>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#CollaborationPlace -->
+
+    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#CollaborationPlace"/>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#CollaborationRisk -->
+
+    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#CollaborationRisk"/>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#DirectlyPhysicalCollaboration -->
+
+    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#DirectlyPhysicalCollaboration"/>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#IndirectlyPhysicalCollaboration -->
+
+    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#IndirectlyPhysicalCollaboration"/>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#Non-physicalCollaboration -->
+
+    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#Non-physicalCollaboration"/>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CompartmentAvailableCapacity -->
+
+    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CompartmentAvailableCapacity">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isQualityOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A Quality of an Object indicating its available capacity. Depending on the data value we use, the available capacity migh be measured using natural numbers, real numbers, etc.</rdfs:comment>
+        <rdfs:label xml:lang="en">Available capacity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Collaborative_workspace -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Collaborative_workspace">
+        <rdf:type rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#CollaborationPlace"/>
+        <DUL:isLocationOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray"/>
+        <rdfs:label xml:lang="en">Collaborative_workspace</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray">
+        <rdf:type rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#Collaboration"/>
+        <ocra:executesPlan rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#PickingAndPlacingTokensUntilFilledTray"/>
+        <DUL:hasParticipant rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Human_operator"/>
+        <DUL:hasParticipant rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Kinova_robot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_current_risk -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_current_risk">
+        <rdf:type rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#CollaborationRisk"/>
+        <DUL:isQualityOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray"/>
+        <DUL:hasDataValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HIGH_RISK</DUL:hasDataValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_directly_physical -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_directly_physical">
+        <rdf:type rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#DirectlyPhysicalCollaboration"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_indirectly_physical -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_indirectly_physical">
+        <rdf:type rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#IndirectlyPhysicalCollaboration"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_non-physical -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_non-physical">
+        <rdf:type rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#Non-physicalCollaboration"/>
+        <DUL:classifies rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#FullTray -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#FullTray">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Human_operator -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Human_operator">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"/>
+        <ocra:hasGoal rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#FullTray"/>
+        <rdfs:label xml:lang="en">Human_operator</rdfs:label>
+    </owl:NamedIndividual>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+        <owl:sourceIndividual rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Human_operator"/>
+        <owl:assertionProperty rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#hasPlan"/>
+        <owl:targetIndividual rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#PickingAndPlacingTokensUntilFilledTray"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Kinova_robot -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Kinova_robot">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"/>
+        <ocra:hasGoal rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#FullTray"/>
+        <ocra:hasPlan rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#PickingAndPlacingTokensUntilFilledTray"/>
+        <rdfs:label xml:lang="en">Kinova_robot</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#PickingAndPlacingTokensUntilFilledTray -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#PickingAndPlacingTokensUntilFilledTray">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
+        <DUL:hasComponent rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#FullTray"/>
+        <rdfs:label xml:lang="en">PickingAndPlacingTokensUntilFullTray</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#RFID_board -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#RFID_board">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#RFID_board_current_capacity -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#RFID_board_current_capacity">
+        <rdf:type rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CompartmentAvailableCapacity"/>
+        <DUL:isQualityOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#RFID_board"/>
+        <DUL:hasDataValue rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">0</DUL:hasDataValue>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+

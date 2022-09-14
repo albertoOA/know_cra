@@ -1,0 +1,13 @@
+<launch>
+  <arg name="knowrob_settings" default="$(find knowrob)/settings/default.pl" />
+  <arg name="owl_file" default="package://know_cra/owl/map_cra_cs_filling_tray.owl" />
+  
+  <!-- Configure settings file. -->
+  <env name="KNOWROB_SETTINGS" value="$(arg knowrob_settings)" />
+
+  <include file="$(find rosprolog)/launch/rosprolog.launch">
+    <arg name="initial_package" default="know_cra" />
+    <arg name="initial_goal" default="load_owl('$(arg owl_file)')." />
+  </include>
+
+</launch>

@@ -1,0 +1,16 @@
+- git:
+    local-name: knowrob/genowl
+    uri: https://github.com/knowrob/genowl.git
+    version: master
+- git:
+    local-name: knowrob/knowrob
+    uri: https://github.com/knowrob/knowrob.git
+    version: master
+- git:
+    local-name: knowrob/rosowl
+    uri: https://github.com/knowrob/rosowl.git
+    version: master
+- git:
+    local-name: knowrob/rosprolog
+    uri: https://github.com/knowrob/rosprolog.git
+    version: master

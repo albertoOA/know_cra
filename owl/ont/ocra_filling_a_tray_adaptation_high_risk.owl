@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#"
+     xml:base="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl"
+     xmlns:ocra="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:DUL="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#">
+    <owl:Ontology rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl">
+        <owl:imports rdf:resource="package://iri_corota_kb/owl/ont/ocra.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CompartmentAvailableCapacity -->
+
+    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CompartmentAvailableCapacity">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isQualityOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A Quality of an Object indicating its available capacity. Depending on the data value we use, the available capacity migh be measured using natural numbers, real numbers, etc.</rdfs:comment>
+        <rdfs:label xml:lang="en">Available capacity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray">
+        <rdf:type rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#Collaboration"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_current_risk -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_current_risk">
+        <rdf:type rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#CollaborationRisk"/>
+        <DUL:isQualityOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray"/>
+        <DUL:hasDataValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HIGH_RISK</DUL:hasDataValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_risk_is_high -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_risk_is_high">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation"/>
+        <DUL:isPostconditionOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_initial_plan_execution"/>
+        <DUL:isSettingFor rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray_current_risk"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#FullTrayWithSafety -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#FullTrayWithSafety">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation">
+        <rdf:type rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#PlanAdaptation"/>
+        <DUL:hasParticipant rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Kinova_robot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_final_plan -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_final_plan">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
+        <ocra:isBetterPlanThan rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_initial_plan"/>
+        <DUL:hasComponent rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#FullTrayWithSafety"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_final_plan_execution -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_final_plan_execution">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event"/>
+        <ocra:executesPlan rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_final_plan"/>
+        <DUL:hasParticipant rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Kinova_robot"/>
+        <DUL:isPartOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation"/>
+        <DUL:isPostconditionOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_initial_plan_execution"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_initial_plan -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_initial_plan">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
+        <DUL:hasComponent rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#FullTrayWithSafety"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_initial_plan_execution -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_initial_plan_execution">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event"/>
+        <ocra:executesPlan rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation_initial_plan"/>
+        <DUL:hasParticipant rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Kinova_robot"/>
+        <DUL:isPartOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#High_risk_adaptation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Human_operator -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Human_operator">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Kinova_robot -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Kinova_robot">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#RFID_board -->
+
+    <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#RFID_board">
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

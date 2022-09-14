@@ -1,0 +1,2068 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY knowrob "http://knowrob.org/kb/knowrob.owl#" >
+    <!ENTITY SOMA "http://www.ease-crc.org/ont/SOMA.owl#" >
+    <!ENTITY dul "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#" >
+    <!ENTITY ocra "http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#" >
+    <!ENTITY ocra_filling_a_tray "http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#" >
+    <!ENTITY map "http://www.iri.upc.edu/groups/perception/OCRA/maps/filling_a_tray.owl#" >
+    <!ENTITY urdf "http://knowrob.org/kb/urdf.owl#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+<rdf:RDF xmlns="http://www.iri.upc.edu/groups/perception/OCRA/maps/filling_a_tray.owl#"
+    xml:base="http://www.iri.upc.edu/groups/perception/OCRA/maps/filling_a_tray.owl"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:map="http://www.iri.upc.edu/groups/perception/OCRA/maps/filling_a_tray.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:SOMA="http://www.ease-crc.org/ont/SOMA.owl#"
+    xmlns:dul="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+    xmlns:urdf="http://knowrob.org/kb/urdf.owl#"
+    xmlns:knowrob="http://knowrob.org/kb/knowrob.owl#"
+    xmlns:ocra="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#"
+    xmlns:ocra_filling_a_tray="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#">
+    <owl:Ontology rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/maps/filling_a_tray.owl#">
+        <owl:imports rdf:resource="package://knowrob/owl/knowrob.owl"/>
+        <owl:imports rdf:resource="package://know_cra/owl/ont/ocra.owl"/>
+        <owl:imports rdf:resource="package://know_cra/owl/ont/ocra_filling_a_tray.owl"/>
+        <!--
+        <owl:imports rdf:resource="package://know_cra/owl/ont/ocra_filling_a_tray.owl"/>
+
+        <owl:imports rdf:resource="package://know_cra/owl/ont/ocra_filling_a_tray.owl"/>
+        <owl:imports rdf:resource="package://know_cra/owl/ont/ocra_filling_a_tray_collaboration_type_and_risk.owl"/> 
+        <owl:imports rdf:resource="package://know_cra/owl/ont/ocra_filling_a_tray_adaptation_full_compartment.owl"/>
+        <owl:imports rdf:resource="package://know_cra/owl/ont/ocra_filling_a_tray_collaboration_type_and_risk_with_negative_hasPlan.owl"/>
+        -->
+    </owl:Ontology>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <!-- &map;robot_end_effector -->
+
+    <owl:NamedIndividual rdf:about="&map;robot_end_effector">
+        <rdf:type rdf:resource="&SOMA;PrehensileEffector"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;SphereShape"/>
+                        <SOMA:hasRadius rdf:datatype="&xsd;double">0.05</SOMA:hasRadius>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 1.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.70 -0.85 1.00</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;CartesianVelocity"/>
+                <dul:hasDataValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 0.0 0.0 0.0</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;human_end_effector -->
+
+    <owl:NamedIndividual rdf:about="&map;human_end_effector">
+        <rdf:type rdf:resource="&SOMA;PrehensileEffector"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;SphereShape"/>
+                        <SOMA:hasRadius rdf:datatype="&xsd;double">0.05</SOMA:hasRadius>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.35 -0.45 1.00</knowrob:translation>
+                        <!--  <knowrob:translation rdf:datatype="&SOMA;array_double">-1.32 -0.77 1.04</knowrob:translation> -->
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;CartesianVelocity"/>
+                <dul:hasDataValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 0.0 0.0 0.0</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &knowrob;work_table -->
+
+    <owl:NamedIndividual rdf:about="&map;work_table">
+        <rdf:type rdf:resource="&SOMA;Countertop"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.72</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.8</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">1.6</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.00 -0.45 0.36</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &knowrob;emblem_dispenser_robot -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_dispenser_robot">
+        <rdf:type rdf:resource="&SOMA;Countertop"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.72</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.2</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.2</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.70 -1.15 0.36</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &knowrob;emblem_dispenser_human -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_dispenser_human">
+        <rdf:type rdf:resource="&SOMA;Countertop"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.72</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.2</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.2</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.30 0.0 0.36</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;work_tray -->
+
+    <owl:NamedIndividual rdf:about="&map;work_tray">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.06</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.4</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.5</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.8 0.8 0.8 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.00 -0.45 0.77</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasPart rdf:resource="&map;compartment_1"/>
+        <dul:hasPart rdf:resource="&map;compartment_2"/>
+        <dul:hasPart rdf:resource="&map;compartment_3"/>
+        <dul:hasPart rdf:resource="&map;compartment_4"/>
+        <dul:hasPart rdf:resource="&map;compartment_5"/>
+        <dul:hasPart rdf:resource="&map;compartment_6"/>
+        <dul:hasPart rdf:resource="&map;compartment_7"/>
+        <dul:hasPart rdf:resource="&map;compartment_8"/>
+        <dul:hasPart rdf:resource="&map;compartment_9"/>
+        <dul:hasPart rdf:resource="&map;compartment_10"/>
+        <dul:hasPart rdf:resource="&map;compartment_11"/>
+        <dul:hasPart rdf:resource="&map;compartment_12"/>
+        <dul:hasPart rdf:resource="&map;compartment_13"/>
+        <dul:hasPart rdf:resource="&map;compartment_14"/>
+        <dul:hasPart rdf:resource="&map;compartment_15"/>
+        <dul:hasPart rdf:resource="&map;compartment_16"/>
+        <dul:hasPart rdf:resource="&map;compartment_17"/>
+        <dul:hasPart rdf:resource="&map;compartment_18"/>
+        <dul:hasPart rdf:resource="&map;compartment_19"/>
+        <dul:hasPart rdf:resource="&map;compartment_20"/>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">20</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment1 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_1">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.85 -0.25 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment2 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_2">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.85 -0.35 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment3 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_3">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.85 -0.45 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment4 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_4">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.85 -0.55 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment5 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_5">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.85 -0.65 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment6 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_6">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.95 -0.25 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment7 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_7">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.95 -0.35 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment8 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_8">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.95 -0.45 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment9 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_9">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.95 -0.55 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment10 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_10">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.95 -0.65 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment11 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_11">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.05 -0.25 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment12 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_12">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.05 -0.35 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment13 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_13">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.05 -0.45 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment14 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_14">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.05 -0.55 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment15 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_15">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.05 -0.65 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment16 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_16">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.15 -0.25 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment17 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_17">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.15 -0.35 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment18 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_18">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.15 -0.45 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment19 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_19">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.15 -0.55 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;compartment20 -->
+
+    <owl:NamedIndividual rdf:about="&map;compartment_20">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.01</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.08</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.08</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.15 -0.65 0.80</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+        <dul:hasQuality>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&ocra_filling_a_tray;AvailableCapacity"/>
+                <dul:hasDataValue rdf:datatype="&xsd;unsignedInt">1</dul:hasDataValue>
+            </owl:NamedIndividual>
+        </dul:hasQuality>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_1 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_1">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.70 -1.15 0.735</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_2 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_2">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.70 -1.15 0.760</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_3 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_3">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.70 -1.15 0.785</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_4 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_4">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.70 -1.15 0.810</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_5 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_5">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.70 -1.15 0.835</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_6 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_6">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.70 -1.15 0.860</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_7 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_7">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.70 -1.15 0.885</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_8 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_8">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.70 -1.15 0.910</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_9 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_9">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-1.70 -1.15 1.935</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+        <!-- &map;emblem_10 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_10">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.30 0.0 0.735</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_11 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_11">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.30 0.0 0.770</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_12 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_12">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.30 0.0 0.805</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_13 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_13">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.30 0.0 0.840</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_14 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_14">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.30 0.0 0.875</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_15 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_15">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.30 0.0 0.910</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_16 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_16">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.30 0.0 0.945</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_17 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_17">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.30 0.0 0.980</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+    <!-- &map;emblem_18 -->
+
+    <owl:NamedIndividual rdf:about="&map;emblem_18">
+        <rdf:type rdf:resource="&dul;DesignedArtifact"/>
+        <SOMA:hasShape>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Shape"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;BoxShape"/>
+                        <SOMA:hasHeight rdf:datatype="&xsd;double">0.02</SOMA:hasHeight>
+                        <SOMA:hasDepth rdf:datatype="&xsd;double">0.06</SOMA:hasDepth>
+                        <SOMA:hasWidth rdf:datatype="&xsd;double">0.06</SOMA:hasWidth>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasShape>
+        <SOMA:hasColor>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Color"/>
+                <dul:hasRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;ColorRegion"/>
+                        <SOMA:hasRGBValue rdf:datatype="&SOMA;array_double">1.0 1.0 1.0 1.0</SOMA:hasRGBValue>
+                    </owl:NamedIndividual>
+                </dul:hasRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasColor>
+        <SOMA:hasLocalization>
+            <owl:NamedIndividual>
+                <rdf:type rdf:resource="&SOMA;Localization"/>
+                <SOMA:hasSpaceRegion>
+                    <owl:NamedIndividual>
+                        <rdf:type rdf:resource="&SOMA;6DPose"/>
+                        <knowrob:quaternion rdf:datatype="&SOMA;array_double">0.0 0.0 0.0 1.0</knowrob:quaternion>
+                        <knowrob:translation rdf:datatype="&SOMA;array_double">-0.30 0.0 1.015</knowrob:translation>
+                    </owl:NamedIndividual>
+                </SOMA:hasSpaceRegion>
+            </owl:NamedIndividual>
+        </SOMA:hasLocalization>
+    </owl:NamedIndividual>
+
+
+</rdf:RDF>
+<!-- Generated by the OWL API (version 3.1.0.1592) http://owlapi.sourceforge.net -->
+
+
