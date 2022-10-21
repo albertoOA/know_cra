@@ -9,7 +9,7 @@
      xmlns:ocra="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl">
-        <owl:imports rdf:resource="package://iri_corota_kb/owl/ont/ocra.owl"/>
+        <owl:imports rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl"/>
     </owl:Ontology>
     
 

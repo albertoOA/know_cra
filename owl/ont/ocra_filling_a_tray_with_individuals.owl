@@ -12,7 +12,7 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl">
         <owl:imports rdf:resource="http://www.ease-crc.org/ont/SOMA.owl"/>
-        <owl:imports rdf:resource="package://iri_corota_kb/owl/ont/ocra.owl"/>
+        <owl:imports rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl"/>
     </owl:Ontology>
     
 
@@ -105,7 +105,7 @@
     <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray -->
 
     <owl:NamedIndividual rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#CollaborativelyFillingATray">
-        <rdf:type rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#Collaboration"/>
+        <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event"/>
         <ocra:executesPlan rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#PickingAndPlacingTokensUntilFilledTray"/>
         <DUL:hasParticipant rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Human_operator"/>
         <DUL:hasParticipant rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Kinova_robot"/>
@@ -127,6 +127,7 @@
         <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"/>
         <ocra:hasGoal rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#FullTray"/>
         <ocra:hasPlan rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#PickingAndPlacingTokensUntilFilledTray"/>
+        <DUL:coparticipatesWith rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Kinova_robot"/>
         <rdfs:label xml:lang="en">Human_operator</rdfs:label>
     </owl:NamedIndividual>
     
@@ -168,6 +169,24 @@
         <DUL:isQualityOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#RFID_board"/>
         <DUL:hasDataValue rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">0</DUL:hasDataValue>
     </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Human_operator"/>
+            <rdf:Description rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#Kinova_robot"/>
+        </owl:distinctMembers>
+    </rdf:Description>
 </rdf:RDF>
 
 
