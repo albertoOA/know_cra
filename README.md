@@ -51,7 +51,8 @@ roslaunch know_cra map_cra_cs_filling_tray_neem.launch
 ```
 
 ### Running an owlready2-based knowledge base for collaborative robotics and adaptation
+```
 rosrun konw_cra reasoning_with_owlready2.py
-
+```
 
 **[1]** A. Olivares-Alarcos, A. Andriella, S. Foix and G. Alenyà. Robot explanatory narratives of collaborative and adaptive experiences, 40th IEEE International Conference on Robotics and Automation (ICRA), 2023, London, United Kingdom, submitted.
