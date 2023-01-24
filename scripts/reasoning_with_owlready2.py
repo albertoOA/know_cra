@@ -72,6 +72,7 @@ for imported_ontology in imported_ontologies:
 
 
 ocra_onto = imported_ontologies_dict[onto_iris["ocra"]]
+ocra_namespace = get_namespace("http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#")
 # extract imported ontologies of ocra (think of a better way to extract all the nested imported ontologies)
 imported_ontologies = ocra_onto.imported_ontologies
 for imported_ontology in imported_ontologies:
@@ -83,6 +84,7 @@ for imported_ontology in imported_ontologies:
 print(imported_ontologies_dict)
 
 dul_onto = imported_ontologies_dict[onto_iris["dul"]]
+dul_namespace = get_namespace("http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#")
 
 print("\n··· Classes of an imported ontology (OCRA)")
 ocra_onto_classes_list = list(ocra_onto.classes())
@@ -151,3 +153,18 @@ print("\n··· Participants of an instance of PlanAdaptation (after adding more
 plan_adaptation_instance_participants = plan_adaptation_instances_list[0].hasParticipant
 print(plan_adaptation_instance_participants)
 # Learn more about properties here: https://owlready2.readthedocs.io/en/v0.37/properties.html
+
+print("\n··· Result of a SPARQL query about all the events and their participants")
+events_and_participants_list = list(default_world.sparql("""
+           SELECT ?x ?y
+           { ?x DUL:hasParticipant ?y . }
+    """))
+
+""" NOTE ABOUT PREFIXES IN OWLREADY  
+
+Owlready automatically creates prefixes from the last part of ontology IRI (without .owl extension), 
+e.g. the ontology “http://test.org/onto.owl” with be automatically associated with the “onto:” prefix.
+
+"""
+for event_participant in events_and_participants_list:
+    print(event_participant)
