@@ -126,7 +126,7 @@ print("\n··· Properties of an instance of PlanAdaptation")
 plan_adaptation_instance_properties_list = plan_adaptation_instances_list[0].get_properties() # also get_inverse_properties()
 print(plan_adaptation_instance_properties_list)
 
-print("\n··· Properties of an instance of PlanAdaptation")
+print("\n··· Participants of an instance of PlanAdaptation")
 plan_adaptation_instance_participants = plan_adaptation_instances_list[0].hasParticipant
 print(plan_adaptation_instance_participants)
 
@@ -136,7 +136,18 @@ kinova_robot_2 = dul_onto.Agent("Kinova_robot_2", namespace = application_onto)
 # Adding a new participant to the Plan Adaptation
 plan_adaptation_instances_list[0].hasParticipant.append(kinova_robot_2)
 
-print("\n··· Properties of an instance of PlanAdaptation (after adding more)")
+print("\n··· Participants of an instance of PlanAdaptation (after adding more)")
+plan_adaptation_instance_participants = plan_adaptation_instances_list[0].hasParticipant
+print(plan_adaptation_instance_participants)
+# Learn more about properties here: https://owlready2.readthedocs.io/en/v0.37/properties.html
+
+# Creating a new instance of the class 'Agent' but with a string (to simulate a received msg from the robot)
+kinova_robot_3 = getattr(dul_onto, 'Agent')("Kinova_robot_3", namespace = application_onto)
+
+# Adding a new participant to the Plan Adaptation with a string (to simulate a received msg from the robot)
+getattr(plan_adaptation_instances_list[0], 'hasParticipant').append(kinova_robot_3)
+
+print("\n··· Participants of an instance of PlanAdaptation (after adding more)")
 plan_adaptation_instance_participants = plan_adaptation_instances_list[0].hasParticipant
 print(plan_adaptation_instance_participants)
 # Learn more about properties here: https://owlready2.readthedocs.io/en/v0.37/properties.html
