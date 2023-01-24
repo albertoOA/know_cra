@@ -154,6 +154,7 @@ plan_adaptation_instance_participants = plan_adaptation_instances_list[0].hasPar
 print(plan_adaptation_instance_participants)
 # Learn more about properties here: https://owlready2.readthedocs.io/en/v0.37/properties.html
 
+# Performing SPARQL queries
 print("\n··· Result of a SPARQL query about all the events and their participants")
 events_and_participants_list = list(default_world.sparql("""
            SELECT ?x ?y
@@ -168,3 +169,18 @@ e.g. the ontology “http://test.org/onto.owl” with be automatically associate
 """
 for event_participant in events_and_participants_list:
     print(event_participant)
+
+print("\n··· Result of a SPARQL query about all the instances of PlanAdaptation")
+instances_of_plan_adaptation_list = list(default_world.sparql("""
+           SELECT ?x
+           { ?x rdf:type ocra:PlanAdaptation . }
+    """))
+
+""" NOTE ABOUT PREFIXES IN OWLREADY  
+
+Owlready automatically creates prefixes from the last part of ontology IRI (without .owl extension), 
+e.g. the ontology “http://test.org/onto.owl” with be automatically associated with the “onto:” prefix.
+
+"""
+for instance_of_plan_adaptation in instances_of_plan_adaptation_list:
+    print(instance_of_plan_adaptation)
