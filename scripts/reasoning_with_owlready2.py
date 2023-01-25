@@ -184,3 +184,32 @@ e.g. the ontology “http://test.org/onto.owl” with be automatically associate
 """
 for instance_of_plan_adaptation in instances_of_plan_adaptation_list:
     print(instance_of_plan_adaptation)
+
+
+print("\n··· Result of a SPARQL query about the current capacity of the board")
+current_board_capacity_list = list(default_world.sparql("""
+           SELECT ?x
+           { ocra_filling_a_tray_adaptation_full_compartment:RFID_board_current_capacity DUL:hasDataValue ?x . }
+    """))
+
+for current_board_capacity in current_board_capacity_list:
+    print(current_board_capacity)
+
+# Asserting new knowledge to the ontology using SPARQL queries (note that to update existing knowledge, we need to delete the current content)
+new_value = 9
+with application_onto:
+    default_world.sparql("""
+        DELETE { ocra_filling_a_tray_adaptation_full_compartment:RFID_board_current_capacity DUL:hasDataValue ?x . }
+        INSERT { ocra_filling_a_tray_adaptation_full_compartment:RFID_board_current_capacity DUL:hasDataValue """+str(new_value)+""" . }
+        WHERE   { ocra_filling_a_tray_adaptation_full_compartment:RFID_board_current_capacity DUL:hasDataValue ?x . }
+    """)
+
+print("\n··· Result of a SPARQL query about the current capacity of the board (after updating it)")
+current_board_capacity_list = list(default_world.sparql("""
+           SELECT ?x
+           { ocra_filling_a_tray_adaptation_full_compartment:RFID_board_current_capacity DUL:hasDataValue ?x . }
+    """))
+
+for current_board_capacity in current_board_capacity_list:
+    print(current_board_capacity)
+
