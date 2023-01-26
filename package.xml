@@ -10,7 +10,8 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <build_depend>comp_spatial</build_depend>
-
+  <build_depend>message_generation</build_depend>
+  
   <run_depend>comp_spatial</run_depend>
   <run_depend>python-lxml</run_depend>
   <run_depend>python-numpy</run_depend>
@@ -18,6 +19,7 @@
   <run_depend>rospy</run_depend>
   <run_depend>tf</run_depend>
   <run_depend>urdfdom_py</run_depend>
+  <run_depend>message_runtime</run_depend>
 
   <export>
     <rosdoc config="rosdoc.yaml"/>
