@@ -104,6 +104,7 @@ print(plan_adaptation_instances_list)
 # application_onto). Note that one may try with 'CollaborationPlace' to check this
 print(application_onto.search(is_a = ocra_onto.PlanAdaptation)) 
 
+print("\n··· Syncronizing the reasoner...")
 ## sync_reasoner()
 ## sync_reasoner(ocra_onto)
 sync_reasoner(application_onto)
@@ -234,7 +235,7 @@ for current_board_capacity in current_board_capacity_list:
 
 
 # Asserting new knowledge to the ontology using SPARQL queries (new instance)
-print("\n··· Result of a SPARQL query about the current instances of events in which the Kinova_robot participates")
+print("\n··· Result of a SPARQL query about the current instances of event in which the Kinova_robot participates")
 events_where_robot_participates_list = list(default_world.sparql("""
            SELECT ?x
            { ?x DUL:hasParticipant ocra_filling_a_tray_adaptation_full_compartment:Kinova_robot ;
@@ -251,11 +252,46 @@ with application_onto:
         WHERE   { BIND(NEWINSTANCEIRI(DUL:Event) AS ?n)  }
     """) 
 
-print("\n··· Result of a SPARQL query about the current instances of events in which the Kinova_robot participates (after asserting a new one)")
+print("\n··· Result of a SPARQL query about the current instances of event in which the Kinova_robot participates (after asserting a new one)")
 events_where_robot_participates_list = list(default_world.sparql("""
            SELECT ?x
            { ?x DUL:hasParticipant ocra_filling_a_tray_adaptation_full_compartment:Kinova_robot ;
                 rdf:type DUL:Event. }
+    """))
+
+for event_where_robot_participates in events_where_robot_participates_list:
+    print(event_where_robot_participates)
+
+
+# Asserting new knowledge to the ontology using SPARQL queries (new instance to test inference)
+print("\n··· Result of a SPARQL query about the current instances of plan adaptation in which the Kinova_robot participates")
+events_where_robot_participates_list = list(default_world.sparql("""
+           SELECT ?x
+           { ?x DUL:hasParticipant ocra_filling_a_tray_adaptation_full_compartment:Kinova_robot ;
+                rdf:type ocra:PlanAdaptation. }
+    """))
+
+for event_where_robot_participates in events_where_robot_participates_list:
+    print(event_where_robot_participates)
+
+with application_onto:
+    default_world.sparql("""
+        INSERT { ?n rdfs:comment "new individual assertion" ;
+                    DUL:hasParticipant ocra_filling_a_tray_adaptation_full_compartment:Kinova_robot ;
+                    DUL:hasPart ocra_filling_a_tray_adaptation_full_compartment:Full_compartment_adaptation_final_plan_execution .
+                 ocra_filling_a_tray_adaptation_full_compartment:Full_compartment_adaptation_inital_plan_execution DUL:isPartOf ?n . }
+        WHERE   { BIND(NEWINSTANCEIRI(DUL:Event) AS ?n)  }
+    """) 
+
+print("\n··· Syncronizing the reasoner...")
+sync_reasoner(application_onto)
+
+
+print("\n··· Result of a SPARQL query about the current instances of plan adaptation in which the Kinova_robot participates (after asserting a new one)")
+events_where_robot_participates_list = list(default_world.sparql("""
+           SELECT ?x
+           { ?x DUL:hasParticipant ocra_filling_a_tray_adaptation_full_compartment:Kinova_robot ;
+                rdf:type ocra:PlanAdaptation. }
     """))
 
 for event_where_robot_participates in events_where_robot_participates_list:
