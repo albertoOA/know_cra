@@ -213,3 +213,22 @@ current_board_capacity_list = list(default_world.sparql("""
 for current_board_capacity in current_board_capacity_list:
     print(current_board_capacity)
 
+# Asserting new knowledge to the ontology using SPARQL queries including Python variables values
+new_value = 8
+another_value = 7
+with application_onto:
+    default_world.sparql("""
+        DELETE { ocra_filling_a_tray_adaptation_full_compartment:RFID_board_current_capacity DUL:hasDataValue ?x . }
+        INSERT { ocra_filling_a_tray_adaptation_full_compartment:RFID_board_current_capacity DUL:hasDataValue ??2 . }
+        WHERE   { ocra_filling_a_tray_adaptation_full_compartment:RFID_board_current_capacity DUL:hasDataValue ?x . }
+    """, [new_value, another_value]) # if (??X = ??1), the query will be done with 'new_value', (??X = ??2), then 'another_value'
+
+print("\n··· Result of a SPARQL query about the current capacity of the board (after updating it)")
+current_board_capacity_list = list(default_world.sparql("""
+           SELECT ?x
+           { ocra_filling_a_tray_adaptation_full_compartment:RFID_board_current_capacity DUL:hasDataValue ?x . }
+    """))
+
+for current_board_capacity in current_board_capacity_list:
+    print(current_board_capacity)
+
