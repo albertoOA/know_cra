@@ -232,3 +232,31 @@ current_board_capacity_list = list(default_world.sparql("""
 for current_board_capacity in current_board_capacity_list:
     print(current_board_capacity)
 
+
+# Asserting new knowledge to the ontology using SPARQL queries (new instance)
+print("\n··· Result of a SPARQL query about the current instances of events in which the Kinova_robot participates")
+events_where_robot_participates_list = list(default_world.sparql("""
+           SELECT ?x
+           { ?x DUL:hasParticipant ocra_filling_a_tray_adaptation_full_compartment:Kinova_robot ;
+                rdf:type DUL:Event. }
+    """))
+
+for event_where_robot_participates in events_where_robot_participates_list:
+    print(event_where_robot_participates)
+
+with application_onto:
+    default_world.sparql("""
+        INSERT { ?n rdfs:comment "new individual assertion" ;
+                    DUL:hasParticipant ocra_filling_a_tray_adaptation_full_compartment:Kinova_robot . }
+        WHERE   { BIND(NEWINSTANCEIRI(DUL:Event) AS ?n)  }
+    """) 
+
+print("\n··· Result of a SPARQL query about the current instances of events in which the Kinova_robot participates (after asserting a new one)")
+events_where_robot_participates_list = list(default_world.sparql("""
+           SELECT ?x
+           { ?x DUL:hasParticipant ocra_filling_a_tray_adaptation_full_compartment:Kinova_robot ;
+                rdf:type DUL:Event. }
+    """))
+
+for event_where_robot_participates in events_where_robot_participates_list:
+    print(event_where_robot_participates)
