@@ -7,6 +7,7 @@ import rospy
 
 from std_srvs.srv import Empty, EmptyResponse
 from know_cra.srv import OwlreadyLoadOntology, OwlreadyLoadOntologyResponse
+from know_cra.srv import OwlreadyInsertDeleteQuery, OwlreadyInsertDeleteQueryResponse
 
 from know_cra.owlready_wrapper import OWLreadyWrapper
 
@@ -17,8 +18,9 @@ class ROSowlreadyExecutor:
         rospy.loginfo(rospy.get_name() + ": ROS owlready node has been initialized.")
 
         # services
-        self.load_ontology_ = rospy.Service("~loading_ontology", OwlreadyLoadOntology, self.load_ontology)
+        self.load_ontology_ = rospy.Service("~load_ontology", OwlreadyLoadOntology, self.load_ontology)
         self.load_ontology_ = rospy.Service("~syncronize_reasoner", Empty, self.syncronize_reasoner)
+        self.load_ontology_ = rospy.Service("~query_ontology", OwlreadyInsertDeleteQuery, self.query_ontology)
 
         # variables
         self.ontology_is_loaded_ = False
@@ -53,6 +55,20 @@ class ROSowlreadyExecutor:
             rospy.loginfo(rospy.get_name() + ": The reasoner has not been syncronized because none ontology has been loaded.")
 
         return EmptyResponse()
+
+    def query_ontology(self, req):
+        rospy.loginfo(rospy.get_name() + ": Received request to update the ontology (using SPARQL).")
+
+        if self.ontology_is_loaded_:
+            try:
+                rospy.loginfo(rospy.get_name() + ": Updating the ontology.")
+                self.orwp_.sparql_insert_delete_query_wp(req.query_str)
+            except rospy.ServiceException as e:
+                rospy.logerr(rospy.get_name() + ": Service call failed: %s" % e)
+        else:
+            rospy.loginfo(rospy.get_name() + ": The query has not been performed because none ontology has been loaded.")
+
+        return OwlreadyInsertDeleteQueryResponse()
 
 
 if __name__ == "__main__":

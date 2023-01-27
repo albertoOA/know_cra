@@ -14,3 +14,7 @@ class OWLreadyWrapper:
 
     def sync_reasoner_wp(self):
         sync_reasoner(self.loaded_ontology_)
+
+    def sparql_insert_delete_query_wp(self, query_string):
+        with self.loaded_ontology_:
+            default_world.sparql(query_string)

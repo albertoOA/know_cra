@@ -13,6 +13,7 @@ catkin_python_setup()
 add_service_files(
   FILES
   OwlreadyLoadOntology.srv
+  OwlreadyInsertDeleteQuery.srv
 )
 
 generate_messages(
