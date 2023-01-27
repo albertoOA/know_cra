@@ -11,3 +11,6 @@ class OWLreadyWrapper:
 
     def get_ontology_wp(self, ont_string):
         self.loaded_ontology_ = get_ontology(ont_string).load()
+
+    def sync_reasoner_wp(self):
+        sync_reasoner(self.loaded_ontology_)
