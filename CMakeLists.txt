@@ -14,6 +14,7 @@ add_service_files(
   FILES
   OwlreadyLoadOntology.srv
   OwlreadyInsertDeleteQuery.srv
+  OwlreadySelectQuery.srv
 )
 
 generate_messages(
