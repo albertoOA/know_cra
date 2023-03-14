@@ -29,6 +29,17 @@ source know_cra_owlready2/bin/activate
 python3 -m pip install cython owlready2 catkin_pkg rospkg pyyaml future
 ```
 
+### Python3 virtual environment configuration and dependencies to use rosplan together with any of the knowledge bases (rosprolog or owlready2)
+
+In the package, we already provide a virtual environment but it was built for our computer and it will probably not work in yours. You can easily delete it and create and configure your own environment executing the following commands in a terminal.
+```
+cd <know_cra_folder>/python_environment
+python3 -m venv know_cra_rosplan
+source know_cra_rosplan/bin/activate
+
+python3 -m pip install wheel catkin_pkg rospkg pyyaml future
+```
+
 ### Building
 
 ```
