@@ -7,7 +7,7 @@
 	<arg name="evaluation"	 	default="false" />
 
 	<!-- Include rosplan -->
-	<include file="$(find coherent_planning)/launch/rosplan_full.launch">
+	<include file="$(find know_cra)/launch/rosplan_full.launch">
 		<arg name="domain_path"		 		value="$(arg domain_path)" />
 		<arg name="problem_path" 			value="$(arg problem_path)" />
 		<arg name="planning_language" 		value="PDDL" />
