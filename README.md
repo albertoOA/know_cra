@@ -29,6 +29,17 @@ source know_cra_owlready2/bin/activate
 python3 -m pip install cython owlready2 catkin_pkg rospkg pyyaml future
 ```
 
+### Python3 virtual environment configuration and dependencies to use rosplan together with any of the knowledge bases (rosprolog or owlready2)
+
+In the package, we already provide a virtual environment but it was built for our computer and it will probably not work in yours. You can easily delete it and create and configure your own environment executing the following commands in a terminal.
+```
+cd <know_cra_folder>/python_environment
+python3 -m venv know_cra_rosplan
+source know_cra_rosplan/bin/activate
+
+python3 -m pip install wheel catkin_pkg rospkg pyyaml future
+```
+
 ### Building
 
 ```
@@ -53,6 +64,13 @@ roslaunch know_cra map_cra_cs_filling_tray_neem.launch
 ### Running an owlready2-based knowledge base for collaborative robotics and adaptation
 ```
 rosrun konw_cra reasoning_with_owlready2.py
+```
+
+### Running a rosplan interface for collaborative robotics and adaptation
+One can launch a general rosplan set of nodes to perform planning using a certain domain and problem (e.g., a collaborative task to fold and pile garments). 
+
+```
+roslaunch know_cra rosplan_coherent_cloth_piling.launch
 ```
 
 **[1]** A. Olivares-Alarcos, A. Andriella, S. Foix and G. Alenyà. Robot explanatory narratives of collaborative and adaptive experiences, 40th IEEE International Conference on Robotics and Automation (ICRA), 2023, London, United Kingdom, to appear.
