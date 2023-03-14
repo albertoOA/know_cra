@@ -66,4 +66,11 @@ roslaunch know_cra map_cra_cs_filling_tray_neem.launch
 rosrun konw_cra reasoning_with_owlready2.py
 ```
 
+### Running a rosplan interface for collaborative robotics and adaptation
+One can launch a general rosplan set of nodes to perform planning using a certain domain and problem (e.g., a collaborative task to fold and pile garments). 
+
+```
+roslaunch know_cra rosplan_coherent_cloth_piling.launch
+```
+
 **[1]** A. Olivares-Alarcos, A. Andriella, S. Foix and G. Alenyà. Robot explanatory narratives of collaborative and adaptive experiences, 40th IEEE International Conference on Robotics and Automation (ICRA), 2023, London, United Kingdom, to appear.
