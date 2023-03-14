@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="domain_path"		default="$(find know_cra)/pddl/domain/collaborative_cloth_piling_domain.pddl" />
+	<arg name="problem_path"	default="$(find know_cra)/pddl/problem/collaborative_cloth_piling_problem.pddl" />
+	<arg name="narrator_name"	default="" />
+	<arg name="print_actions"	default="false" />
+	<arg name="evaluation"	 	default="false" />
+
+	<!-- Include rosplan -->
+	<include file="$(find coherent_planning)/launch/rosplan_full.launch">
+		<arg name="domain_path"		 		value="$(arg domain_path)" />
+		<arg name="problem_path" 			value="$(arg problem_path)" />
+		<arg name="planning_language" 		value="PDDL" />
+		<arg name="planner_topic" 			value="planner_output" />
+		<arg name="data_path" 				value="/tmp/" />
+		<arg name="generated_problem_path"	value="/tmp/gen_problem.pddl" />
+		<arg name="dispatcher" 				value="esterel" /> <!-- Check to add the parser when needed -->
+		<arg name="planner_command"      	value="timeout 10 $(find rosplan_planning_system)/common/bin/popf DOMAIN PROBLEM" if="$(eval evaluation == false)" />
+		<arg name="planner_command"      	value="timeout 120 $(find rosplan_planning_system)/common/bin/popf -n DOMAIN PROBLEM" if="$(eval evaluation == true)"/>
+		<arg name="planner_interface"    	value="popf_planner_interface" />
+	</include>
+
+	 
+	<node name="coherent_planning_node" pkg="know_cra" type="coherent_planning_node.py" output="screen" />
+
+    <!-- 
+  	<node name="rosplan_narrator" pkg="task_plan_verbalization" type="task_plan_verbalization_node.py" respawn="false" output="screen" required="$(eval evaluation == true)">
+    	<param name="domain_path"   value="$(arg domain_path)" />
+    	<param name="problem_path"  value="$(arg problem_path)" />
+    	<param name="narrator_name" value="$(arg narrator_name)" />
+    	<param name="print_actions" value="$(arg print_actions)" />
+    	<param name="evaluation"    value="$(arg evaluation)" />
+	</node>
+    -->
+
+</launch>
