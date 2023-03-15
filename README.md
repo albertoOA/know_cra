@@ -69,6 +69,8 @@ rosrun konw_cra reasoning_with_owlready2.py
 ### Running a rosplan interface for collaborative robotics and adaptation
 One can launch a general rosplan set of nodes to perform planning using a certain domain and problem (e.g., a collaborative task to fold and pile garments). 
 
+The next example assumes that ROSPlan is already installed, following the instructions on the gihtub README: [https://github.com/KCL-Planning/ROSPlan](https://github.com/KCL-Planning/ROSPlan).
+
 ```
 roslaunch know_cra rosplan_coherent_cloth_piling.launch
 ```
