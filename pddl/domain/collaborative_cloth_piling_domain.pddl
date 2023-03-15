@@ -41,7 +41,6 @@
 		; prep = of type ?t !
 		(type ?g - object ?t - type)
 
-		(holding ?g - garment ?r - gripper)
 		(supported ?g - garment) ; garment is on a surface
 		(lifted ?g - garment) ; garment is not on a surface
 	)
