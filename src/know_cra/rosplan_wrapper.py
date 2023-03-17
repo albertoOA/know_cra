@@ -5,6 +5,7 @@ import rospy
 import sys
 from std_srvs.srv import Empty, EmptyResponse
 from std_msgs.msg import String
+from rosplan_dispatch_msgs.msg import CompletePlan
 from rosplan_knowledge_msgs.srv import GetAttributeService, GetDomainOperatorService, GetDomainOperatorDetailsService, \
     GetInstanceService, KnowledgeUpdateService, KnowledgeUpdateServiceRequest
 from diagnostic_msgs.msg import KeyValue
@@ -27,6 +28,7 @@ class ROSPlanWrapper:
         self._trigger_plan_srv = rospy.Service("~planning_pipeline", Empty, self.planning_pipeline)
         # Define topic subcriptions
         self._raw_plan_subs = rospy.Subscriber("/rosplan_planner_interface/planner_output", String, self.raw_plan_cb)
+        self._parsed_plan_subs = rospy.Subscriber("/rosplan_parsing_interface/complete_plan", CompletePlan, self.parsed_plan_cb)
 
         # Define varibles
         self.plan_is_received_ = False
@@ -48,11 +50,16 @@ class ROSPlanWrapper:
         """
 
 
-
-    def raw_plan_cb(self, msg): # it is called when a new plan is generated
+    def raw_plan_cb(self, msg): # it is called when a new plan is published
+        rospy.loginfo(rospy.get_name() + ": Received raw plan")
         self.plan_is_received_ = True
         print(msg.data)
         self.generated_plan_string_ = msg.data
+    
+    def parsed_plan_cb(self, msg): # it is called when a new parsed plan is published
+        rospy.loginfo(rospy.get_name() + ": Received parsed plan")
+        #print(msg.plan)
+        self.generated_plan_parsed_ = msg.plan
 
     def planning_pipeline(self, req): 
         # TODO UPDATE PROBLEM
