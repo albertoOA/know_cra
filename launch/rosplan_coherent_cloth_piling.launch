@@ -22,7 +22,7 @@
 	</include>
 
 	 
-	<node name="coherent_planning_node" pkg="know_cra" type="coherent_planning_node.py" output="screen" />
+	<node name="rosplan_rosprolog_node" pkg="know_cra" type="rosplan_with_rosprolog_cra.py" output="screen" />
 
     <!-- 
   	<node name="rosplan_narrator" pkg="task_plan_verbalization" type="task_plan_verbalization_node.py" respawn="false" output="screen" required="$(eval evaluation == true)">
