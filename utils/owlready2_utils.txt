@@ -1,0 +1,11 @@
+INSERT { ?n rdfs:comment "new individual assertion" ; DUL:hasParticipant ocra_filling_a_tray_adaptation_full_compartment:Kinova_robot ; DUL:hasPart ocra_filling_a_tray_adaptation_full_compartment:Full_compartment_adaptation_final_plan_execution . ocra_filling_a_tray_adaptation_full_compartment:Full_compartment_adaptation_inital_plan_execution DUL:isPartOf ?n . } WHERE   { BIND(NEWINSTANCEIRI(DUL:Event) AS ?n)  }
+
+
+
+DELETE { ocra_filling_a_tray_adaptation_full_compartment:RFID_board_current_capacity DUL:hasDataValue ?x . } INSERT { ocra_filling_a_tray_adaptation_full_compartment:RFID_board_current_capacity DUL:hasDataValue 5 . } WHERE   { ocra_filling_a_tray_adaptation_full_compartment:RFID_board_current_capacity DUL:hasDataValue ?x . }
+
+
+file:///home/aolivares/iri-lab/iri_ws/src/papers_repositories/know_cra/owl/ont/ocra_filling_a_tray_adaptation_full_compartment.owl
+
+
+SELECT ?x { ?x DUL:hasParticipant ocra_filling_a_tray_adaptation_full_compartment:Kinova_robot ; rdf:type ocra:PlanAdaptation. }
