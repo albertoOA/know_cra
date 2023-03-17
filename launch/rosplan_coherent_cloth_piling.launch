@@ -14,8 +14,9 @@
 		<arg name="planner_topic" 			value="planner_output" />
 		<arg name="data_path" 				value="/tmp/" />
 		<arg name="generated_problem_path"	value="/tmp/gen_problem.pddl" />
-		<arg name="dispatcher" 				value="esterel" /> <!-- Check to add the parser when needed -->
-		<arg name="planner_command"      	value="timeout 10 $(find rosplan_planning_system)/common/bin/popf DOMAIN PROBLEM" if="$(eval evaluation == false)" />
+		<arg name="dispatcher" 				value="simple" /> <!-- Check to add the parser when needed -->
+		<!-- (in next lines) -n is to optimize the problem during the timeout - instead of just getting the first found plan - it might be the case that no optimal or better plan is found during the timeout -->
+		<arg name="planner_command"      	value="timeout 10 $(find rosplan_planning_system)/common/bin/popf -n DOMAIN PROBLEM" if="$(eval evaluation == false)" /> 
 		<arg name="planner_command"      	value="timeout 120 $(find rosplan_planning_system)/common/bin/popf -n DOMAIN PROBLEM" if="$(eval evaluation == true)"/>
 		<arg name="planner_interface"    	value="popf_planner_interface" />
 	</include>
