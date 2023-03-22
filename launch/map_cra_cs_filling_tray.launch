@@ -1,6 +1,6 @@
 <launch>
   <arg name="knowrob_settings" default="$(find knowrob)/settings/default.pl" />
-  <arg name="owl_file" default="package://know_cra/owl/map_cra_cs_filling_tray.owl" />
+  <arg name="owl_file" default="package://know_cra/owl/maps/map_cra_cs_filling_tray.owl" />
   
   <!-- Configure settings file. -->
   <env name="KNOWROB_SETTINGS" value="$(arg knowrob_settings)" />
