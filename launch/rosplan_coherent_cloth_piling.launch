@@ -6,6 +6,9 @@
 	<arg name="print_actions"	default="false" />
 	<arg name="evaluation"	 	default="false" />
 
+	<arg name="knowrob_settings" default="$(find knowrob)/settings/default.pl" />
+	<arg name="owl_file" default="package://know_cra/owl/maps/map_cra_cs_piling_cloth.owl" />
+
 	<!-- Include rosplan -->
 	<include file="$(find know_cra)/launch/rosplan_full.launch">
 		<arg name="domain_path"		 		value="$(arg domain_path)" />
@@ -20,18 +23,15 @@
 		<arg name="planner_command"      	value="timeout 120 $(find rosplan_planning_system)/common/bin/popf -n DOMAIN PROBLEM" if="$(eval evaluation == true)"/>
 		<arg name="planner_interface"    	value="popf_planner_interface" />
 	</include>
+	
+	<!-- Include rosprolog knowledge base -->
+	<env name="KNOWROB_SETTINGS" value="$(arg knowrob_settings)" /> <!-- Configure settings file. -->
+	<include file="$(find rosprolog)/launch/rosprolog.launch">
+		<arg name="initial_package" default="know_cra" />
+		<arg name="initial_goal" default="load_owl('$(arg owl_file)')." />
+	</include>
 
-	 
+	<!-- Include rosplan-rosprolog node -->
 	<node name="rosplan_rosprolog_node" pkg="know_cra" type="rosplan_with_rosprolog_cra.py" output="screen" />
-
-    <!-- 
-  	<node name="rosplan_narrator" pkg="task_plan_verbalization" type="task_plan_verbalization_node.py" respawn="false" output="screen" required="$(eval evaluation == true)">
-    	<param name="domain_path"   value="$(arg domain_path)" />
-    	<param name="problem_path"  value="$(arg problem_path)" />
-    	<param name="narrator_name" value="$(arg narrator_name)" />
-    	<param name="print_actions" value="$(arg print_actions)" />
-    	<param name="evaluation"    value="$(arg evaluation)" />
-	</node>
-    -->
 
 </launch>
