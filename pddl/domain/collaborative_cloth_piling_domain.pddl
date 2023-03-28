@@ -134,7 +134,7 @@
 	; direct-object = the ?g
 	; prep = on the ?p !
 	; prep = of type ?t
-	(:durative-action pile_garment ; aka transfer
+	(:durative-action pile-garment ; aka transfer
 		:parameters (?g - garment ?p - pile ?t - type ?a - agent)
 		:duration (= ?duration (grasp-time ?a))
 		:condition (and 
