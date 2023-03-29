@@ -1,10 +1,10 @@
 (define (problem piling)
 	(:domain collaborative-cloth-piling)
 	(:objects
-		towel1 towel2 rag1  - garment
-		towel rag - type
-		pile1 - pile
-		;; pile2 - pile ; if we want to divide in different piles based on the type of garment
+		towel-01 towel-02 rag-01  - garment
+		towel rag - garment-type
+		pile-01 - pile
+		;; pile-02 - pile ; if we want to divide in different piles based on the type of garment
 		indigo - human
 		kinova - robot
 	)
@@ -19,21 +19,21 @@
 		(= (grasp-time indigo) 200)
 		(= (grasp-time kinova) 100)
 
-		(type towel1 towel)
-		(type towel2 towel)
-		(type rag1 rag)
+		(type towel-01 towel)
+		(type towel-02 towel)
+		(type rag-01 rag)
 
-		(folded towel1)
-		(unfolded towel2)
-		(unfolded rag1)
+		(folded towel-01)
+		(unfolded towel-02)
+		(unfolded rag-01)
 
-		(graspable towel1)
-		(graspable towel2)
-		(graspable rag1)
+		(graspable towel-01)
+		(graspable towel-02)
+		(graspable rag-01)
 
-		(supported towel1)
-		(supported towel2)
-		(supported rag1)
+		(supported towel-01)
+		(supported towel-02)
+		(supported rag-01)
 
 		;; (type pile1 towel) ; if we want to divide in different piles based on the type of garment
 		;; (type pile2 rag) ; if we want to divide in different piles based on the type of garment
@@ -41,9 +41,9 @@
 
 	(:goal
 		(and 
-			(piled towel1)
-			(piled towel2)
-			(piled rag1)
+			(piled towel-01)
+			(piled towel-02)
+			(piled rag-01)
 		)
 	)
 )

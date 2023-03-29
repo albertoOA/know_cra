@@ -8,6 +8,7 @@
 		garment pile type agent - object
 		robot human - agent
 		agent
+		garment-type - type
 		object
 	)
 
@@ -133,14 +134,14 @@
 	; subject = ?a
 	; direct-object = the ?g
 	; prep = on the ?p !
-	; prep = of type ?t
+	; prep = of garment-type ?t
 	(:durative-action pile-garment ; aka transfer
-		:parameters (?g - garment ?p - pile ?t - type ?a - agent)
+		:parameters (?g - garment ?p - pile ?t - garment-type ?a - agent)
 		:duration (= ?duration (grasp-time ?a))
 		:condition (and 
 			(at start (grasped ?g ?a))
 			(at start (type ?g ?t))
-			;; (at start (type ?p ?t)) ; if we want to divide in different piles based on the type of garment
+			;; (at start (pile-type ?p ?t)) ; if we want to divide in different piles based on the type of garment
 			(at start (lifted ?g))
 			(at start (folded ?g))
 		)
