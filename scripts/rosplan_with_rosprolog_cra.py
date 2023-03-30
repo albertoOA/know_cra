@@ -25,6 +25,10 @@ class ROSPlanCRA:
 if __name__ == "__main__":
     rpcra = ROSPlanCRA()
 
+    # get information about the domain and problem
+    rpcra.rpwp_.get_types_with_instances()
+    ## print(rpcra.rpwp_.domain_types_with_instances_dict_)
+
     rpcra.rpwp_.planning_pipeline("{}") # generate and parse planning
 
     rospy.spin()
