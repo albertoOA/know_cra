@@ -13,7 +13,7 @@
 	)
 
 	(:predicates
-		; garment is (not) grasped
+		; garment is grasped
 		; verb = be (grasped)
 		; subject = the ?g
 		; prep = by ?a
