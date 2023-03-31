@@ -3,7 +3,7 @@
 # Author: Alberto Olivares-Alarcos <aolivares@iri.upc.edu>, Institut de Robòtica i Informàtica Industrial
 import rospy
 import sys
-from std_srvs.srv import Empty, EmptyResponse
+from std_srvs.srv import Empty
 from std_msgs.msg import String
 from rosplan_dispatch_msgs.msg import CompletePlan
 from rosplan_knowledge_msgs.srv import GetAttributeService, GetDomainOperatorService, GetDomainOperatorDetailsService, \
@@ -27,8 +27,6 @@ class ROSPlanWrapper:
         self._planner = rospy.ServiceProxy("/rosplan_planner_interface/planning_server", Empty)
         self._parse_plan = rospy.ServiceProxy("/rosplan_parsing_interface/parse_plan", Empty)
         
-        # Define service servers
-        self._trigger_plan_srv = rospy.Service("~planning_pipeline", Empty, self.planning_pipeline)
         # Define topic subcriptions
         self._raw_plan_subs = rospy.Subscriber("/rosplan_planner_interface/planner_output", String, self.raw_plan_cb)
         self._parsed_plan_subs = rospy.Subscriber("/rosplan_parsing_interface/complete_plan", CompletePlan, self.parsed_plan_cb)
@@ -68,19 +66,15 @@ class ROSPlanWrapper:
         #print(msg.plan)
         self.generated_plan_parsed_ = msg.plan
 
-    def planning_pipeline(self, req): 
+    def planning_pipeline(self): 
         # TODO UPDATE PROBLEM
-        try:
-            rospy.loginfo(rospy.get_name() + ": Generating problem and planning")
-            self._problem_gen.call()
-            self._planner.call()
-            self._parse_plan.call()
-        except rospy.ServiceException as e:
-            rospy.logerr(rospy.get_name() + ": Service call failed: %s" % e)
-        return EmptyResponse()
+        rospy.loginfo(rospy.get_name() + ": Generating problem and planning")
+        self._problem_gen.call()
+        self._planner.call()
+        self._parse_plan.call()
 
-    def get_types_with_instances(self): 
-        rospy.loginfo(rospy.get_name() + ": Getting the domain types and their instances")
+    def format_types_and_instances_for_ontology_kb(self): 
+        rospy.loginfo(rospy.get_name() + ": Getting the domain types and their instances to assert them to the ontology KB")
         self.domain_types_ans_ = self._get_types.call()
         self.domain_types_with_instances_dict_ = dict()
         for t in self.domain_types_ans_.types:
