@@ -80,6 +80,23 @@ class ROSPlanWrapper:
         for t in self.domain_types_ans_.types:
             self.domain_types_with_instances_dict_[t] = self._get_instances(t, False, False).instances # (booleans) include_constants: include_subtypes:
 
+    def format_goal_for_ontology_kb(self):
+        rospy.loginfo(rospy.get_name() + ": Getting the problem goal to assert it to the ontology KB")
+        self.problem_goal_ans_ = self._get_goals.call()
+        self.problem_goal_dict_ = dict()
+        cont = 0
+        for a in self.problem_goal_ans_.attributes:
+            if len(a.values) == 1: # 'object quality' goal component
+                goal_component_tuple = [a.values[0].value, a.attribute_name]
+            elif len(a.values) == 2: # 'object relationship' goal component
+                goal_component_tuple = [a.values[0].value, a.attribute_name, a.values[1].value]
+            else:
+                rospy.logerr(rospy.get_name() + ": Part of the goal has an unexpected format")
+                goal_component_tuple = []
+            
+            self.problem_goal_dict_['goal_component_'+str(cont)] = goal_component_tuple
+            cont += 1
+
 """
 if __name__ == "__main__":
     rospy.init_node("coherent_planning_node", sys.argv)
