@@ -13,16 +13,16 @@
 	)
 
 	(:predicates
-		; garment is grasped
+		; object is grasped by an agent
 		; verb = be (grasped)
 		; subject = the ?g
 		; prep = by ?a
-		(grasped ?g - garment ?a - agent)
+		(grasped-by ?o - object ?a - agent)
 		
-		; garment is available to be grasped
+		; object is available to be grasped
 		; verb = be (available to be grasped)
-		; subject = the ?g
-		(graspable ?g - garment)
+		; subject = the ?o
+		(graspable ?o - object)
 
 		; Agent ?a is free to manipulate
 		; verb = be (free to manipulate)
@@ -35,7 +35,7 @@
 		; prep = on the pile ?p !
 		(on-pile ?g - garment ?p - pile)
 
-		; Garment ?g is piled
+		; Garment ?g is piled on ?p
 		; verb = be (piled)
 		; subject = the ?g
 		(piled ?g - garment)
@@ -71,6 +71,9 @@
 
 	(:functions
 		(grasp-time ?a - agent)
+
+		(current-number-of-garments-on-pile ?p - pile)
+		(target-number-of-garments-on-pile ?p - pile)
 	)
 
 
@@ -89,7 +92,7 @@
 		:effect (and
 			(at start (not (free-to-manipulate ?a)))
 			(at start (not (graspable ?g)))
-			(at end (grasped ?g ?a))
+			(at end (grasped-by ?g ?a))
 		)
 	)
 
@@ -108,7 +111,7 @@
 		:effect (and
 			(at start (not (free-to-manipulate ?h)))
 			(at start (not (graspable ?g)))
-			(at end (grasped ?g ?h))
+			(at end (grasped-by ?g ?h))
 		)
 	)
 
@@ -120,7 +123,7 @@
 		:parameters (?g - garment ?a - agent)
 		:duration (= ?duration 100)
 		:condition (and
-			(at start (grasped ?g ?a))
+			(at start (grasped-by ?g ?a))
 			(at start (supported ?g))
 		)
 		:effect (and
@@ -139,18 +142,19 @@
 		:parameters (?g - garment ?p - pile ?t - garment-type ?a - agent)
 		:duration (= ?duration (grasp-time ?a))
 		:condition (and 
-			(at start (grasped ?g ?a))
+			(at start (grasped-by ?g ?a))
 			(at start (type ?g ?t))
 			;; (at start (pile-type ?p ?t)) ; if we want to divide in different piles based on the type of garment
 			(at start (lifted ?g))
 			(at start (folded ?g))
 		)
 		:effect (and
-			(at start (not (grasped ?g ?a)))
+			(at start (not (grasped-by ?g ?a)))
 			(at end (graspable ?g))
 			(at end (free-to-manipulate ?a))
 			(at end (piled ?g))
 			(at end (on-pile ?g ?p))
+			(at end (increase (current-number-of-garments-on-pile ?p) 1))
 		)
 	)
 
@@ -164,16 +168,35 @@
 		:condition (and 
 			(at start (unfolded ?g))
 			(at start (lifted ?g))
-			(at start (grasped ?g ?h))
+			(at start (grasped-by ?g ?h))
 		)
 		:effect (and
 			(at end (free-to-manipulate ?h))
 			(at end (not (unfolded ?g)))
 			(at end (not (lifted ?g)))
-			(at end (not (grasped ?g ?h)))
+			(at end (not (grasped-by ?g ?h)))
 			(at end (graspable ?g))
 			(at end (folded ?g))
 			(at end (supported ?g))
+		)
+	)
+
+	; Grasping a pile of garments
+	; verb = grasp / take / grab
+	; subject = ?h
+	; direct-object = the ?p
+	(:durative-action grasp-pile-of-garments
+		:parameters (?p - pile ?h - human)
+		:duration (= ?duration 100)
+		:condition (and 
+			(at start (free-to-manipulate ?h))
+			(at start (= (current-number-of-garments-on-pile ?p) (target-number-of-garments-on-pile ?p)))
+			(at start (graspable ?p))
+		)
+		:effect (and
+			(at start (not (free-to-manipulate ?h)))
+			(at start (not (graspable ?p)))
+			(at end (grasped-by ?p ?h))
 		)
 	)
 )

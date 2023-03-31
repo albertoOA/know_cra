@@ -18,6 +18,8 @@
 
 		(= (grasp-time indigo) 200)
 		(= (grasp-time kinova) 100)
+		(= (current-number-of-garments-on-pile pile-01) 0)
+		(= (target-number-of-garments-on-pile pile-01) 3)
 
 		(type towel-01 towel)
 		(type towel-02 towel)
@@ -30,6 +32,8 @@
 		(graspable towel-01)
 		(graspable towel-02)
 		(graspable rag-01)
+		
+		(graspable pile-01)
 
 		(supported towel-01)
 		(supported towel-02)
@@ -44,6 +48,10 @@
 			(piled towel-01)
 			(piled towel-02)
 			(piled rag-01)
+			(on-pile towel-01 pile-01)
+			(on-pile towel-02 pile-01)
+			(on-pile rag-01 pile-01)
+			(grasped-by pile-01 indigo)
 		)
 	)
 )
