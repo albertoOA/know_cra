@@ -71,14 +71,14 @@ class ROSPlanWrapper:
         self._planner.call()
         self._parse_plan.call()
 
-    def format_types_and_instances_for_ontology_kb(self): 
+    def construct_types_and_instances_dict(self): 
         rospy.loginfo(rospy.get_name() + ": Getting the domain types and their instances to assert them to the ontology KB")
         self.domain_types_ans_ = self._get_types.call()
         self.domain_types_with_instances_dict_ = dict()
         for t in self.domain_types_ans_.types:
             self.domain_types_with_instances_dict_[t] = self._get_instances(t, False, False).instances # (booleans) include_constants: include_subtypes:
 
-    def format_goal_for_ontology_kb(self):
+    def construct_subgoals_dict(self):
         rospy.loginfo(rospy.get_name() + ": Getting the problem goal to assert it to the ontology KB")
         self.problem_goal_ans_ = self._get_goals.call()
         self.problem_goal_dict_ = dict()
