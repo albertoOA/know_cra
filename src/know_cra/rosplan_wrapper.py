@@ -45,9 +45,9 @@ class ROSPlanWrapper:
         self.propositions_attributes_ = self._get_propositions().attributes
         ## print(self.propositions_attributes_)
 
-        """ TO PLAY WITH IT WITHOUT CALLING THE SERVICES FROM OUTSIDE
+        """ TO PLAY WITH IT WITHOUT CALLING THE METHODS FROM OUTSIDE
         # Generating problem and planning
-        self.planning_pipeline("{}")
+        self.planning_pipeline()
 
         #print(self.generated_plan_string_)
         """
