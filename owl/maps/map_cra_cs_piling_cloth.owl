@@ -7,7 +7,7 @@
     <!ENTITY dul "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#" >
     <!ENTITY ocra "http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#" >
     <!ENTITY ocra_piling_cloth "http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_piling_cloth.owl#" >
-    <!ENTITY map "http://www.iri.upc.edu/groups/perception/OCRA/maps/piling_cloth.owl#" >
+    <!ENTITY map_piling_cloth "http://www.iri.upc.edu/groups/perception/OCRA/maps/piling_cloth.owl#" >
     <!ENTITY urdf "http://knowrob.org/kb/urdf.owl#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
@@ -18,7 +18,7 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-    xmlns:map="http://www.iri.upc.edu/groups/perception/OCRA/maps/piling_cloth.owl#"
+    xmlns:map_piling_cloth="http://www.iri.upc.edu/groups/perception/OCRA/maps/piling_cloth.owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:SOMA="http://www.ease-crc.org/ont/SOMA.owl#"
     xmlns:dul="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
@@ -45,9 +45,9 @@
      -->
 
 
-    <!-- &map;robot_end_effector -->
+    <!-- &map_piling_cloth;robot_end_effector -->
 
-    <owl:NamedIndividual rdf:about="&map;robot_end_effector">
+    <owl:NamedIndividual rdf:about="&map_piling_cloth;robot_end_effector">
         <rdf:type rdf:resource="&SOMA;PrehensileEffector"/>
         <SOMA:hasShape>
             <owl:NamedIndividual>
@@ -86,9 +86,9 @@
     </owl:NamedIndividual>
 
 
-    <!-- &map;human_end_effector -->
+    <!-- &map_piling_cloth;human_end_effector -->
 
-    <owl:NamedIndividual rdf:about="&map;human_end_effector">
+    <owl:NamedIndividual rdf:about="&map_piling_cloth;human_end_effector">
         <rdf:type rdf:resource="&SOMA;PrehensileEffector"/>
         <SOMA:hasShape>
             <owl:NamedIndividual>
@@ -130,7 +130,7 @@
 
     <!-- &knowrob;work_table -->
 
-    <owl:NamedIndividual rdf:about="&map;work_table">
+    <owl:NamedIndividual rdf:about="&map_piling_cloth;work_table">
         <rdf:type rdf:resource="&SOMA;Countertop"/>
         <SOMA:hasShape>
             <owl:NamedIndividual>
