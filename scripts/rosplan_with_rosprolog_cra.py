@@ -30,7 +30,7 @@ if __name__ == "__main__":
     ## print(rpcra.rpwp_.domain_types_with_instances_dict_)
 
     rpcra.rpwp_.format_goal_for_ontology_kb()
-    print(rpcra.rpwp_.problem_goal_dict_)
+    ## print(rpcra.rpwp_.problem_goal_dict_)
 
     rpcra.rpwp_.planning_pipeline() # generate and parse planning
 

@@ -10,8 +10,6 @@ from rosplan_knowledge_msgs.srv import GetAttributeService, GetDomainOperatorSer
     GetDomainTypeService, GetInstanceService, KnowledgeUpdateService, KnowledgeUpdateServiceRequest
 from diagnostic_msgs.msg import KeyValue
 import roslib
-from rosprolog_client import PrologException, Prolog
-
 
 class ROSPlanWrapper:
     def __init__(self):
