@@ -36,6 +36,7 @@
 
 :- rdf_register_ns('ocra', 'http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#', [keep(true)]).
 :- rdf_register_ns('ocra_filling_a_tray', 'http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_filling_a_tray.owl#', [keep(true)]).
-:- rdf_register_ns('ocra_coherent', 'http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_coherent.owl#', [keep(true)]).
+:- rdf_register_ns('ocra_cloth', 'http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#', [keep(true)]).
 :- rdf_register_ns('map', 'http://www.iri.upc.edu/groups/perception/OCRA/maps/filling_a_tray.owl#', [keep(true)]).
+:- rdf_register_ns('map_piling_cloth', 'http://www.iri.upc.edu/groups/perception/OCRA/maps/piling_cloth.owl#', [keep(true)]).
 
