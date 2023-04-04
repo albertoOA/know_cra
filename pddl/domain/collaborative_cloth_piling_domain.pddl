@@ -8,7 +8,7 @@
 		robot human - agent
 		garment pile agent - physical-object
 
-		garment-type role - concept
+		garment-type - concept
 		concept - social-object
 
 		social-object physical-object - object
