@@ -35,7 +35,7 @@
 		; prep = on the pile ?p !
 		(on-pile ?g - garment ?p - pile)
 
-		; Garment ?g is piled on ?p
+		; Garment ?g is piled
 		; verb = be (piled)
 		; subject = the ?g
 		(piled ?g - garment)
