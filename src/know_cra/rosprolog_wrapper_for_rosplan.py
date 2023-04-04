@@ -17,7 +17,7 @@ class ROSPrologWrapperForROSPlanCRA:
         self.plan_types_to_ontology_classes_dict_ = {
                 "garment" : "ocra_cloth:'Garment'", 
                 "garment-type" : "ocra_cloth:'GarmentType'",
-                "pile" : "dul:'Object'", 
+                "pile" : "ocra_cloth:'GarmentPile'", 
                 "robot" : "dul:'PhysicalAgent'",
                 "human" : "dul:'PhysicalAgent'",
                 "concept" : "dul:'Concept'",
@@ -29,7 +29,7 @@ class ROSPrologWrapperForROSPlanCRA:
         self.ontology_classes_to_plan_types_dict_ = {
                 "ocra_cloth:'Garment'" : "garment", 
                 "ocra_cloth:'GarmentType'" : "garment-type",
-                "dul:'Object'" : "pile", 
+                "ocra_cloth:'GarmentPile'" : "pile", 
                 "dul:'PhysicalAgent'" : "robot",
                 "dul:'PhysicalAgent'" : "human",
                 "dul:'Concept'" : "concept",
