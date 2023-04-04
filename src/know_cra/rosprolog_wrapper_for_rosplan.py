@@ -40,7 +40,7 @@ class ROSPrologWrapperForROSPlanCRA:
         }
         self.inverse_ontology_relations_dict_ = {
             ""
-        }
+        } # TODO - query from the knowledge base
     
     def types_and_instances_dict_to_triples_list(self, types_with_instances_dict):
         rospy.loginfo(rospy.get_name() + ": Formatting domain plan types and their instances as triples to assert them to the ontology KB")
