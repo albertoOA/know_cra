@@ -40,12 +40,6 @@
 		; subject = the ?g
 		(piled ?g - garment)
 
-		; ?g is of type ?t
-		; verb = be
-		; subject = the ?g
-		; prep = of type ?t !
-		(type ?g - object ?t - type)
-
 		; Garment ?g is supported (on a surface)
 		; verb = be (supported)
 		; subject = the ?g
@@ -67,6 +61,15 @@
 		(unfolded ?g - garment)
 
 		(different ?r - agent ?h - agent)
+
+
+
+		; Special predicate to qualify objects using ontological concepts in the DUL ontology
+		; ?o is classified as type ?t
+		; verb = be classified
+		; subject = the ?g
+		; prep = by type ?t !
+		(classified-by ?o - object ?t - type)
 	)
 
 	(:functions
@@ -143,7 +146,7 @@
 		:duration (= ?duration (grasp-time ?a))
 		:condition (and 
 			(at start (grasped-by ?g ?a))
-			(at start (type ?g ?t))
+			(at start (classified-by ?g ?t))
 			;; (at start (pile-type ?p ?t)) ; if we want to divide in different piles based on the type of garment
 			(at start (lifted ?g))
 			(at start (folded ?g))

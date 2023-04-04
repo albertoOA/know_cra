@@ -21,9 +21,9 @@
 		(= (current-number-of-garments-on-pile pile-01) 0)
 		(= (target-number-of-garments-on-pile pile-01) 3)
 
-		(type towel-01 towel)
-		(type towel-02 towel)
-		(type dish-towel-01 dish-towel)
+		(classified-by towel-01 towel)
+		(classified-by towel-02 towel)
+		(classified-by dish-towel-01 dish-towel)
 
 		(folded towel-01)
 		(unfolded towel-02)
@@ -39,8 +39,8 @@
 		(supported towel-02)
 		(supported dish-towel-01)
 
-		;; (type pile1 towel) ; if we want to divide in different piles based on the type of garment
-		;; (type pile2 dish-towel) ; if we want to divide in different piles based on the type of garment
+		;; (classified-by pile1 towel) ; if we want to divide in different piles based on the type of garment
+		;; (classified-by pile2 dish-towel) ; if we want to divide in different piles based on the type of garment
 	)
 
 	(:goal
