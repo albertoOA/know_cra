@@ -20,6 +20,11 @@ class ROSPrologWrapperForROSPlanCRA:
                 "pile" : "dul:'Object'", 
                 "robot" : "dul:'PhysicalAgent'",
                 "human" : "dul:'PhysicalAgent'",
+                "concept" : "dul:'Concept'",
+                "entity" : "dul:'Entity'",
+                "object" : "dul:'Object'",
+                "social-object" : "dul:'SocialObject'",
+                "physical-object" : "dul:'PhysicalObject'",
         }
         self.ontology_classes_to_plan_types_dict_ = {
                 "ocra_cloth:'Garment'" : "garment", 
@@ -27,6 +32,11 @@ class ROSPrologWrapperForROSPlanCRA:
                 "dul:'Object'" : "pile", 
                 "dul:'PhysicalAgent'" : "robot",
                 "dul:'PhysicalAgent'" : "human",
+                "dul:'Concept'" : "concept",
+                "dul:'Entity'" : "entity",
+                "dul:'Object'" : "object",
+                "dul:'SocialObject'" : "social-object",
+                "dul:'PhysicalObject'" : "physical-object",
         }
         self.inverse_ontology_relations_dict_ = {
             ""

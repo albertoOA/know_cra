@@ -21,9 +21,9 @@
 		(= (current-number-of-garments-on-pile pile-01) 0)
 		(= (target-number-of-garments-on-pile pile-01) 3)
 
-		(is-classified-by towel-01 towel)
-		(is-classified-by towel-02 towel)
-		(is-classified-by dish-towel-01 dish-towel)
+		;; (is-classified-by towel-01 towel)
+		;; (is-classified-by towel-02 towel)
+		;; (is-classified-by dish-towel-01 dish-towel)
 
 		(folded towel-01)
 		(unfolded towel-02)

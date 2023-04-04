@@ -12,10 +12,8 @@
 		concept - social-object
 
 		social-object physical-object - object
-		region - abstract
-		object abstract - entity
+		object - entity
 		entity
-		data-type
 	)
 
 	(:predicates
@@ -75,28 +73,7 @@
 		; verb = be classified
 		; subject = the ?e
 		; prep = by concept ?c 
-		(is-classified-by ?e - entity ?c - concept)
-
-		; Predicate to qualify entities using ontological qualities in the DUL ontology
-		; ?e has quality ?q
-		; verb = have
-		; subject = the ?e
-		; object = quality ?q 
-		(has-quality ?e - entity ?q - quality)
-		
-		; Predicate to capture the region (value) of a quality (for more details - DUL ontology)
-		; ?q has region ?r
-		; verb = have
-		; subject = the ?q
-		; object = region ?r 
-		(has-region ?q - quality ?r - region)
-
-		; Predicate to capture the actual value of an entity's quality (for more details - DUL ontology)
-		; ?r has (region) data value ?dv
-		; verb = have
-		; subject = the ?r
-		; object = data-value ?dv
-		(has-region-data-value ?r - region ?dv - data-type)
+		;; (is-classified-by ?e - entity ?c - concept)
 	)
 
 	(:functions
@@ -173,8 +150,8 @@
 		:duration (= ?duration (grasp-time ?a))
 		:condition (and 
 			(at start (grasped-by ?g ?a))
-			(at start (is-classified-by ?g ?t))
-			;; (at start (pile-type ?p ?t)) ; if we want to divide in different piles based on the type of garment
+			;; (at start (is-classified-by ?g ?t))
+			;; (at start (is-classified-by ?p ?t)) ; if we want to divide in different piles based on the type of garment
 			(at start (lifted ?g))
 			(at start (folded ?g))
 		)
