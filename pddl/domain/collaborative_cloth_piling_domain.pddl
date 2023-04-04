@@ -5,10 +5,11 @@
 
 
 	(:types 
-		garment pile type agent - object
+		social-object physical-object - object
+		concept - social-object
+		garment pile agent - physical-object
 		robot human - agent
-		agent
-		garment-type - type
+		garment-type - concept
 		object
 	)
 
@@ -65,11 +66,11 @@
 
 
 		; Special predicate to qualify objects using ontological concepts in the DUL ontology
-		; ?o is classified as type ?t
+		; ?o is classified as concept ?c
 		; verb = be classified
 		; subject = the ?g
-		; prep = by type ?t !
-		(classified-by ?o - object ?t - type)
+		; prep = by concept ?c !
+		(classified-by ?o - object ?c - concept)
 	)
 
 	(:functions
