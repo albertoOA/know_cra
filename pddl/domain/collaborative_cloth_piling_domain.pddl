@@ -74,6 +74,13 @@
 		; subject = the ?e
 		; prep = by concept ?c 
 		;; (is-classified-by ?e - entity ?c - concept)
+
+		; Predicate to qualify entities using ontological qualities in the DUL ontology
+		; ?e has quality ?q
+		; verb = have
+		; subject = the ?e
+		; object = ?q 
+		;; (has-quality ?e - entity ?q - quality) ;; define quality as Entity
 	)
 
 	(:functions
