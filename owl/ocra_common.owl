@@ -27,6 +27,16 @@ The notions defined in this ontology are usually wide enough to be used in sever
     
 
 
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#describesReifiedStatement -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#describesReifiedStatement">
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasReifiedStatement"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+        <rdfs:label xml:lang="en">describes reified statement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#grasps -->
 
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#grasps">
@@ -39,6 +49,16 @@ The notions defined in this ontology are usually wide enough to be used in sever
     
 
 
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasReifiedStatement -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasReifiedStatement">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+        <rdfs:label xml:lang="en">has reified statement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isGraspedBy -->
 
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isGraspedBy">
@@ -46,6 +66,25 @@ The notions defined in this ontology are usually wide enough to be used in sever
         <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"/>
         <rdfs:label xml:lang="en">is grasped by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementDescribedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementDescribedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementOf"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+        <rdfs:label xml:lang="en">is reified statement described in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementOf">
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+        <rdfs:label xml:lang="en">is reified statement of</rdfs:label>
     </owl:ObjectProperty>
 </rdf:RDF>
 
