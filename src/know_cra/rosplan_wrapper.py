@@ -67,20 +67,25 @@ class ROSPlanWrapper:
     def planning_pipeline(self): 
         # TODO UPDATE PROBLEM
         rospy.loginfo(rospy.get_name() + ": Generating problem and planning")
-        self._problem_gen.call()
-        self._planner.call()
-        self._parse_plan.call()
+        self._problem_gen.wait_for_service()
+        self._problem_gen()
+        self._planner.wait_for_service()
+        self._planner()
+        self._parse_plan.wait_for_service()
+        self._parse_plan()
 
     def construct_types_and_instances_dict(self): 
         rospy.loginfo(rospy.get_name() + ": Getting the domain types and their instances to assert them to the ontology KB")
-        self.domain_types_ans_ = self._get_types.call()
+        self._get_types.wait_for_service()
+        self.domain_types_ans_ = self._get_types()
         self.domain_types_with_instances_dict_ = dict()
         for t in self.domain_types_ans_.types:
             self.domain_types_with_instances_dict_[t] = self._get_instances(t, False, False).instances # (booleans) include_constants: include_subtypes:
 
     def construct_subgoals_dict(self):
         rospy.loginfo(rospy.get_name() + ": Getting the problem goal to assert it to the ontology KB")
-        self.problem_goal_ans_ = self._get_goals.call()
+        self._get_goals.wait_for_service()
+        self.problem_goal_ans_ = self._get_goals()
         self.problem_goal_dict_ = dict()
         cont = 0
         for a in self.problem_goal_ans_.attributes:
