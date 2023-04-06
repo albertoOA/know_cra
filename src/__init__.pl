@@ -41,3 +41,4 @@
 :- rdf_register_ns('map', 'http://www.iri.upc.edu/groups/perception/OCRA/maps/filling_a_tray.owl#', [keep(true)]).
 :- rdf_register_ns('map_piling_cloth', 'http://www.iri.upc.edu/groups/perception/OCRA/maps/piling_cloth.owl#', [keep(true)]).
 
+:- mng_drop(roslog, triples). /*to delete manually asserted triples using the rosprolog_commandline, which remain in the MongoDB*/
