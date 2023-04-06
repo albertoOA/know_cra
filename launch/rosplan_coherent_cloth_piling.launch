@@ -7,7 +7,7 @@
 	<arg name="evaluation"	 	default="false" />
 
 	<arg name="knowrob_settings" default="$(find knowrob)/settings/default.pl" />
-	<arg name="owl_file" default="package://know_cra/owl/maps/map_cra_cs_piling_cloth.owl" />
+	<arg name="owl_file" default="$(find know_cra)/owl/maps/map_cra_cs_piling_cloth.owl" />
 
 	<!-- Include rosplan -->
 	<include file="$(find know_cra)/launch/rosplan_full.launch">
