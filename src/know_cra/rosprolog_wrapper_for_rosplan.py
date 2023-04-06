@@ -26,6 +26,7 @@ class ROSPrologWrapperForROSPlanCRA:
                 "social-object" : "dul:'SocialObject'",
                 "physical-object" : "dul:'PhysicalObject'",
         }
+
         self.ontology_classes_to_plan_types_dict_ = {
                 "ocra_cloth:'Garment'" : "garment", 
                 "ocra_cloth:'GarmentType'" : "garment-type",
@@ -38,9 +39,8 @@ class ROSPrologWrapperForROSPlanCRA:
                 "dul:'SocialObject'" : "social-object",
                 "dul:'PhysicalObject'" : "physical-object",
         }
-        self.inverse_ontology_relations_dict_ = {
-            ""
-        } # TODO - query from the knowledge base
+
+        self.inverse_ontology_relations_dict_ = self.get_ontology_property_and_inverse_dict()
     
     def types_and_instances_dict_to_triples_list(self, types_with_instances_dict):
         rospy.loginfo(rospy.get_name() + ": Formatting domain plan types and their instances as triples to assert them to the ontology KB")
@@ -97,4 +97,20 @@ class ROSPrologWrapperForROSPlanCRA:
         query = self.client_rosprolog_.query(query_text)
         query_solutions = list()
         query.finish()
+
+    def get_ontology_property_and_inverse_dict(self):
+        ont_property_inverse_dict = dict()
+
+        query = self.client_rosprolog_.query("kb_call(triple(S, owl:'inverseOf', O))")
+
+        for solution in query.solutions():
+            subj_ = solution['S'].split('#')[-1]
+            obj_ = solution['O'].split('#')[-1]
+
+            ont_property_inverse_dict[subj_] = obj_
+            ont_property_inverse_dict[obj_] = subj_
+
+        query.finish()
+
+        return ont_property_inverse_dict
 
