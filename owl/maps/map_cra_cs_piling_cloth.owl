@@ -30,6 +30,7 @@
         <owl:imports rdf:resource="package://knowrob/owl/knowrob.owl"/>
         <owl:imports rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl"/>
         <owl:imports rdf:resource="package://know_cra/owl/ocra_cloth.owl"/>
+        <owl:imports rdf:resource="package://know_cra/owl/ocra_common.owl"/>
         <!--
         <owl:imports rdf:resource="package://know_cra/owl/ocra.owl"/>
 
