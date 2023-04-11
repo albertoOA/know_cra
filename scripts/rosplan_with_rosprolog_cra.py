@@ -39,7 +39,11 @@ if __name__ == "__main__":
     ## print(rpcra.rpwp_.problem_subgoals_dict_)
 
     subgoals_triples_list = rpcra.rpwprp_.subgoals_dict_to_triples_list(rpcra.rpwp_.problem_subgoals_dict_)
-    print(subgoals_triples_list)
+    ## print(subgoals_triples_list)
+
+    subgoals_assertion_query_text = rpcra.rpwprp_.construct_query_text_for_multiple_triples_assertion(subgoals_triples_list, False)
+    ## print(subgoals_assertion_query_text)
+    rpcra.rpwprp_.rosprolog_assertion_query(subgoals_assertion_query_text)
 
     rpcra.rpwp_.planning_pipeline() # generate and parse planning
 
