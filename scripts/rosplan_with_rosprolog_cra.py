@@ -32,11 +32,14 @@ if __name__ == "__main__":
     types_and_instances_triples_list = rpcra.rpwprp_.types_and_instances_dict_to_triples_list(rpcra.rpwp_.domain_types_with_instances_dict_)
     ## print(types_and_instances_triples_list)
     types_and_instances_assertion_query_text = rpcra.rpwprp_.construct_query_text_for_multiple_triples_assertion(types_and_instances_triples_list, False)
-    ##print(types_and_instances_assertion_query_text)
+    ## print(types_and_instances_assertion_query_text)
     rpcra.rpwprp_.rosprolog_assertion_query(types_and_instances_assertion_query_text)
 
     rpcra.rpwp_.construct_subgoals_dict()
-    ## print(rpcra.rpwp_.problem_goal_dict_)
+    ## print(rpcra.rpwp_.problem_subgoals_dict_)
+
+    subgoals_triples_list = rpcra.rpwprp_.subgoals_dict_to_triples_list(rpcra.rpwp_.problem_subgoals_dict_)
+    print(subgoals_triples_list)
 
     rpcra.rpwp_.planning_pipeline() # generate and parse planning
 

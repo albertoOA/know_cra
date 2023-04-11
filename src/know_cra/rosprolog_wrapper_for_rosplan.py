@@ -4,6 +4,7 @@
 import rospy
 import sys
 import roslib
+from datetime import datetime
 from rosprolog_client import PrologException, Prolog
 
 
@@ -13,6 +14,7 @@ class ROSPrologWrapperForROSPlanCRA:
 
         # Define varibles
         self.client_rosprolog_ = Prolog()
+        self.semantic_map_namespace_ = "map_piling_cloth"
 
         self.plan_types_to_ontology_classes_dict_ = {
                 "garment" : "ocra_cloth:'Garment'", 
@@ -41,6 +43,34 @@ class ROSPrologWrapperForROSPlanCRA:
         }
 
         self.inverse_ontology_relations_dict_ = self.get_ontology_property_and_inverse_dict()
+
+        self.unitary_plan_predicates_to_ontology_classes_dict_ = {
+            "graspable" : "dul:'Role'", 
+            "free-to-manipulate" : "dul:'Role'",
+            "piled" : "dul:'Role'",
+            "supported" : "dul:'Role'",
+            "lifted" : "dul:'Role'",
+            "folded" : "dul:'Role'",
+            "unfolded" : "dul:'Role'",
+        }
+
+        self.unitary_plan_predicates_to_ontology_relations_dict_ = {
+            "graspable" : "dul:'isRoleOf'", 
+            "free-to-manipulate" : "dul:'isRoleOf'",
+            "piled" : "dul:'isRoleOf'",
+            "supported" : "dul:'isRoleOf'",
+            "lifted" : "dul:'isRoleOf'",
+            "folded" : "dul:'isRoleOf'",
+            "unfolded" : "dul:'isRoleOf'",
+        }
+
+        self.binary_plan_predicates_to_ontology_relations_dict_ =  {
+            "grasped-by" : "ocra_common:'isGraspedBy'",
+            "on-pile" : "dul:'hasLocation'",
+            'is-classified-by' : "dul:'isClassifiedBy'",
+            'has-quality' : "dul:'hasQuality'",
+        }
+
     
     def types_and_instances_dict_to_triples_list(self, types_with_instances_dict):
         rospy.loginfo(rospy.get_name() + ": Formatting domain plan types and their instances as triples to assert them to the ontology KB")
@@ -49,13 +79,80 @@ class ROSPrologWrapperForROSPlanCRA:
         for k, v in types_with_instances_dict.items():
             for i in v:
                 triple = list()
-                triple.append(i)
-                triple.append('rdf:type')
+                triple.append(self.semantic_map_namespace_ + ":'" + i.replace('-','_') + "'") # ontology does not like '-'
+                triple.append("rdf:'type'")
                 triple.append(self.plan_types_to_ontology_classes_dict_[k])
                 
                 triples_list.append(triple)
         
         return triples_list
+
+    def subgoals_dict_to_triples_list(self, subgoals_dict):
+        rospy.loginfo(rospy.get_name() + ": Formatting the problem goal as a set of triples to assert them to the ontology KB")
+
+        triples_list = list()
+        goal_id = "problem_goal_" + str(datetime.utcnow()).replace(" ", "_") + "-UTC"
+        triples_list.append([self.semantic_map_namespace_ + ":'" + goal_id + "'", "rdf:'type'", "dul:'Goal'"])
+
+        for k, v in subgoals_dict.items():
+            triple_st = list()
+            statement_id = goal_id + "_" + k
+            triple_st.append(self.semantic_map_namespace_ + ":'" + statement_id + "'")
+            triple_st.append("rdf:'type'")
+            triple_st.append("rdf:'Statement'")
+            triples_list.append(triple_st)
+
+            triple_st_subject = list()
+            triple_st_predicate = list()
+            triple_st_object = list()
+            triple_st_reified = list()
+            triple_concept_individual = list()
+            if len(v) == 2: # unitary planning predicate
+                triple_st_subject.append(self.semantic_map_namespace_ + ":'" + statement_id + "'")
+                triple_st_subject.append("rdf:'subject'")
+                triple_st_subject.append(self.semantic_map_namespace_ + ":'" + v[0].replace('-','_') + "'") # (concept) instance
+                triples_list.append(triple_st_subject)
+
+                triple_st_predicate.append(self.semantic_map_namespace_ + ":'" + statement_id + "'")
+                triple_st_predicate.append("rdf:'predicate'")
+                triple_st_predicate.append(self.unitary_plan_predicates_to_ontology_relations_dict_[v[0]]) 
+                triples_list.append(triple_st_predicate)
+
+                triple_st_object.append(self.semantic_map_namespace_ + ":'" + statement_id + "'")
+                triple_st_object.append("rdf:'object'")
+                triple_st_object.append(self.semantic_map_namespace_ + ":'" + v[1].replace('-','_') + "'") # problem (object) instance
+                triples_list.append(triple_st_object)
+
+                triple_concept_individual.append(self.semantic_map_namespace_ + ":'" + v[0].replace('-','_') + "'")
+                triple_concept_individual.append("rdf:'type'")
+                triple_concept_individual.append(self.unitary_plan_predicates_to_ontology_classes_dict_[v[0]])
+                triples_list.append(triple_concept_individual)
+            elif len(v) == 3: 
+                triple_st_subject.append(self.semantic_map_namespace_ + ":'" + statement_id + "'")
+                triple_st_subject.append("rdf:'subject'")
+                triple_st_subject.append(self.semantic_map_namespace_ + ":'" + v[1].replace('-','_') + "'") 
+                triples_list.append(triple_st_subject)
+
+                triple_st_predicate.append(self.semantic_map_namespace_ + ":'" + statement_id + "'")
+                triple_st_predicate.append("rdf:'predicate'")
+                triple_st_predicate.append(self.binary_plan_predicates_to_ontology_relations_dict_[v[0]]) 
+                triples_list.append(triple_st_predicate)
+
+                triple_st_object.append(self.semantic_map_namespace_ + ":'" + statement_id + "'")
+                triple_st_object.append("rdf:'object'")
+                triple_st_object.append(self.semantic_map_namespace_ + ":'" + v[2].replace('-','_') + "'") 
+                triples_list.append(triple_st_object)
+            else:
+                rospy.logerr(rospy.get_name() + ": Unexpected planning predicate length")
+
+            triple_st_description = list()
+            triple_st_description.append(self.semantic_map_namespace_ + ":'" + goal_id + "'")
+            triple_st_description.append("ocra_common:'describesReifiedStatement'")
+            triple_st_description.append(self.semantic_map_namespace_ + ":'" + statement_id + "'")
+            triples_list.append(triple_st_description)
+
+        return triples_list
+
     
     def construct_query_text_for_single_triple_assertion(self, triple_subject, triple_relation, triple_object, add_final_dot, add_inverse_triple):
         rospy.loginfo(rospy.get_name() + ": Construct query text for single triple assertion")
@@ -73,7 +170,7 @@ class ROSPrologWrapperForROSPlanCRA:
         else:
             pass
 
-        query_text = query_text.replace('-','_') # ontology does not like '-'
+        ## query_text = query_text.replace('-','_') # ontology does not like '-'
 
         return query_text
 
