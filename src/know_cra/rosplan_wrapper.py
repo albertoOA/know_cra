@@ -31,6 +31,8 @@ class ROSPlanWrapper:
 
         # Define varibles
         self.plan_is_received_ = False
+        self.domain_types_with_instances_dict_ = dict()
+        self.problem_subgoals_dict_ = dict()
 
         # Getting domain operators
         self._get_operators.wait_for_service()
@@ -78,7 +80,6 @@ class ROSPlanWrapper:
         rospy.loginfo(rospy.get_name() + ": Getting the domain types and their instances to assert them to the ontology KB")
         self._get_types.wait_for_service()
         self.domain_types_ans_ = self._get_types()
-        self.domain_types_with_instances_dict_ = dict()
         for t in self.domain_types_ans_.types:
             self.domain_types_with_instances_dict_[t] = self._get_instances(t, False, False).instances # (booleans) include_constants: include_subtypes:
 
@@ -86,18 +87,17 @@ class ROSPlanWrapper:
         rospy.loginfo(rospy.get_name() + ": Getting the problem goal to assert it to the ontology KB")
         self._get_goals.wait_for_service()
         self.problem_goal_ans_ = self._get_goals()
-        self.problem_goal_dict_ = dict()
         cont = 0
         for a in self.problem_goal_ans_.attributes:
             if len(a.values) == 1: # 'object quality' goal component
-                goal_component_tuple = [a.values[0].value, a.attribute_name]
+                goal_component_tuple = [a.attribute_name, a.values[0].value]
             elif len(a.values) == 2: # 'object relationship' goal component
-                goal_component_tuple = [a.values[0].value, a.attribute_name, a.values[1].value]
+                goal_component_tuple = [a.attribute_name, a.values[0].value, a.values[1].value]
             else:
                 rospy.logerr(rospy.get_name() + ": Part of the goal has an unexpected format")
                 goal_component_tuple = []
             
-            self.problem_goal_dict_['goal_component_'+str(cont)] = goal_component_tuple
+            self.problem_subgoals_dict_['goal_component_'+str(cont)] = goal_component_tuple
             cont += 1
 
 """
