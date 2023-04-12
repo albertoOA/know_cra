@@ -79,16 +79,16 @@ class ROSPlanWrapper:
     def construct_types_and_instances_dict(self): 
         rospy.loginfo(rospy.get_name() + ": Getting the domain types and their instances to assert them to the ontology KB")
         self._get_types.wait_for_service()
-        self.domain_types_ans_ = self._get_types()
-        for t in self.domain_types_ans_.types:
+        domain_types_ans_ = self._get_types()
+        for t in domain_types_ans_.types:
             self.domain_types_with_instances_dict_[t] = self._get_instances(t, False, False).instances # (booleans) include_constants: include_subtypes:
 
     def construct_subgoals_dict(self):
         rospy.loginfo(rospy.get_name() + ": Getting the problem goal to assert it to the ontology KB")
         self._get_goals.wait_for_service()
-        self.problem_goal_ans_ = self._get_goals()
+        problem_goal_ans_ = self._get_goals()
         cont = 0
-        for a in self.problem_goal_ans_.attributes:
+        for a in problem_goal_ans_.attributes:
             if len(a.values) == 1: # 'object quality' goal component
                 goal_component_tuple = [a.attribute_name, a.values[0].value]
             elif len(a.values) == 2: # 'object relationship' goal component

@@ -155,7 +155,7 @@ class ROSPrologWrapperForROSPlanCRA:
 
     
     def construct_query_text_for_single_triple_assertion(self, triple_subject, triple_relation, triple_object, add_final_dot, add_inverse_triple):
-        rospy.loginfo(rospy.get_name() + ": Construct query text for single triple assertion")
+        ## rospy.loginfo(rospy.get_name() + ": Construct query text for single triple assertion")
         query_text = "kb_project(triple(" + triple_subject + ", " + triple_relation + ", " + triple_object +"))"
         if add_inverse_triple:
             if (triple_relation != "rdf:type"):
