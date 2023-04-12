@@ -52,6 +52,7 @@ class ROSPrologWrapperForROSPlanCRA:
             "lifted" : "dul:'Role'",
             "folded" : "dul:'Role'",
             "unfolded" : "dul:'Role'",
+            #"current-number-of-garments-on-pile" : "dul:'Quality'",
         }
 
         self.unitary_plan_predicates_to_ontology_relations_dict_ = {
@@ -62,6 +63,7 @@ class ROSPrologWrapperForROSPlanCRA:
             "lifted" : "dul:'isRoleOf'",
             "folded" : "dul:'isRoleOf'",
             "unfolded" : "dul:'isRoleOf'",
+            #"current-number-of-garments-on-pile" : "dul:'isQualityOf'",
         }
 
         self.binary_plan_predicates_to_ontology_relations_dict_ =  {
