@@ -104,12 +104,7 @@ class ROSPlanWrapper:
 
     def construct_plan_dict(self):
         rospy.loginfo(rospy.get_name() + ": Getting the plan to assert it to the ontology KB")
-        self._get_operators.wait_for_service()
-        domain_operators_ans = self._get_operators()
-        for op in domain_operators_ans.operators:
-            self.domain_operators_list_.append(op.name)
-            self._get_operator_details.wait_for_service()
-            domain_operator_details_ans = self._get_operator_details(op.name).op
+        
 
     
     def construct_single_operator_details_dict(self, operator_details_ans):
