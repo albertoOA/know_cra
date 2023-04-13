@@ -200,6 +200,7 @@ class ROSPlanWrapper:
         
         return operator_details_dict
 
+    """ DEPRECATED METHODS
     def construct_single_operator_details_dict(self, operator_details_ans):
         ## rospy.loginfo(rospy.get_name() + ": Getting an operator's details as a dictionary")
         ## print(operator_details_ans)
@@ -264,6 +265,8 @@ class ROSPlanWrapper:
             domain_operator_details_ans = self._get_operator_details(op.name).op
             self.domain_operators_details_dict_[domain_operator_details_ans.formula.name] = \
                 self.construct_single_operator_details_dict(domain_operator_details_ans)
+
+    END 'DEPRECATED METHODS' """ 
 
 """
 if __name__ == "__main__":
