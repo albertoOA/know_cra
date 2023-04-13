@@ -31,10 +31,12 @@ class ROSPlanWrapper:
 
         # Define varibles
         self.plan_is_received_ = False
+        self.plan_is_parsed_ = False
         self.domain_types_with_instances_dict_ = dict()
         self.problem_subgoals_dict_ = dict()
         self.domain_operators_details_dict_ = dict()
         self.domain_operators_list_ = list()
+        self.plan_dict_ = dict()
 
         # Getting domain operators
         self._get_operators.wait_for_service()
@@ -65,6 +67,7 @@ class ROSPlanWrapper:
     
     def parsed_plan_cb(self, msg): # it is called when a new parsed plan is published
         rospy.loginfo(rospy.get_name() + ": Received parsed plan")
+        self.plan_is_parsed_ = True
         #print(msg.plan)
         self.generated_plan_parsed_ = msg.plan
 
@@ -104,9 +107,99 @@ class ROSPlanWrapper:
 
     def construct_plan_dict(self):
         rospy.loginfo(rospy.get_name() + ": Getting the plan to assert it to the ontology KB")
-        
+        if (self.plan_is_received_ and self.plan_is_parsed_):
+            aux_dict = dict()
+            aux_dict["task_id"] = list()
+            aux_dict["task_name"] = list()
+            aux_dict["task_grounded_parameters_dict"] = list()
+            aux_dict["task_duration"] = list()
+            aux_dict["task_dispatch_time"] = list()
+            for t in self.generated_plan_parsed_:
+                aux_dict["task_id"].append("task_" + str(t.action_id))
+                aux_dict["task_name"].append(t.name)
+                single_operator_grounded_parameters_dict = \
+                    self.construct_single_operator_grounded_parameters_dict(t.parameters)
+                aux_dict["task_grounded_parameters_dict"].append( \
+                    self.construct_grounded_single_operator_details_dict(t.name, single_operator_grounded_parameters_dict) )
+                aux_dict["task_duration"].append(t.duration)
+                aux_dict["task_dispatch_time"].append(t.dispatch_time)
 
+            aux_dict["plan_duration"] = aux_dict["task_dispatch_time"][-1] + aux_dict["task_duration"][-1]
+            aux_dict["plan_number_of_tasks"] = len(aux_dict["task_id"])
+
+            self.plan_dict_["plan_" + str(self.generated_plan_parsed_[0].plan_id)] = aux_dict 
+        else: 
+            rospy.logerr(rospy.get_name() + ": The plan is not received or parsed")
     
+    def construct_single_operator_grounded_parameters_dict(self, operator_grounded_parameters_list):
+        aux_dict = dict()
+        for param in operator_grounded_parameters_list:
+            aux_dict[param.key] = param.value
+
+        return aux_dict
+
+    def construct_grounded_single_operator_details_dict(self, operator_name, operator_grounded_parameters_dict):
+        ## rospy.loginfo(rospy.get_name() + ": Getting an operator's details as a dictionary")
+        ## print(operator_details_ans)
+        operator_details_dict = dict()
+
+        effects_to_assert_list = list()
+        effects_to_delete_list = list()
+        conditions_list = list()
+
+        self._get_operator_details.wait_for_service()
+        operator_details_ans = self._get_operator_details(operator_name).op
+        ## print(type(operator_details_ans.at_start_add_effects)) # they are lists
+
+        aux_list = operator_details_ans.at_start_add_effects + operator_details_ans.at_end_add_effects
+        for a in aux_list:
+            if len(a.typed_parameters) == 1: # 'object quality' plan component
+                plan_component_tuple = [a.name, operator_grounded_parameters_dict[a.typed_parameters[0].key]]
+            elif len(a.typed_parameters) == 2: # 'object relationship' plan component
+                plan_component_tuple = [a.name, \
+                                        operator_grounded_parameters_dict[a.typed_parameters[0].key], \
+                                        operator_grounded_parameters_dict[a.typed_parameters[1].key]]
+            else:
+                rospy.logerr(rospy.get_name() + ": Part of a plan condition (start add) has an unexpected format")
+                plan_component_tuple = []
+            
+            effects_to_assert_list.append(plan_component_tuple)
+        
+        aux_list = operator_details_ans.at_start_del_effects + operator_details_ans.at_end_del_effects
+        for a in aux_list:
+            if len(a.typed_parameters) == 1: # 'object quality' plan component
+                plan_component_tuple = [a.name, operator_grounded_parameters_dict[a.typed_parameters[0].key]]
+            elif len(a.typed_parameters) == 2: # 'object relationship' plan component
+                plan_component_tuple = [a.name, \
+                                        operator_grounded_parameters_dict[a.typed_parameters[0].key], \
+                                        operator_grounded_parameters_dict[a.typed_parameters[1].key]]
+            else:
+                rospy.logerr(rospy.get_name() + ": Part of a plan condition has an unexpected format")
+                plan_component_tuple = []
+            
+            effects_to_delete_list.append(plan_component_tuple)
+
+        aux_list = operator_details_ans.at_start_simple_condition + \
+            operator_details_ans.over_all_simple_condition + operator_details_ans.at_end_simple_condition
+        for a in aux_list:
+            if len(a.typed_parameters) == 1: # 'object quality' plan component
+                plan_component_tuple = [a.name, operator_grounded_parameters_dict[a.typed_parameters[0].key]]
+            elif len(a.typed_parameters) == 2: # 'object relationship' plan component
+                plan_component_tuple = [a.name, \
+                                        operator_grounded_parameters_dict[a.typed_parameters[0].key], \
+                                        operator_grounded_parameters_dict[a.typed_parameters[1].key]]
+            else:
+                rospy.logerr(rospy.get_name() + ": Part of a plan condition has an unexpected format")
+                plan_component_tuple = []
+            
+            conditions_list.append(plan_component_tuple)
+
+        operator_details_dict["effects_to_assert"] = effects_to_assert_list
+        operator_details_dict["effects_to_delete"] = effects_to_delete_list
+        operator_details_dict["conditions"] = conditions_list
+        
+        return operator_details_dict
+
     def construct_single_operator_details_dict(self, operator_details_ans):
         ## rospy.loginfo(rospy.get_name() + ": Getting an operator's details as a dictionary")
         ## print(operator_details_ans)

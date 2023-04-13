@@ -47,8 +47,11 @@ if __name__ == "__main__":
 
     rpcra.rpwp_.planning_pipeline() # generate and parse planning
 
-    rpcra.rpwp_.construct_domain_operators_details_dict()
-    print(rpcra.rpwp_.domain_operators_details_dict_)
+    ## rpcra.rpwp_.construct_domain_operators_details_dict() # unnecessary - use construct_plan_dict
+    ## print(rpcra.rpwp_.domain_operators_details_dict_) 
+
+    rpcra.rpwp_.construct_plan_dict()
+    print(rpcra.rpwp_.plan_dict_)
 
     rospy.spin()
 
