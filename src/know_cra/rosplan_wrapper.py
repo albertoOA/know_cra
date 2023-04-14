@@ -109,6 +109,7 @@ class ROSPlanWrapper:
         rospy.loginfo(rospy.get_name() + ": Getting the plan to assert it to the ontology KB")
         if (self.plan_is_received_ and self.plan_is_parsed_):
             aux_dict = dict()
+            aux_dict["plan_id"] = "plan_" + str(self.generated_plan_parsed_[0].plan_id)
             aux_dict["task_id"] = list()
             aux_dict["task_name"] = list()
             aux_dict["task_grounded_parameters_dict"] = list()
@@ -127,7 +128,7 @@ class ROSPlanWrapper:
             aux_dict["plan_duration"] = aux_dict["task_dispatch_time"][-1] + aux_dict["task_duration"][-1]
             aux_dict["plan_number_of_tasks"] = len(aux_dict["task_id"])
 
-            self.plan_dict_["plan_" + str(self.generated_plan_parsed_[0].plan_id)] = aux_dict 
+            self.plan_dict_ = aux_dict.copy() 
         else: 
             rospy.logerr(rospy.get_name() + ": The plan is not received or parsed")
     
