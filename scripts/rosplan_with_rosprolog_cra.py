@@ -51,7 +51,13 @@ if __name__ == "__main__":
     ## print(rpcra.rpwp_.domain_operators_details_dict_) 
 
     rpcra.rpwp_.construct_plan_dict()
-    print(rpcra.rpwp_.plan_dict_)
+    ## print(rpcra.rpwp_.plan_dict_)
+
+    plan_triples_list = rpcra.rpwprp_.plan_dict_to_triples_list(rpcra.rpwp_.plan_dict_)
+    print(plan_triples_list)
+
+
+
 
     rospy.spin()
 
