@@ -10,6 +10,7 @@ from rosplan_knowledge_msgs.srv import GetAttributeService, GetDomainOperatorSer
     GetDomainTypeService, GetInstanceService, KnowledgeUpdateService, KnowledgeUpdateServiceRequest
 from diagnostic_msgs.msg import KeyValue
 import roslib
+import time
 
 class ROSPlanWrapper:
     def __init__(self):
@@ -81,6 +82,8 @@ class ROSPlanWrapper:
         self._parse_plan.wait_for_service()
         self._parse_plan()
 
+        time.sleep(2) # in seconds (to ensure that the callbacks are called before moving on)
+
     def construct_types_and_instances_dict(self): 
         rospy.loginfo(rospy.get_name() + ": Getting the domain types and their instances to assert them to the ontology KB")
         self._get_types.wait_for_service()
@@ -130,7 +133,14 @@ class ROSPlanWrapper:
 
             self.plan_dict_ = aux_dict.copy() 
         else: 
-            rospy.logerr(rospy.get_name() + ": The plan is not received or parsed")
+            rospy.loginfo(rospy.get_name() + ": The plan is not received or parsed")
+            self.planning_pipeline()
+
+            time.sleep(2) # in seconds (to ensure the plan is ready)
+
+            self.construct_plan_dict()
+
+            
     
     def construct_single_operator_grounded_parameters_dict(self, operator_grounded_parameters_list):
         aux_dict = dict()
