@@ -177,6 +177,20 @@ class ROSPrologWrapperForROSPlanCRA:
             task_kb_uri = self.semantic_map_namespace_ + ":'" + task_kb_id + "'"
             triples_list.append([task_kb_uri, "dul:'isTaskDefinedIn'", plan_kb_uri])
             triples_list.append([task_kb_uri, "rdf:'type'", "dul:'Task'"])
+
+            for j in range(i+1, len(plan_dict["task_id"])):
+                ## TODO : it might be useful to consider which agent will execute the task 
+
+                finish_time_i = plan_dict["task_duration"][i] + plan_dict["task_dispatch_time"][i]
+                diff_finish_time_i_and_init_time_j = abs(finish_time_i - plan_dict["task_dispatch_time"][j])
+                if diff_finish_time_i_and_init_time_j < 0.01:
+                    next_task_kb_id = plan_dict["task_id"][j] + "_" + plan_dict["task_name"][j]
+                    next_task_kb_uri = self.semantic_map_namespace_ + ":'" + next_task_kb_id + "'"
+                    triples_list.append([task_kb_uri, "dul:'directlyPrecedes'", next_task_kb_uri])
+                else:
+                    pass
+
+            
             ## TODO : it might be useful to include the task's duration and dispatching time
 
             for k, v_list in plan_dict["task_grounded_parameters_dict"][i].items():
