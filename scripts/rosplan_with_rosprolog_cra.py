@@ -56,6 +56,9 @@ if __name__ == "__main__":
     plan_triples_list = rpcra.rpwprp_.plan_dict_to_triples_list(rpcra.rpwp_.plan_dict_)
     print(plan_triples_list)
 
+    plan_assertion_query_text = rpcra.rpwprp_.construct_query_text_for_multiple_triples_assertion(plan_triples_list, False)
+    ## print(plan_assertion_query_text)
+    rpcra.rpwprp_.rosprolog_assertion_query(plan_assertion_query_text)
 
 
 
