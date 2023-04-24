@@ -280,11 +280,16 @@ class ROSPrologWrapperForROSPlanCRA:
         ## rospy.loginfo(rospy.get_name() + ": Construct query text for single triple assertion")
         query_text = "kb_project(triple(" + triple_subject + ", " + triple_relation + ", " + triple_object +"))"
         if add_inverse_triple:
-            if (triple_relation != "rdf:type"):
+            tp_relation_name = triple_relation.split("'")[1] # it works if the relation complies with "rdf:'type'" format
+            if (tp_relation_name in self.inverse_ontology_relations_dict_):
+                tp_relation_uri = triple_relation.split("'")[0] # it works if the relation complies with "rdf:'type'" format
+                inverted_triple_relation = tp_relation_uri + "'" + self.inverse_ontology_relations_dict_[tp_relation_name] + "'"
                 query_text = query_text + ", " + "kb_project(triple(" + triple_object + ", " + \
-                    self.inverse_ontology_relations_dict_[triple_relation]+ ", " + triple_subject + "))"
+                    inverted_triple_relation + ", " + triple_subject + "))"
+
+                ## print(query_text)
             else: 
-                pass
+                rospy.logwarn(rospy.get_name() + ": The triple property %s does not have inverse.", triple_relation) # for data properties is expected
         else: 
             pass
         if add_final_dot:
@@ -323,8 +328,8 @@ class ROSPrologWrapperForROSPlanCRA:
         query = self.client_rosprolog_.query("kb_call(triple(S, owl:'inverseOf', O))")
 
         for solution in query.solutions():
-            subj_ = solution['S'].split('#')[-1]
-            obj_ = solution['O'].split('#')[-1]
+            subj_ = solution['S'].split('#')[-1] # without the ontology URI
+            obj_ = solution['O'].split('#')[-1] # without the ontology URI
 
             ont_property_inverse_dict[subj_] = obj_
             ont_property_inverse_dict[obj_] = subj_
