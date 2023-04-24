@@ -31,7 +31,7 @@ if __name__ == "__main__":
     ## print(rpcra.rpwp_.domain_types_with_instances_dict_)
     types_and_instances_triples_list = rpcra.rpwprp_.types_and_instances_dict_to_triples_list(rpcra.rpwp_.domain_types_with_instances_dict_)
     ## print(types_and_instances_triples_list)
-    types_and_instances_assertion_query_text = rpcra.rpwprp_.construct_query_text_for_multiple_triples_assertion(types_and_instances_triples_list, False)
+    types_and_instances_assertion_query_text = rpcra.rpwprp_.construct_query_text_for_multiple_triples_assertion(types_and_instances_triples_list, True)
     ## print(types_and_instances_assertion_query_text)
     rpcra.rpwprp_.rosprolog_assertion_query(types_and_instances_assertion_query_text)
 
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     subgoals_triples_list = rpcra.rpwprp_.subgoals_dict_to_triples_list(rpcra.rpwp_.problem_subgoals_dict_)
     ## print(subgoals_triples_list)
 
-    subgoals_assertion_query_text = rpcra.rpwprp_.construct_query_text_for_multiple_triples_assertion(subgoals_triples_list, False)
+    subgoals_assertion_query_text = rpcra.rpwprp_.construct_query_text_for_multiple_triples_assertion(subgoals_triples_list, True)
     ## print(subgoals_assertion_query_text)
     rpcra.rpwprp_.rosprolog_assertion_query(subgoals_assertion_query_text)
 
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     """
     ## print(plan_triples_list)
 
-    plan_assertion_query_text = rpcra.rpwprp_.construct_query_text_for_multiple_triples_assertion(plan_triples_list, False)
+    plan_assertion_query_text = rpcra.rpwprp_.construct_query_text_for_multiple_triples_assertion(plan_triples_list, True)
     ## print(plan_assertion_query_text)
     rpcra.rpwprp_.rosprolog_assertion_query(plan_assertion_query_text)
 
