@@ -54,7 +54,12 @@ if __name__ == "__main__":
     ## print(rpcra.rpwp_.plan_dict_)
 
     plan_triples_list = rpcra.rpwprp_.plan_dict_to_triples_list(rpcra.rpwp_.plan_dict_)
-    print(plan_triples_list)
+    """ # for debugging
+    for i in range(0, 25):
+        print(plan_triples_list[i])
+        print("\n")
+    """
+    ## print(plan_triples_list)
 
     plan_assertion_query_text = rpcra.rpwprp_.construct_query_text_for_multiple_triples_assertion(plan_triples_list, False)
     ## print(plan_assertion_query_text)
