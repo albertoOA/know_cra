@@ -138,9 +138,7 @@ class ROSPlanWrapper:
 
             time.sleep(2) # in seconds (to ensure the plan is ready)
 
-            self.construct_plan_dict()
-
-            
+            self.construct_plan_dict()          
     
     def construct_single_operator_grounded_parameters_dict(self, operator_grounded_parameters_list):
         aux_dict = dict()
