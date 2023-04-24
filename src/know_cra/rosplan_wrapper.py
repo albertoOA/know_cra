@@ -63,13 +63,13 @@ class ROSPlanWrapper:
     def raw_plan_cb(self, msg): # it is called when a new plan is published
         rospy.loginfo(rospy.get_name() + ": Received raw plan")
         self.plan_is_received_ = True
-        print(msg.data)
+        ## print(msg.data)
         self.generated_plan_string_ = msg.data
     
     def parsed_plan_cb(self, msg): # it is called when a new parsed plan is published
         rospy.loginfo(rospy.get_name() + ": Received parsed plan")
         self.plan_is_parsed_ = True
-        #print(msg.plan)
+        ## print(msg.plan)
         self.generated_plan_parsed_ = msg.plan
 
     def planning_pipeline(self): 
