@@ -32,6 +32,7 @@ The notions defined in this ontology are usually wide enough to be used in sever
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#associatedWithReifiedStatement">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+        <rdfs:comment xml:lang="en">General property to capture the relation between an ontological entity and an RDF reified statement.</rdfs:comment>
         <rdfs:label xml:lang="en">associated with reified statement</rdfs:label>
     </owl:ObjectProperty>
     
@@ -43,6 +44,7 @@ The notions defined in this ontology are usually wide enough to be used in sever
         <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#associatedWithReifiedStatement"/>
         <owl:inverseOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementDescribedIn"/>
         <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+        <rdfs:comment xml:lang="en">Property to capture the relation between a description and an RDF reified statement that is described in it.</rdfs:comment>
         <rdfs:label xml:lang="en">describes reified statement</rdfs:label>
     </owl:ObjectProperty>
     
@@ -55,6 +57,9 @@ The notions defined in this ontology are usually wide enough to be used in sever
         <owl:inverseOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isGraspedBy"/>
         <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"/>
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+        <rdfs:comment xml:lang="en">Property to capture the relation between an agent and a physical object grasped by the agent. 
+
+This relation is meant to be used for physical objects only, thus it is not consider the case of &apos;grasping and idea&apos;. For example, one might use this relation to represent the fact that a robot is grasping a piece of cloth.</rdfs:comment>
         <rdfs:label xml:lang="en">grasps</rdfs:label>
     </owl:ObjectProperty>
     
@@ -66,6 +71,7 @@ The notions defined in this ontology are usually wide enough to be used in sever
         <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#associatedWithReifiedStatement"/>
         <owl:inverseOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isExpectedConditionOf"/>
         <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task"/>
+        <rdfs:comment xml:lang="en">Property to capture the relation between a task and an RDF reified statement that is an expected condition before executing the task.</rdfs:comment>
         <rdfs:label xml:lang="en">has expected condition</rdfs:label>
     </owl:ObjectProperty>
     
@@ -77,6 +83,7 @@ The notions defined in this ontology are usually wide enough to be used in sever
         <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#associatedWithReifiedStatement"/>
         <owl:inverseOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isExpectedEffectOf"/>
         <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task"/>
+        <rdfs:comment xml:lang="en">Property to capture the relation between a task and an RDF reified statement that is an expected effect after executing the task.</rdfs:comment>
         <rdfs:label xml:lang="en">has expected effect</rdfs:label>
     </owl:ObjectProperty>
     
@@ -87,6 +94,7 @@ The notions defined in this ontology are usually wide enough to be used in sever
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isExpectedConditionOf">
         <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementAssociatedWith"/>
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task"/>
+        <rdfs:comment xml:lang="en">Property to capture the relation between an RDF reified statement that is a expected condition of a task&apos;s execution.</rdfs:comment>
         <rdfs:label xml:lang="en">is expected condition of</rdfs:label>
     </owl:ObjectProperty>
     
@@ -97,6 +105,7 @@ The notions defined in this ontology are usually wide enough to be used in sever
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isExpectedEffectOf">
         <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementAssociatedWith"/>
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task"/>
+        <rdfs:comment xml:lang="en">Property to capture the relation between an RDF reified statement that is a expected effect of a task&apos;s execution.</rdfs:comment>
         <rdfs:label xml:lang="en">is expected effect of</rdfs:label>
     </owl:ObjectProperty>
     
@@ -108,6 +117,9 @@ The notions defined in this ontology are usually wide enough to be used in sever
         <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
         <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent"/>
+        <rdfs:comment xml:lang="en">Property to capture the relation between a physical object and the agent that grasps it. 
+
+This relation is meant to be used for physical objects only, thus it is not considered the case of &apos;grasping and idea&apos;. For example, one might use this relation to represent the fact that a robot is grasping a piece of cloth.</rdfs:comment>
         <rdfs:label xml:lang="en">is grasped by</rdfs:label>
     </owl:ObjectProperty>
     
@@ -117,6 +129,7 @@ The notions defined in this ontology are usually wide enough to be used in sever
 
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementAssociatedWith">
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+        <rdfs:comment xml:lang="en">General property to capture the relation between an RDF reified statement and an ontological entity.</rdfs:comment>
         <rdfs:label xml:lang="en">is reified statement associated with</rdfs:label>
     </owl:ObjectProperty>
     
@@ -127,6 +140,7 @@ The notions defined in this ontology are usually wide enough to be used in sever
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementDescribedIn">
         <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementAssociatedWith"/>
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
+        <rdfs:comment xml:lang="en">Property to capture the relation between an RDF reified statement and a description that describes it.</rdfs:comment>
         <rdfs:label xml:lang="en">is reified statement described in</rdfs:label>
     </owl:ObjectProperty>
     

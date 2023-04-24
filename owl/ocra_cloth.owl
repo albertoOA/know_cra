@@ -42,30 +42,8 @@
                 <owl:someValuesFrom rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#GarmentType"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#GarmentBend -->
-
-    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#GarmentBend">
-        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasRegion"/>
-                <owl:someValuesFrom rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#GarmentBendRegion"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">Garment bend</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#GarmentBendRegion -->
-
-    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#GarmentBendRegion">
-        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Region"/>
-        <rdfs:label xml:lang="en">Garment bend region</rdfs:label>
+        <rdfs:comment xml:lang="en">A DesignedArtifact that is also classified by some concepts such as the type or the fabric of the garment.</rdfs:comment>
+        <rdfs:label xml:lang="en">Garment</rdfs:label>
     </owl:Class>
     
 
@@ -87,6 +65,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A Concept used to classify a Garment based on the fabric used to fabricate it (e.g., cotton, linen, etc.).</rdfs:comment>
         <rdfs:label xml:lang="en">Garment fabric</rdfs:label>
     </owl:Class>
     
@@ -96,6 +75,7 @@
 
     <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#GarmentPile">
         <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+        <rdfs:comment xml:lang="en">A PhysicalObject representing a pile (set) of Garments, which may also classified by some concepts such as the type or the fabric of the garment.</rdfs:comment>
         <rdfs:label xml:lang="en">Garment pile</rdfs:label>
     </owl:Class>
     
@@ -118,34 +98,8 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A Concept used to classify a Garment based on the type (e.g., towel, dish towel, etc.).</rdfs:comment>
         <rdfs:label xml:lang="en">Garment type</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#HighBend -->
-
-    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#HighBend">
-        <rdfs:subClassOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#GarmentBendRegion"/>
-        <rdfs:label xml:lang="en">High bend</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#LowBend -->
-
-    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#LowBend">
-        <rdfs:subClassOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#GarmentBendRegion"/>
-        <rdfs:label xml:lang="en">Low bend</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#MediumBend -->
-
-    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#MediumBend">
-        <rdfs:subClassOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#GarmentBendRegion"/>
-        <rdfs:label xml:lang="en">Medium bend</rdfs:label>
     </owl:Class>
 </rdf:RDF>
 
