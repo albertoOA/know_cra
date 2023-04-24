@@ -27,10 +27,21 @@ The notions defined in this ontology are usually wide enough to be used in sever
     
 
 
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#associatedWithReifiedStatement -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#associatedWithReifiedStatement">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+        <rdfs:label xml:lang="en">associated with reified statement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#describesReifiedStatement -->
 
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#describesReifiedStatement">
-        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasReifiedStatement"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#associatedWithReifiedStatement"/>
+        <owl:inverseOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementDescribedIn"/>
         <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
         <rdfs:label xml:lang="en">describes reified statement</rdfs:label>
     </owl:ObjectProperty>
@@ -49,12 +60,44 @@ The notions defined in this ontology are usually wide enough to be used in sever
     
 
 
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasReifiedStatement -->
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasExpectedCondition -->
 
-    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasReifiedStatement">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
-        <rdfs:label xml:lang="en">has reified statement</rdfs:label>
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasExpectedCondition">
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#associatedWithReifiedStatement"/>
+        <owl:inverseOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isExpectedConditionOf"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task"/>
+        <rdfs:label xml:lang="en">has expected condition</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasExpectedEffect -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasExpectedEffect">
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#associatedWithReifiedStatement"/>
+        <owl:inverseOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isExpectedEffectOf"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task"/>
+        <rdfs:label xml:lang="en">has expected effect</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isExpectedConditionOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isExpectedConditionOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementAssociatedWith"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task"/>
+        <rdfs:label xml:lang="en">is expected condition of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isExpectedEffectOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isExpectedEffectOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementAssociatedWith"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task"/>
+        <rdfs:label xml:lang="en">is expected effect of</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -70,22 +113,45 @@ The notions defined in this ontology are usually wide enough to be used in sever
     
 
 
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementAssociatedWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementAssociatedWith">
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+        <rdfs:label xml:lang="en">is reified statement associated with</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementDescribedIn -->
 
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementDescribedIn">
-        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementOf"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementAssociatedWith"/>
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
         <rdfs:label xml:lang="en">is reified statement described in</rdfs:label>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementOf -->
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
 
-    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementOf">
-        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
-        <rdfs:label xml:lang="en">is reified statement of</rdfs:label>
-    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementWithSign -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementWithSign">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Property of rdf:Statements that indicates whether a statement is positive (true) or negative (false). 
+
+Negative statements are those in which the predicate/relation is negated (e.g., an object is not on the table).</rdfs:comment>
+        <rdfs:label xml:lang="en">is reified statement with sign</rdfs:label>
+    </owl:DatatypeProperty>
 </rdf:RDF>
 
 
