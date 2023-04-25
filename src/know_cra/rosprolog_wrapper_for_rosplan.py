@@ -163,12 +163,11 @@ class ROSPrologWrapperForROSPlanCRA:
         triples_list.append([plan_kb_uri, "rdf:'type'", "dul:'Plan'"])
 
         # knowledge about plan properties
-        """
-        triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "'", "ocra_common:'hasExpectedDuration'", \
-                            str(plan_dict["plan_duration"])])
-        triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "'", "ocra_common:'hasNumberOfTasks'", \
+        triples_list.append([plan_kb_uri, "ocra_common:'hasExpectedMakespan'", \
+                            str(plan_dict["plan_makespan"])])
+        triples_list.append([plan_kb_uri, "ocra_common:'hasNumberOfTasks'", \
                             str(plan_dict["plan_number_of_tasks"])])
-        """
+        
 
         plan_component_count = 0 
         # knowedge about plan sequence (e.g. workflow, pre-conditions, effects, etc.)
@@ -181,7 +180,7 @@ class ROSPrologWrapperForROSPlanCRA:
             for j in range(i+1, len(plan_dict["task_id"])):
                 ## TODO : it might be useful to consider which agent will execute the task 
 
-                finish_time_i = plan_dict["task_duration"][i] + plan_dict["task_dispatch_time"][i]
+                finish_time_i = plan_dict["task_makespan"][i] + plan_dict["task_dispatch_time"][i]
                 diff_finish_time_i_and_init_time_j = abs(finish_time_i - plan_dict["task_dispatch_time"][j])
                 if diff_finish_time_i_and_init_time_j < 0.01:
                     next_task_kb_id = plan_dict["task_id"][j] + "_" + plan_dict["task_name"][j]
@@ -191,7 +190,7 @@ class ROSPrologWrapperForROSPlanCRA:
                     pass
 
             
-            ## TODO : it might be useful to include the task's duration and dispatching time
+            ## TODO : it might be useful to include the task's makespan and dispatching time
 
             for k, v_list in plan_dict["task_grounded_parameters_dict"][i].items():
                 for v in v_list:

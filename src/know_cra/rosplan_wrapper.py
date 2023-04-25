@@ -116,7 +116,7 @@ class ROSPlanWrapper:
             aux_dict["task_id"] = list()
             aux_dict["task_name"] = list()
             aux_dict["task_grounded_parameters_dict"] = list()
-            aux_dict["task_duration"] = list()
+            aux_dict["task_makespan"] = list()
             aux_dict["task_dispatch_time"] = list()
             for t in self.generated_plan_parsed_:
                 aux_dict["task_id"].append("task_" + str(t.action_id))
@@ -125,10 +125,10 @@ class ROSPlanWrapper:
                     self.construct_single_operator_grounded_parameters_dict(t.parameters)
                 aux_dict["task_grounded_parameters_dict"].append( \
                     self.construct_grounded_single_operator_details_dict(t.name, single_operator_grounded_parameters_dict) )
-                aux_dict["task_duration"].append(t.duration)
+                aux_dict["task_makespan"].append(t.duration)
                 aux_dict["task_dispatch_time"].append(t.dispatch_time)
 
-            aux_dict["plan_duration"] = aux_dict["task_dispatch_time"][-1] + aux_dict["task_duration"][-1]
+            aux_dict["plan_makespan"] = aux_dict["task_dispatch_time"][-1] + aux_dict["task_makespan"][-1]
             aux_dict["plan_number_of_tasks"] = len(aux_dict["task_id"])
 
             self.plan_dict_ = aux_dict.copy() 
