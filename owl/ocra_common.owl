@@ -157,6 +157,34 @@ This relation is meant to be used for physical objects only, thus it is not cons
     
 
 
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasExpectedMakespan -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasExpectedMakespan">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment xml:lang="en">Property of Plans that indicates the expected number of time units that will elapse from the start of the work described in the plan to the end.
+
+It is recomended to use the International System of Units, thus, the encoded data value would be in seconds. However, users of this ontology might specify this data property to indicate makespans using different units (e.g., hasExpectedMakespanInHours).</rdfs:comment>
+        <rdfs:label xml:lang="en">has expected makespan</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasNumberOfTasks -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasNumberOfTasks">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasDataValue"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:comment xml:lang="en">Property of Plans that indicates the total number of tasks defined in the plan.
+
+Note that based on the data type used in the property&apos;s range, the number of tasks might be zero.</rdfs:comment>
+        <rdfs:label xml:lang="en">has number of tasks</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementWithSign -->
 
     <owl:DatatypeProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isReifiedStatementWithSign">
