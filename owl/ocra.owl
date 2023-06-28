@@ -121,26 +121,7 @@ This relationship is used as a primitive which means ‘following the sequence o
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
         <rdfs:label xml:lang="en">is worse plan than</rdfs:label>
     </owl:ObjectProperty>
-    
 
-
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#sharesGoalWith -->
-
-    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#sharesGoalWith">
-        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
-        <rdfs:comment>The relation holding between two Agents that desire (have) the same Goal.</rdfs:comment>
-        <rdfs:label xml:lang="en">shares goal with</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#sharesPlanWith -->
-
-    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#sharesPlanWith">
-        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
-        <rdfs:comment xml:lang="en">The relation holding between two Agents that have the same Plan to achive a Goal.</rdfs:comment>
-        <rdfs:label xml:lang="en">shares plan with</rdfs:label>
-    </owl:ObjectProperty>
     
 
 
