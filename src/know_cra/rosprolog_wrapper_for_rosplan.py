@@ -164,10 +164,33 @@ class ROSPrologWrapperForROSPlanCRA:
 
         # knowledge about plan properties
         triples_list.append([plan_kb_uri, "ocra_common:'hasExpectedMakespan'", \
-                            str(plan_dict["plan_makespan"])])
-        triples_list.append([plan_kb_uri, "ocra_common:'hasNumberOfTasks'", \
-                            str(plan_dict["plan_number_of_tasks"])])
+                            self.semantic_map_namespace_ + ":'" + plan_id + "_makespan'"])
+        triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_makespan'", \
+                            "dul:'hasDataValue'", str(plan_dict["plan_makespan"])])
+        triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_makespan'", \
+                            "rdf:'type'", "dul:Quality"])
         
+        triples_list.append([plan_kb_uri, "ocra_common:'hasNumberOfTasks'", \
+                            self.semantic_map_namespace_ + ":'" + plan_id + "_number_of_tasks'"])
+        triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_number_of_tasks'", \
+                            "dul:'hasDataValue'", str(plan_dict["plan_number_of_tasks"])])
+        triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_number_of_tasks'", \
+                            "rdf:'type'", "dul:Quality"])
+        """
+        triples_list.append([plan_kb_uri, "ocra_common:'hasCost'", \
+                            self.semantic_map_namespace_ + ":'" + plan_id + "_cost'"])
+        triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_cost'", \
+                            "dul:'hasDataValue'", str(plan_dict["plan_cost"])])
+        triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_cost'", \
+                            "rdf:'type'", "dul:Quality"])
+        
+        triples_list.append([plan_kb_uri, "ocra_common:'hasValidity'", \
+                            self.semantic_map_namespace_ + ":'" + plan_id + "_validity'"])
+        triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_validity'", \
+                            "dul:'hasDataValue'", str(plan_dict["plan_validity"])])
+        triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_validity'", \
+                            "rdf:'type'", "dul:Quality"])
+        """
 
         plan_component_count = 0 
         # knowedge about plan sequence (e.g. workflow, pre-conditions, effects, etc.)
