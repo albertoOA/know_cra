@@ -176,7 +176,7 @@ class ROSPrologWrapperForROSPlanCRA:
                             "dul:'hasDataValue'", str(plan_dict["plan_number_of_tasks"])])
         triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_number_of_tasks'", \
                             "rdf:'type'", "dul:Quality"])
-        """
+        
         triples_list.append([plan_kb_uri, "ocra_common:'hasCost'", \
                             self.semantic_map_namespace_ + ":'" + plan_id + "_cost'"])
         triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_cost'", \
@@ -190,7 +190,7 @@ class ROSPrologWrapperForROSPlanCRA:
                             "dul:'hasDataValue'", str(plan_dict["plan_validity"])])
         triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_validity'", \
                             "rdf:'type'", "dul:Quality"])
-        """
+        
 
         plan_component_count = 0 
         # knowedge about plan sequence (e.g. workflow, pre-conditions, effects, etc.)
@@ -343,6 +343,8 @@ class ROSPrologWrapperForROSPlanCRA:
         query = self.client_rosprolog_.query(query_text)
         query_solutions = list()
         query.finish()
+
+        rospy.loginfo(rospy.get_name() + ": New query to assert ontological knowledge [DONE]")
 
     def get_ontology_property_and_inverse_dict(self):
         ont_property_inverse_dict = dict()
