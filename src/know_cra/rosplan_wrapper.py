@@ -11,6 +11,7 @@ from rosplan_knowledge_msgs.srv import GetAttributeService, GetDomainOperatorSer
 from diagnostic_msgs.msg import KeyValue
 import roslib
 import time
+import re
 
 class ROSPlanWrapper:
     def __init__(self):
@@ -84,6 +85,19 @@ class ROSPlanWrapper:
 
         time.sleep(2) # in seconds (to ensure that the callbacks are called before moving on)
 
+    def get_plan_cost(self):
+        plan_path = rospy.get_param("rosplan_planner_interface/data_path")
+
+        with open('/tmp/plan.pddl', 'r') as f:
+            p = f.read()
+            cost = re.findall(r'; Plan found with metric (\d+(?:.\d*)?)', p)
+            cost = float(cost[-1])
+
+            #print("\n\n", cost)
+            #time.sleep(2) # in seconds (to ensure that the callbacks are called before moving on)
+
+        return cost
+    
     def construct_types_and_instances_dict(self): 
         rospy.loginfo(rospy.get_name() + ": Getting the domain types and their instances to assert them to the ontology KB")
         self._get_types.wait_for_service()
@@ -130,6 +144,8 @@ class ROSPlanWrapper:
 
             aux_dict["plan_makespan"] = aux_dict["task_dispatch_time"][-1] + aux_dict["task_makespan"][-1]
             aux_dict["plan_number_of_tasks"] = len(aux_dict["task_id"])
+            aux_dict["plan_cost"] = self.get_plan_cost()
+            aux_dict["plan_validity"] = True
 
             self.plan_dict_ = aux_dict.copy() 
         else: 
