@@ -71,6 +71,11 @@ if __name__ == "__main__":
 
 
     # TODO : update the ontology knowledge base to reflect that the initial plan is no longer valid
+    query_string_foo_ = "kb_call(triple(Plan, ocra_common:'hasValidity', Q)), \
+        kb_unproject(triple(Q, dul:'hasDataValue', _)), \
+        kb_project(triple(Q, dul:'hasDataValue', 'false'))." 
+    rpcra.rpwprp_.rosprolog_assertion_query(query_string_foo_)
+
 
     # update the planning knowledge base with an unexpected state that triggers a plan adaptation
     if (rpcra.plan_adaptation_case_ == "unfolded_cloth"):
