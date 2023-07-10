@@ -15,6 +15,7 @@ class ROSPrologWrapperForROSPlanCRA:
         # Define varibles
         self.client_rosprolog_ = Prolog()
         self.semantic_map_namespace_ = "map_piling_cloth"
+        self.current_plan_kb_uri_ = ""
 
         self.plan_types_to_ontology_classes_dict_ = {
                 "garment" : "ocra_cloth:'Garment'", 
@@ -161,6 +162,8 @@ class ROSPrologWrapperForROSPlanCRA:
         plan_id = plan_dict["plan_id"] + "_" + str(datetime.utcnow()).replace(" ", "_") + "-UTC"
         plan_kb_uri = self.semantic_map_namespace_ + ":'" + plan_id + "'"
         triples_list.append([plan_kb_uri, "rdf:'type'", "dul:'Plan'"])
+
+        self.current_plan_kb_uri_ = plan_kb_uri
 
         # knowledge about plan properties
         triples_list.append([plan_kb_uri, "ocra_common:'hasExpectedMakespan'", \
@@ -340,7 +343,6 @@ class ROSPrologWrapperForROSPlanCRA:
 
         # query the knowldge base
         query = self.client_rosprolog_.query(query_text)
-        query_solutions = list()
         query.finish()
 
     def get_ontology_property_and_inverse_dict(self):
