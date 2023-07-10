@@ -70,12 +70,11 @@ if __name__ == "__main__":
 
 
 
-    # TODO : update the ontology knowledge base to reflect that the initial plan is no longer valid
+    # update the ontology knowledge base to reflect that the initial plan is no longer valid
     query_string_foo_ = "kb_call(triple(Plan, ocra_common:'hasValidity', Q)), \
         kb_unproject(triple(Q, dul:'hasDataValue', _)), \
         kb_project(triple(Q, dul:'hasDataValue', 'false'))." 
     rpcra.rpwprp_.rosprolog_assertion_query(query_string_foo_)
-
 
     # update the planning knowledge base with an unexpected state that triggers a plan adaptation
     if (rpcra.plan_adaptation_case_ == "unfolded_cloth"):
@@ -96,6 +95,10 @@ if __name__ == "__main__":
     rpcra.rpwprp_.rosprolog_assertion_query(plan_assertion_query_text)
 
     # TODO : generate the NEEM with the name ('plan_adaptation_case_') and the current time
+    query_string_foo_ = "ros_package_path('know_cra', P1), \
+        atom_concat(P1, '/NEEMs/contrastive_plans/"+ rpcra.plan_adaptation_case_ +"_' , P2), \
+        get_time(T), atom_concat(P2, T, P3), mng_dump(roslog, P3)."
+    rpcra.rpwprp_.rosprolog_assertion_query(query_string_foo_)
 
     rospy.spin()
 
