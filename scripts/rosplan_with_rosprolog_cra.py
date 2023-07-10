@@ -7,6 +7,7 @@ import rospy
 
 from std_srvs.srv import Empty, EmptyResponse
 
+
 from know_cra.rosplan_wrapper import ROSPlanWrapper
 from know_cra.rosprolog_wrapper_for_rosplan import ROSPrologWrapperForROSPlanCRA
 
@@ -65,7 +66,20 @@ if __name__ == "__main__":
     ## print(plan_assertion_query_text)
     rpcra.rpwprp_.rosprolog_assertion_query(plan_assertion_query_text)
 
+    # update the planning knowledge base
+    rpcra.rpwp_.add_or_remove_single_fact_planning_kb(2, 'folded', {'g':'towel-01'})
+    rpcra.rpwp_.add_or_remove_single_fact_planning_kb(0, 'unfolded', {'g':'towel-01'})
 
+    # generate the problem and do re-planning 
+    rpcra.rpwp_.planning_pipeline() # generate and parse planning
+
+    # construct new plan dictionary and assert it to the ontology knowledge base
+    rpcra.rpwp_.construct_plan_dict()
+    ## print(rpcra.rpwp_.plan_dict_)
+    plan_triples_list = rpcra.rpwprp_.plan_dict_to_triples_list(rpcra.rpwp_.plan_dict_)
+    plan_assertion_query_text = rpcra.rpwprp_.construct_query_text_for_multiple_triples_assertion(plan_triples_list, True)
+    ## print(plan_assertion_query_text)
+    rpcra.rpwprp_.rosprolog_assertion_query(plan_assertion_query_text)
 
     rospy.spin()
 
