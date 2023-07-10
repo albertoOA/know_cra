@@ -8,6 +8,7 @@ from std_msgs.msg import String
 from rosplan_dispatch_msgs.msg import CompletePlan
 from rosplan_knowledge_msgs.srv import GetAttributeService, GetDomainOperatorService, GetDomainOperatorDetailsService, \
     GetDomainTypeService, GetInstanceService, KnowledgeUpdateService, KnowledgeUpdateServiceRequest
+from rosplan_knowledge_msgs.msg import KnowledgeItem
 from diagnostic_msgs.msg import KeyValue
 import roslib
 import time
@@ -84,6 +85,33 @@ class ROSPlanWrapper:
         self._parse_plan()
 
         time.sleep(2) # in seconds (to ensure that the callbacks are called before moving on)
+
+    def update_planning_kb(self, update_type, knowledge_to_update):
+        self._update_kb_srv.wait_for_service()
+        self._update_kb_srv(update_type, knowledge_to_update)
+
+    def add_or_remove_single_fact_planning_kb(self, update_type, fact_operator, fact_parameters_dict):
+        # update_type = 0 for adding knowledge , 2 for removing knowledge (from KnowledgeUpdateService.srv)
+        # fact_operator is a string containing the name of the domain operator to use in the fact (e.g. folded)
+        # fact_parameters_dict contains the grounded parameters of the target operator, the key is the 
+        #                      parameter's name (e.g. in 'folded ?g', the name is 'g') and the value is the instance (e.g. 'towel-01')
+        
+        knowledge_type = 1 # FACT (from KnowledgeItem.msg)
+        
+        msg = KnowledgeItem()
+        msg.knowledge_type = knowledge_type
+        msg.attribute_name = fact_operator
+
+        parameters_list = list()
+        for k, v in fact_parameters_dict.items():
+            msg_values = KeyValue()
+            msg_values.key = k
+            msg_values.value = v
+            parameters_list.append(msg_values)
+        
+        msg.values = parameters_list
+
+        self.update_planning_kb(update_type, msg)
 
     def get_plan_cost(self):
         plan_path = rospy.get_param("rosplan_planner_interface/data_path")
