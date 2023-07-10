@@ -142,10 +142,10 @@ kb_project(instance_of(ocra_filling_a_tray:'_:DescriptionRobotX', owl:'NegativeP
 ------- NEEMs ---
 
 · store the current knowledge into a NEEM 
-ros_package_path('iri_corota_kb', P1), atom_concat(P1, '/NEEMs/ocra_simple_', P2), get_time(T), atom_concat(P2, T, P3), mng_dump(roslog, P3).
+ros_package_path('know_cra', P1), atom_concat(P1, '/NEEMs/contrastive_plans', P2), get_time(T), atom_concat(P2, T, P3), mng_dump(roslog, P3).
 
 · restore the knowledge from a NEEM (timestamp needs to be known)
-ros_package_path('iri_corota_kb', P1), atom_concat(P1, '/NEEMs/ocra_simple_', P2), atom_concat(P2, '1627968924.4820015', P3), atom_concat(P3, '/roslog', P4), mng_restore(roslog, P4).
+ros_package_path('know_cra', P1), atom_concat(P1, '/NEEMs/extra_neems', P2), atom_concat(P2, '1627968924.4820015', P3), atom_concat(P3, '/roslog', P4), mng_restore(roslog, P4).
 
 
 
