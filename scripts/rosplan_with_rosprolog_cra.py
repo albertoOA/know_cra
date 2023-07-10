@@ -24,6 +24,8 @@ class ROSPlanCRA:
         self.rpwp_ = ROSPlanWrapper()
         self.rpwprp_ = ROSPrologWrapperForROSPlanCRA()
 
+        self.plan_adaptation_case_ = rospy.get_param('~plan_adaptation_case')
+
 if __name__ == "__main__":
     rpcra = ROSPlanCRA()
 
@@ -66,9 +68,16 @@ if __name__ == "__main__":
     ## print(plan_assertion_query_text)
     rpcra.rpwprp_.rosprolog_assertion_query(plan_assertion_query_text)
 
-    # update the planning knowledge base
-    rpcra.rpwp_.add_or_remove_single_fact_planning_kb(2, 'folded', {'g':'towel-01'})
-    rpcra.rpwp_.add_or_remove_single_fact_planning_kb(0, 'unfolded', {'g':'towel-01'})
+
+
+    # TODO : update the ontology knowledge base to reflect that the initial plan is no longer valid
+
+    # update the planning knowledge base with an unexpected state that triggers a plan adaptation
+    if (rpcra.plan_adaptation_case_ == "unfolded_cloth"):
+        rpcra.rpwp_.add_or_remove_single_fact_planning_kb(2, 'folded', {'g':'towel-01'}) # remove
+        rpcra.rpwp_.add_or_remove_single_fact_planning_kb(0, 'unfolded', {'g':'towel-01'}) # add
+    else: 
+        rospy.logwarn(rospy.get_name() + ": The introduced value for 'plan_adaptation_case_' is unvalid.") 
 
     # generate the problem and do re-planning 
     rpcra.rpwp_.planning_pipeline() # generate and parse planning
@@ -80,6 +89,8 @@ if __name__ == "__main__":
     plan_assertion_query_text = rpcra.rpwprp_.construct_query_text_for_multiple_triples_assertion(plan_triples_list, True)
     ## print(plan_assertion_query_text)
     rpcra.rpwprp_.rosprolog_assertion_query(plan_assertion_query_text)
+
+    # TODO : generate the NEEM with the name ('plan_adaptation_case_') and the current time
 
     rospy.spin()
 
