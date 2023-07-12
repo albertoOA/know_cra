@@ -135,7 +135,7 @@ kb_project(triple(ocra_filling_a_tray:'_:DescriptionRobot0', owl:'targetIndividu
 kb_project(instance_of(ocra_filling_a_tray:'_:DescriptionRobotX', owl:'NegativePropertyAssertion') during [20.0, 30.0]), kb_project(triple(ocra_filling_a_tray:'_:DescriptionRobotX', owl:'sourceIndividual', ocra_filling_a_tray:'CollaborativelyFillingATrayWithSafety') during [20.0, 30.0]), kb_project(triple(ocra_filling_a_tray:'_:DescriptionRobotX', owl:'assertionProperty', dul:'hasParticipant') during [20.0, 30.0]), kb_project(triple(ocra_filling_a_tray:'_:DescriptionRobotX', owl:'targetIndividual', ocra_filling_a_tray:'HumanOperator_0') during [20.0, 30.0]).
 
 
-
+kb_project(instance_of(map_piling_cloth:'_:DescriptionRobotY', owl:'NegativePropertyAssertion') during [1.0, 30.0]), kb_project(triple(map_piling_cloth:'_:DescriptionRobotY', owl:'sourceIndividual', map_piling_cloth:'eeeeso') during [1.0, 30.0]), kb_project(triple(map_piling_cloth:'_:DescriptionRobotY', owl:'assertionProperty', rdf:'type') during [1.0, 30.0]), kb_project(triple(map_piling_cloth:'_:DescriptionRobotY', owl:'targetIndividual', dul:'Plan') during [1.0, 30.0]).
 
 
 
