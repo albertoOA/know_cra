@@ -73,7 +73,7 @@ if __name__ == "__main__":
     # update the ontology knowledge base to reflect that the initial plan is no longer valid
     query_string_foo_ = "kb_call(triple(Plan, ocra_common:'hasValidity', Q)), \
         kb_unproject(triple(Q, dul:'hasDataValue', _)), \
-        kb_project(triple(Q, dul:'hasDataValue', false))." # two ways to assert booleans: false/true or 'False'/'True'
+        kb_project(triple(Q, dul:'hasDataValue', 'False'))." # two ways to assert booleans: false/true or 'False'/'True'
     rpcra.rpwprp_.rosprolog_assertion_query(query_string_foo_)
 
     # update the planning knowledge base with an unexpected state that triggers a plan adaptation

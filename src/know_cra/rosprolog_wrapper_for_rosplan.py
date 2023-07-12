@@ -242,12 +242,12 @@ class ROSPrologWrapperForROSPlanCRA:
                     if k == "effects_to_assert" or k == "effects_to_delete":
                         triple_st_expectation.append("ocra_common:'isExpectedEffectOf'")
                         if k == "effects_to_delete":
-                            triple_st_sign.append("false")
+                            triple_st_sign.append("'False'")
                         else: 
-                            triple_st_sign.append("true")
+                            triple_st_sign.append("'True'")
                     elif k == "conditions":
                         triple_st_expectation.append("ocra_common:'isExpectedConditionOf'")
-                        triple_st_sign.append("true")
+                        triple_st_sign.append("'True'")
                     else:
                         rospy.logerr(rospy.get_name() + ": Wrong task expectation label")
                     triple_st_expectation.append(task_kb_uri)
