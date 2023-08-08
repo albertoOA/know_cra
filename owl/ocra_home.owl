@@ -1,78 +1,253 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#"
-     xml:base="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:DUL="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_home.owl"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:ocra="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_home.owl">
-        <owl:imports rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl"/>
-    </owl:Ontology>
-    
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_home.owl">
+    <Prefix name="" IRI="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#"/>
+    <Prefix name="dc" IRI="http://purl.org/dc/elements/1.1/"/>
+    <Prefix name="DUL" IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="ocra" IRI="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl</Import>
+    <Declaration>
+        <Class IRI="#Drink"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasFlavor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasTemperature"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isColderThan"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isHotterThan"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isLessTastyThan"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isMoreNaturalThan"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isMoreProcessedThan"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isTastierThan"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Drink"/>
+        <Class abbreviatedIRI="DUL:Object"/>
+    </SubClassOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasFlavor"/>
+        <ObjectProperty abbreviatedIRI="DUL:hasQuality"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasTemperature"/>
+        <ObjectProperty abbreviatedIRI="DUL:hasQuality"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isColderThan"/>
+        <ObjectProperty abbreviatedIRI="DUL:associatedWith"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isHotterThan"/>
+        <ObjectProperty abbreviatedIRI="DUL:associatedWith"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isLessTastyThan"/>
+        <ObjectProperty abbreviatedIRI="DUL:associatedWith"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isMoreNaturalThan"/>
+        <ObjectProperty abbreviatedIRI="DUL:associatedWith"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isMoreProcessedThan"/>
+        <ObjectProperty abbreviatedIRI="DUL:associatedWith"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isTastierThan"/>
+        <ObjectProperty abbreviatedIRI="DUL:associatedWith"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isColderThan"/>
+        <ObjectProperty IRI="#isHotterThan"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isLessTastyThan"/>
+        <ObjectProperty IRI="#isTastierThan"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isMoreNaturalThan"/>
+        <ObjectProperty IRI="#isMoreProcessedThan"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isColderThan"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isHotterThan"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isLessTastyThan"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isMoreNaturalThan"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isMoreProcessedThan"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isTastierThan"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isColderThan"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isHotterThan"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isLessTastyThan"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isMoreNaturalThan"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isMoreProcessedThan"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isTastierThan"/>
+        <Class IRI="#Drink"/>
+    </ObjectPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Drink</IRI>
+        <Literal xml:lang="en">An Ojbect that refers to a general conceptualization of (an amount of) liquid that is (or can be) taken into the body through the mouth. 
 
+This class can be used to represent both a physical object (e.g. a cup of tea), and a social object referring to the physical one (e.g. would you like to have a tea?).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Drink</IRI>
+        <Literal xml:lang="en">Drink</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasFlavor</IRI>
+        <Literal xml:lang="en">Relationship between Drinks and their flavor(s). 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+Note that a drink can have several flavors. Furthermore, this relation can be generalized to hold between other entities and their flavor (e.g., food, dishes, etc.). However, for this application ontology it has been decided to model it only for the objects of interest: drinks.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasFlavor</IRI>
+        <Literal>has flavor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasTemperature</IRI>
+        <Literal xml:lang="en">Relationship between Drinks and their Temperature.
 
-    
+Note that this relation can be generalized to hold between other entities and their temperature (e.g., the volume of a room, a car, a city, etc.). However, for this application ontology it has been decided to model it only for the objects of interest: drinks.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasTemperature</IRI>
+        <Literal>has temperature</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#isColderThan</IRI>
+        <Literal xml:lang="en">Relationship between two Drinks, indicating that one of them has a lower temperature. 
 
+Note that this relation can be generalized to hold between other entities (e.g., two fruits, rooms, cities,  etc.). However, for this application ontology it has been decided to model it only for the objects of interest: drinks.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isColderThan</IRI>
+        <Literal xml:lang="en">is colder than</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#isHotterThan</IRI>
+        <Literal xml:lang="en">Relationship between two Drinks, indicating that one has a higher temperature than the other one.  
 
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_home.owl#hasFlavor -->
+Note that this relation can be generalized to hold between other entities (e.g., two fruits, rooms, cities,  etc.). However, for this application ontology it has been decided to model it only for the objects of interest: drinks.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isHotterThan</IRI>
+        <Literal xml:lang="en">is hotter than</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#isLessTastyThan</IRI>
+        <Literal xml:lang="en">Relationship between two Drinks, indicating that one is less tasty that the other one. 
 
-    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_home.owl#hasFlavor">
-        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality"/>
-        <rdfs:comment xml:lang="en">Relationship between Drinks and their flavor(s). 
+Note that this relation can be generalized to hold between other entities (e.g., two fruits, dishes,  etc.). However, for this application ontology it has been decided to model it only for the objects of interest: drinks.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isLessTastyThan</IRI>
+        <Literal xml:lang="en">is less tasty than</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#isMoreNaturalThan</IRI>
+        <Literal xml:lang="en">Relationship between two Drinks, indicating that one has gone through less manufacturing processes until the state in which they are. It is closer to its state found in Nature.  
 
-Note that a drink can have several flavors. Furthermore, this relation can be generalized to hold between other entities and their flavor (e.g., food, dishes, etc.). However, for this application ontology it has been decided to model it only for the objects of interest: drinks.</rdfs:comment>
-        <rdfs:label>has flavor</rdfs:label>
-    </owl:ObjectProperty>
-    
+Note that this relation can be generalized to hold between other entities (e.g., two dishes, cloths,  etc.). However, for this application ontology it has been decided to model it only for the objects of interest: drinks.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isMoreNaturalThan</IRI>
+        <Literal xml:lang="en">is more natural than</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#isMoreProcessedThan</IRI>
+        <Literal xml:lang="en">Relationship between two Drinks, indicating that one of them has gone through more manufacturing processes until its current state. 
 
+Note that this relation can be generalized to hold between other entities (e.g., two fruits, dishes,  etc.). However, for this application ontology it has been decided to model it only for the objects of interest: drinks.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isMoreProcessedThan</IRI>
+        <Literal xml:lang="en">is more processed than</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#isTastierThan</IRI>
+        <Literal xml:lang="en">Relationship between two Drinks, indicating that one is tastier than the other one.  
 
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_home.owl#hasTemperature -->
-
-    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_home.owl#hasTemperature">
-        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality"/>
-        <rdfs:comment xml:lang="en">Relationship between Drinks and their Temperature.
-
-Note that this relation can be generalized to hold between other entities and their temperature (e.g., the volume of a room, a car, a city, etc.). However, for this application ontology it has been decided to model it only for the objects of interest: drinks.</rdfs:comment>
-        <rdfs:label>has temperature</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_home.owl#Drink -->
-
-    <owl:Class rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_home.owl#Drink">
-        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object"/>
-        <rdfs:comment xml:lang="en">An Ojbect that refers to a general conceptualization of (an amount of) liquid that is (or can be) taken into the body through the mouth. 
-
-This class can be used to represent both a physical object (e.g. a cup of tea), and a social object referring to the physical one (e.g. would you like to have a tea?).</rdfs:comment>
-        <rdfs:label xml:lang="en">Drink</rdfs:label>
-    </owl:Class>
-    
-
-</rdf:RDF>
+Note that this relation can be generalized to hold between other entities (e.g., two fruits, dishes,  etc.). However, for this application ontology it has been decided to model it only for the objects of interest: drinks.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isTastierThan</IRI>
+        <Literal xml:lang="en">is tastier than</Literal>
+    </AnnotationAssertion>
+</Ontology>
 
 
 
