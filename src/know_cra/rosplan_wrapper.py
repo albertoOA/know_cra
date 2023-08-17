@@ -153,29 +153,34 @@ class ROSPlanWrapper:
     def construct_plan_dict(self):
         rospy.loginfo(rospy.get_name() + ": Getting the plan to assert it to the ontology KB")
         if (self.plan_is_received_ and self.plan_is_parsed_):
-            aux_dict = dict()
-            aux_dict["plan_id"] = "plan_" + str(self.generated_plan_parsed_[0].plan_id)
-            aux_dict["task_id"] = list()
-            aux_dict["task_name"] = list()
-            aux_dict["task_grounded_parameters_dict"] = list()
-            aux_dict["task_makespan"] = list()
-            aux_dict["task_dispatch_time"] = list()
-            for t in self.generated_plan_parsed_:
-                aux_dict["task_id"].append("task_" + str(t.action_id))
-                aux_dict["task_name"].append(t.name)
-                single_operator_grounded_parameters_dict = \
-                    self.construct_single_operator_grounded_parameters_dict(t.parameters)
-                aux_dict["task_grounded_parameters_dict"].append( \
-                    self.construct_grounded_single_operator_details_dict(t.name, single_operator_grounded_parameters_dict) )
-                aux_dict["task_makespan"].append(t.duration)
-                aux_dict["task_dispatch_time"].append(t.dispatch_time)
+            if (self.generated_plan_parsed_):
+                rospy.loginfo(rospy.get_name() + ": There is at least a possible plan")
 
-            aux_dict["plan_makespan"] = aux_dict["task_dispatch_time"][-1] + aux_dict["task_makespan"][-1]
-            aux_dict["plan_number_of_tasks"] = len(aux_dict["task_id"])
-            aux_dict["plan_cost"] = self.get_plan_cost()
-            aux_dict["plan_validity"] = True
+                aux_dict = dict()
+                aux_dict["plan_id"] = "plan_" + str(self.generated_plan_parsed_[0].plan_id)
+                aux_dict["task_id"] = list()
+                aux_dict["task_name"] = list()
+                aux_dict["task_grounded_parameters_dict"] = list()
+                aux_dict["task_makespan"] = list()
+                aux_dict["task_dispatch_time"] = list()
+                for t in self.generated_plan_parsed_:
+                    aux_dict["task_id"].append("task_" + str(t.action_id))
+                    aux_dict["task_name"].append(t.name)
+                    single_operator_grounded_parameters_dict = \
+                        self.construct_single_operator_grounded_parameters_dict(t.parameters)
+                    aux_dict["task_grounded_parameters_dict"].append( \
+                        self.construct_grounded_single_operator_details_dict(t.name, single_operator_grounded_parameters_dict) )
+                    aux_dict["task_makespan"].append(t.duration)
+                    aux_dict["task_dispatch_time"].append(t.dispatch_time)
 
-            self.plan_dict_ = aux_dict.copy() 
+                aux_dict["plan_makespan"] = aux_dict["task_dispatch_time"][-1] + aux_dict["task_makespan"][-1]
+                aux_dict["plan_number_of_tasks"] = len(aux_dict["task_id"])
+                aux_dict["plan_cost"] = self.get_plan_cost()
+                aux_dict["plan_validity"] = True
+
+                self.plan_dict_ = aux_dict.copy() 
+            else: 
+                rospy.loginfo(rospy.get_name() + ": The planner has not found a possible plan")
         else: 
             rospy.loginfo(rospy.get_name() + ": The plan is not received or parsed")
             self.planning_pipeline()
