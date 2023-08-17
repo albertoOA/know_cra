@@ -10,9 +10,6 @@ from know_cra.rosprolog_wrapper_for_rosplan import ROSPrologWrapperForROSPlanCRA
 
 class ROSPlanCRA:
     def __init__(self):
-        rospy.init_node("rosplan_for_cra_node", sys.argv)
-        rospy.loginfo(rospy.get_name() + ": ROSPlan + rosprolog node has been initialized.")
-
         # services
         
 

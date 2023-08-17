@@ -7,6 +7,9 @@ import rospy
 from know_cra.rosplan_cra_module import ROSPlanCRA
 
 if __name__ == "__main__":
+    rospy.init_node("rosplan_for_cra_node", sys.argv)
+    rospy.loginfo(rospy.get_name() + ": ROSPlan + rosprolog node has been initialized.")
+    
     rpcra = ROSPlanCRA()
 
     # get information about the domain and problem
