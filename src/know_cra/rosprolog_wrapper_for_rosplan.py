@@ -217,87 +217,90 @@ class ROSPrologWrapperForROSPlanCRA:
             
             ## TODO : it might be useful to include the task's makespan and dispatching time
 
-            for k, v_list in plan_dict["task_grounded_parameters_dict"][i].items():
-                for v in v_list:
-                    statement_id = plan_id + "_reified_component_" + str(plan_component_count)
-                    statement_kb_uri = self.semantic_map_namespace_ + ":'" + statement_id + "'"
+            if plan_dict["task_grounded_parameters_dict"]:
+                for k, v_list in plan_dict["task_grounded_parameters_dict"][i].items():
+                    for v in v_list:
+                        statement_id = plan_id + "_reified_component_" + str(plan_component_count)
+                        statement_kb_uri = self.semantic_map_namespace_ + ":'" + statement_id + "'"
 
-                    triple_st = list()
-                    triple_st.append(statement_kb_uri)
-                    triple_st.append("rdf:'type'")
-                    triple_st.append("rdf:'Statement'")
-                    triples_list.append(triple_st)
+                        triple_st = list()
+                        triple_st.append(statement_kb_uri)
+                        triple_st.append("rdf:'type'")
+                        triple_st.append("rdf:'Statement'")
+                        triples_list.append(triple_st)
 
-                    triple_st_description = list()
-                    triple_st_description.append(plan_kb_uri)
-                    triple_st_description.append("ocra_common:'describesReifiedStatement'")
-                    triple_st_description.append(statement_kb_uri)
-                    triples_list.append(triple_st_description)
+                        triple_st_description = list()
+                        triple_st_description.append(plan_kb_uri)
+                        triple_st_description.append("ocra_common:'describesReifiedStatement'")
+                        triple_st_description.append(statement_kb_uri)
+                        triples_list.append(triple_st_description)
 
-                    triple_st_expectation = list()
-                    triple_st_expectation.append(statement_kb_uri)
-                    triple_st_sign = list()
-                    triple_st_sign.append(statement_kb_uri)
-                    triple_st_sign.append("ocra_common:'isReifiedStatementWithSign'")
-                    if k == "effects_to_assert" or k == "effects_to_delete":
-                        triple_st_expectation.append("ocra_common:'isExpectedEffectOf'")
-                        if k == "effects_to_delete":
-                            triple_st_sign.append("'False'")
-                        else: 
+                        triple_st_expectation = list()
+                        triple_st_expectation.append(statement_kb_uri)
+                        triple_st_sign = list()
+                        triple_st_sign.append(statement_kb_uri)
+                        triple_st_sign.append("ocra_common:'isReifiedStatementWithSign'")
+                        if k == "effects_to_assert" or k == "effects_to_delete":
+                            triple_st_expectation.append("ocra_common:'isExpectedEffectOf'")
+                            if k == "effects_to_delete":
+                                triple_st_sign.append("'False'")
+                            else: 
+                                triple_st_sign.append("'True'")
+                        elif k == "conditions":
+                            triple_st_expectation.append("ocra_common:'isExpectedConditionOf'")
                             triple_st_sign.append("'True'")
-                    elif k == "conditions":
-                        triple_st_expectation.append("ocra_common:'isExpectedConditionOf'")
-                        triple_st_sign.append("'True'")
-                    else:
-                        rospy.logerr(rospy.get_name() + ": Wrong task expectation label")
-                    triple_st_expectation.append(task_kb_uri)
-                    triples_list.append(triple_st_expectation)
-                    triples_list.append(triple_st_sign)
-                    
-                    plan_component_count += 1
+                        else:
+                            rospy.logerr(rospy.get_name() + ": Wrong task expectation label")
+                        triple_st_expectation.append(task_kb_uri)
+                        triples_list.append(triple_st_expectation)
+                        triples_list.append(triple_st_sign)
+                        
+                        plan_component_count += 1
 
-                    triple_st_subject = list()
-                    triple_st_predicate = list()
-                    triple_st_object = list()
-                    triple_concept_individual = list()
-                    if len(v) == 2: # unitary planning predicate
-                        triple_st_subject.append(statement_kb_uri)
-                        triple_st_subject.append("rdf:'subject'")
-                        triple_st_subject.append(self.semantic_map_namespace_ + ":'" + v[0].replace('-','_') + "'") # (concept) instance
-                        triples_list.append(triple_st_subject)
+                        triple_st_subject = list()
+                        triple_st_predicate = list()
+                        triple_st_object = list()
+                        triple_concept_individual = list()
+                        if len(v) == 2: # unitary planning predicate
+                            triple_st_subject.append(statement_kb_uri)
+                            triple_st_subject.append("rdf:'subject'")
+                            triple_st_subject.append(self.semantic_map_namespace_ + ":'" + v[0].replace('-','_') + "'") # (concept) instance
+                            triples_list.append(triple_st_subject)
 
-                        triple_st_predicate.append(statement_kb_uri)
-                        triple_st_predicate.append("rdf:'predicate'")
-                        triple_st_predicate.append(self.unitary_plan_predicates_to_ontology_relations_dict_[v[0]]) 
-                        triples_list.append(triple_st_predicate)
+                            triple_st_predicate.append(statement_kb_uri)
+                            triple_st_predicate.append("rdf:'predicate'")
+                            triple_st_predicate.append(self.unitary_plan_predicates_to_ontology_relations_dict_[v[0]]) 
+                            triples_list.append(triple_st_predicate)
 
-                        triple_st_object.append(statement_kb_uri)
-                        triple_st_object.append("rdf:'object'")
-                        triple_st_object.append(self.semantic_map_namespace_ + ":'" + v[1].replace('-','_') + "'") # problem (object) instance
-                        triples_list.append(triple_st_object)
+                            triple_st_object.append(statement_kb_uri)
+                            triple_st_object.append("rdf:'object'")
+                            triple_st_object.append(self.semantic_map_namespace_ + ":'" + v[1].replace('-','_') + "'") # problem (object) instance
+                            triples_list.append(triple_st_object)
 
-                        triple_concept_individual.append(self.semantic_map_namespace_ + ":'" + v[0].replace('-','_') + "'")
-                        triple_concept_individual.append("rdf:'type'")
-                        triple_concept_individual.append(self.unitary_plan_predicates_to_ontology_classes_dict_[v[0]])
-                        triples_list.append(triple_concept_individual)
-                    elif len(v) == 3: # binary planning predicate
-                        triple_st_subject.append(statement_kb_uri)
-                        triple_st_subject.append("rdf:'subject'")
-                        triple_st_subject.append(self.semantic_map_namespace_ + ":'" + v[1].replace('-','_') + "'") 
-                        triples_list.append(triple_st_subject)
+                            triple_concept_individual.append(self.semantic_map_namespace_ + ":'" + v[0].replace('-','_') + "'")
+                            triple_concept_individual.append("rdf:'type'")
+                            triple_concept_individual.append(self.unitary_plan_predicates_to_ontology_classes_dict_[v[0]])
+                            triples_list.append(triple_concept_individual)
+                        elif len(v) == 3: # binary planning predicate
+                            triple_st_subject.append(statement_kb_uri)
+                            triple_st_subject.append("rdf:'subject'")
+                            triple_st_subject.append(self.semantic_map_namespace_ + ":'" + v[1].replace('-','_') + "'") 
+                            triples_list.append(triple_st_subject)
 
-                        triple_st_predicate.append(statement_kb_uri)
-                        triple_st_predicate.append("rdf:'predicate'")
-                        triple_st_predicate.append(self.binary_plan_predicates_to_ontology_relations_dict_[v[0]]) 
-                        triples_list.append(triple_st_predicate)
+                            triple_st_predicate.append(statement_kb_uri)
+                            triple_st_predicate.append("rdf:'predicate'")
+                            triple_st_predicate.append(self.binary_plan_predicates_to_ontology_relations_dict_[v[0]]) 
+                            triples_list.append(triple_st_predicate)
 
-                        triple_st_object.append(statement_kb_uri)
-                        triple_st_object.append("rdf:'object'")
-                        triple_st_object.append(self.semantic_map_namespace_ + ":'" + v[2].replace('-','_') + "'") 
-                        triples_list.append(triple_st_object)
-                    else:
-                        rospy.logerr(rospy.get_name() + ": Unexpected planning predicate length")
-
+                            triple_st_object.append(statement_kb_uri)
+                            triple_st_object.append("rdf:'object'")
+                            triple_st_object.append(self.semantic_map_namespace_ + ":'" + v[2].replace('-','_') + "'") 
+                            triples_list.append(triple_st_object)
+                        else:
+                            rospy.logerr(rospy.get_name() + ": Unexpected planning predicate length")
+            else:
+                pass
+            
         return triples_list
 
     def construct_query_text_for_single_triple_assertion(self, triple_subject, triple_relation, triple_object, add_final_dot, add_inverse_triple):
