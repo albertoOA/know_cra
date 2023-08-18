@@ -173,9 +173,9 @@ class ROSPlanWrapper:
                     aux_dict["task_makespan"].append(t.duration)
                     aux_dict["task_dispatch_time"].append(t.dispatch_time)
 
-                aux_dict["plan_makespan"] = aux_dict["task_dispatch_time"][-1] + aux_dict["task_makespan"][-1]
+                aux_dict["plan_makespan"] = round(aux_dict["task_dispatch_time"][-1] + aux_dict["task_makespan"][-1], 2)
                 aux_dict["plan_number_of_tasks"] = len(aux_dict["task_id"])
-                aux_dict["plan_cost"] = self.get_plan_cost()
+                aux_dict["plan_cost"] = round(self.get_plan_cost(), 2)
                 aux_dict["plan_validity"] = True
 
                 self.plan_dict_ = aux_dict.copy() 
