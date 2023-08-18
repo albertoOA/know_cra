@@ -6,7 +6,8 @@
     <!ENTITY SOMA "http://www.ease-crc.org/ont/SOMA.owl#" >
     <!ENTITY dul "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#" >
     <!ENTITY ocra "http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#" >
-    <!ENTITY ocra_bringing_object "http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_bringing_object.owl#" >
+    <!ENTITY ocra_home "http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_home.owl#" >
+    <!ENTITY ocra_common "http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#" >
     <!ENTITY map_bringing_object "http://www.iri.upc.edu/groups/perception/OCRA/maps/bringing_object.owl#" >
     <!ENTITY urdf "http://knowrob.org/kb/urdf.owl#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
@@ -25,7 +26,8 @@
     xmlns:urdf="http://knowrob.org/kb/urdf.owl#"
     xmlns:knowrob="http://knowrob.org/kb/knowrob.owl#"
     xmlns:ocra="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#"
-    xmlns:ocra_bringing_object="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_bringing_object.owl#">
+    xmlns:ocra_home="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_home.owl#"
+    xmlns:ocra_common="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#">
     <owl:Ontology rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/maps/bringing_object.owl#">
         <owl:imports rdf:resource="package://knowrob/owl/knowrob.owl"/>
         <owl:imports rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl"/>
