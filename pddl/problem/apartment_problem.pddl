@@ -11,7 +11,7 @@
     (robot_at tomo entrance)
     (not_moving tomo)
     (not_moving asro)
-    (object_at soft_drink_cola kitchen_shelf)
+    (object_at soft_drink_cola fridge)
     (object_at matcha_tea microwave)
     (object_at post1 office_entrance_1)
     (object_at post2 office_entrance_1)
