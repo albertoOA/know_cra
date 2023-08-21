@@ -212,6 +212,15 @@ Note that this ontology aims to model the result of comparing two qualities&apos
     
 
 
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isCheaperPlanThan -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isCheaperPlanThan">
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#isBetterPlanThan"/>
+        <rdfs:label xml:lang="en">is cheaper plan than</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isCostOf -->
 
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isCostOf">
@@ -258,6 +267,15 @@ Note that this ontology aims to model the result of comparing two qualities&apos
     
 
 
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isFasterPlanThan -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isFasterPlanThan">
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#isBetterPlanThan"/>
+        <rdfs:label xml:lang="en">is faster plan than</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isGraspedBy -->
 
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isGraspedBy">
@@ -272,6 +290,15 @@ This relation is meant to be used for physical objects only, thus it is not cons
     
 
 
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isMoreExpensivePlanThan -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isMoreExpensivePlanThan">
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#isWorsePlanThan"/>
+        <rdfs:label xml:lang="en">is more expensive plan than</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isNumberOfTasksOf -->
 
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isNumberOfTasksOf">
@@ -280,6 +307,24 @@ This relation is meant to be used for physical objects only, thus it is not cons
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
         <rdfs:comment xml:lang="en">For more information about this relation, please read the comment of its inverse &apos;has number of tasks&apos;.</rdfs:comment>
         <rdfs:label xml:lang="en">is number of tasks of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isPlanWithLessTasksThan -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isPlanWithLessTasksThan">
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#isBetterPlanThan"/>
+        <rdfs:label xml:lang="en">is plan with less tasks than</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isPlanWithMoreTasksThan -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isPlanWithMoreTasksThan">
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#isWorsePlanThan"/>
+        <rdfs:label xml:lang="en">is plan with more tasks than</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -301,6 +346,15 @@ This relation is meant to be used for physical objects only, thus it is not cons
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description"/>
         <rdfs:comment xml:lang="en">Property to capture the relation between an RDF reified statement and a description that describes it.</rdfs:comment>
         <rdfs:label xml:lang="en">is reified statement described in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isSlowerPlanThan -->
+
+    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isSlowerPlanThan">
+        <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#isWorsePlanThan"/>
+        <rdfs:label xml:lang="en">is slower plan than</rdfs:label>
     </owl:ObjectProperty>
     
 
