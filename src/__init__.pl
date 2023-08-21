@@ -44,3 +44,6 @@
 :- rdf_register_ns('map_bringing_object', 'http://www.iri.upc.edu/groups/perception/OCRA/maps/bringing_object.owl#', [keep(true)]).
 
 :- mng_drop(roslog, triples). /*to delete manually asserted triples using the rosprolog_commandline, which remain in the MongoDB*/
+
+% load init files in sub-directories
+:- use_directory('prolog_reasoning').
