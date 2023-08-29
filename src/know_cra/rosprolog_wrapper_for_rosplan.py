@@ -187,12 +187,14 @@ class ROSPrologWrapperForROSPlanCRA:
         triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_cost'", \
                             "rdf:'type'", "dul:'Quality'"])
         
+        """ ## deprecated - maybe it should be a role more than a quality (e.g. 'valid_plan')
         triples_list.append([plan_kb_uri, "ocra_common:'hasValidity'", \
                             self.semantic_map_namespace_ + ":'" + plan_id + "_validity'"])
         triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_validity'", \
                             "dul:'hasDataValue'", str(plan_dict["plan_validity"]).lower()]) # note that in OWL, xsd:boolean goes in lowercase
         triples_list.append([self.semantic_map_namespace_ + ":'" + plan_id + "_validity'", \
                             "rdf:'type'", "dul:'Quality'"])
+        """
 
         plan_component_count = 0 
         # knowedge about plan sequence (e.g. workflow, pre-conditions, effects, etc.)
