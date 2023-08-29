@@ -1,5 +1,5 @@
 :- module(plan_disambiguation,
-    [ compare_pairs_of_instances_of(r),
+    [ compare_all_existing_plans_in_pairs/0,
 	  compare_two_plans(r,r), 
       compare_two_plans_based_on_cost(r,r)
     ]).
@@ -10,21 +10,19 @@
 @license BSD
 */
 
-%% compare_pairs_of_instances_of(?C) 
+%% compare_all_existing_plans_in_pairs() 
 % 
-% Compares all instances of an ontological class in pairs (e.g., based on their qualities and their roles) to decide which one is better. 
-% The logic of this predicate is applicataion dependent. 
+% Compares all instances of a plan in pairs (e.g., based on their qualities and their roles) to decide which one is better. 
+% The logic of this predicate is application dependent. 
 %
-% @param C         Ontological class
 %
-compare_pairs_of_instances_of(C) :-
-	instance_of(Ia, C), instance_of(Ib, C), dif(Ia, Ib), 
-	(C == "dul:'Plan'") -> compare_two_plans(Ia, Ib) ; false. % TODO : It is not working, the others yes. 
+compare_all_existing_plans_in_pairs() :-
+	instance_of(Ia, dul:'Plan'), instance_of(Ib, dul:'Plan'), dif(Ia, Ib) -> compare_two_plans(Ia, Ib); false.  
 
 %% compare_two_plans(?Pa, ?Pb) 
 % 
 % Compares two plans (e.g., based on their qualities and their roles) to decide which one is better. 
-% The logic of this predicate is applicataion dependent. 
+% The logic of this predicate is application dependent. 
 %
 % @param Pa         Instance of dul:'Plan'
 % @param Pb         Instance of dul:'Plan'
@@ -33,7 +31,7 @@ compare_two_plans(Pa, Pb) :-
 	compare_two_plans_based_on_cost(Pa, Pb). 
 
 
-%% (?Pa, ?Pb) 
+%% compare_two_plans_based_on_cost(?Pa, ?Pb) 
 % 
 % Compares the cost of two plans (e.g., based on their values).
 %
