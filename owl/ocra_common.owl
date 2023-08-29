@@ -179,25 +179,6 @@ It is recomended to use an unsigned integer for the encoded data value, thus, th
     
 
 
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasValidity -->
-
-    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasValidity">
-        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality"/>
-        <owl:inverseOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isValidityOf"/>
-        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
-        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality"/>
-        <rdfs:comment xml:lang="en">Relation between a Plan and a Quality that indicates the validity of executing the plan to achieve a goal.
-
-One might think that this relation could be modeled as a Data property instead of using an Object property. However, data instances cannot act as subjects in triples, thus, it would not be possible to represent some desirable statements such as &apos;the validity of a plan is better/worse/equivalent to the validity of a nother plan&apos;. For this reason, the relation is modeled as an Object property and users will need to add the actual value using the data property &apos;has data value&apos;.  
-
-Example of use: Px (instance of Plan) &apos;has validity&apos; Qx (instance of Quality) that &apos;has data value&apos; True. 
-
-It is recomended to use a boolean for the econded value, although it could also be a real number between 0 and 1 indicating a probability.</rdfs:comment>
-        <rdfs:label xml:lang="en">has validity</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasWorseQualityValueThan -->
 
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#hasWorseQualityValueThan">
@@ -355,18 +336,6 @@ This relation is meant to be used for physical objects only, thus it is not cons
     <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isSlowerPlanThan">
         <rdfs:subPropertyOf rdf:resource="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra.owl#isWorsePlanThan"/>
         <rdfs:label xml:lang="en">is slower plan than</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isValidityOf -->
-
-    <owl:ObjectProperty rdf:about="http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#isValidityOf">
-        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isQualityOf"/>
-        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality"/>
-        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
-        <rdfs:comment xml:lang="en">For more information about this relation, please read the comment of its inverse &apos;has validity&apos;.</rdfs:comment>
-        <rdfs:label xml:lang="en">is validity of</rdfs:label>
     </owl:ObjectProperty>
     
 
