@@ -19,7 +19,8 @@
 %
 %
 compare_all_existing_plans_in_pairs() :-
-	instance_of(Ia, dul:'Plan'), instance_of(Ib, dul:'Plan'), dif(Ia, Ib) -> compare_two_plans(Ia, Ib); false.  
+	forall((instance_of(Ia, dul:'Plan'), instance_of(Ib, dul:'Plan'), dif(Ia, Ib)), compare_two_plans(Ia, Ib)). 
+	% (alternative) instance_of(Ia, dul:'Plan'), instance_of(Ib, dul:'Plan'), dif(Ia, Ib) -> compare_two_plans(Ia, Ib); false.  
 
 %% compare_two_plans(?Pa, ?Pb) 
 % 
