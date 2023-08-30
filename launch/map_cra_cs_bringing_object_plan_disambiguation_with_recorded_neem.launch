@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="knowrob_settings" default="$(find knowrob)/settings/default.pl" />
+	<arg name="owl_file" default="$(find know_cra)/owl/maps/map_cra_cs_bringing_object.owl" />
+	<arg name="neem_folder" default="$(find know_cra)/NEEMs/contrastive_plans/validation_neem/roslog" />
+  
+	<!-- Configure settings file. -->
+	<env name="KNOWROB_SETTINGS" value="$(arg knowrob_settings)" />
+
+	<!-- Include semantic map for 'bringing an object' including neems about the objects in the map and knowledge about different plans to bring those objects -->
+	<include file="$(find rosprolog)/launch/rosprolog.launch">
+		<arg name="initial_package" default="know_cra" />
+    	<arg name="initial_goal" default="load_owl('$(arg owl_file)'), mng_restore(roslog, '$(arg neem_folder)')." />
+	</include>
+</launch>
