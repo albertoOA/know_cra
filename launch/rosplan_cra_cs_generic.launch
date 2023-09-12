@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="domain_name" default="apartment_domain" />
+	<arg name="problem_name" default="apartment_problem" />
+	<arg name="evaluation"	 	default="false" />
+
+	<arg name="domain_path"		default="$(find know_cra)/pddl/domain/$(arg domain_name).pddl" />
+	<arg name="problem_path"	default="$(find know_cra)/pddl/problem/$(arg problem_name).pddl" />
+	<arg name="narrator_name"	default="" />
+	<arg name="print_actions"	default="false" />
+
+	
+
+	<!-- Include rosplan -->
+	<include file="$(find know_cra)/launch/rosplan_full.launch">
+		<arg name="domain_path"		 		value="$(arg domain_path)" />
+		<arg name="problem_path" 			value="$(arg problem_path)" />
+		<arg name="planning_language" 		value="PDDL" />
+		<arg name="planner_topic" 			value="planner_output" />
+		<arg name="data_path" 				value="/tmp/" />
+		<arg name="generated_problem_path"	value="/tmp/gen_problem.pddl" />
+		<arg name="dispatcher" 				value="simple" /> <!-- Check to add the parser when needed -->
+		<!-- (in next lines) -n is to optimize the problem during the timeout - instead of just getting the first found plan - it might be the case that no optimal or better plan is found during the timeout -->
+		<arg name="planner_command"      	value="timeout 1 $(find rosplan_planning_system)/common/bin/popf -n DOMAIN PROBLEM" if="$(eval evaluation == false)" /> 
+		<arg name="planner_command"      	value="timeout 120 $(find rosplan_planning_system)/common/bin/popf -n DOMAIN PROBLEM" if="$(eval evaluation == true)"/>
+		<arg name="planner_interface"    	value="popf_planner_interface" />
+	</include>
+
+	<!-- Include rosplan-rosprolog node -->
+	<node name="rosplan_rosprolog_node" pkg="know_cra" type="planning_for_acxon_objective_evaluation.py" output="screen">
+		<!-- -->
+        </node>
+
+</launch>
