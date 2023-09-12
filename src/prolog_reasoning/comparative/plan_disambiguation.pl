@@ -49,8 +49,9 @@ compare_two_plans_based_on_cost(Pa, Pb) :-
 	triple(Xa, dul:'hasDataValue', Va), 
 	triple(Xb, dul:'hasDataValue', Vb), 
 	(ground(Xa), ground(Xb)) ->
+	((Va == Vb) -> kb_project(triple(Xa, ocra_common:'hasEquivalentQualityValueThan', Xb)), kb_project(triple(Xb, ocra_common:'hasEquivalentQualityValueThan', Xa)), kb_project(triple(Pb, ocra_common:'isPlanWithEqualCostThan', Pa)), kb_project(triple(Pa, ocra_common:'isPlanWithEqualCostThan', Pb)) ;	
 	((Va < Vb) -> kb_project(triple(Xa, ocra_common:'hasBetterQualityValueThan', Xb)), kb_project(triple(Xb, ocra_common:'hasWorseQualityValueThan', Xa)), kb_project(triple(Pb, ocra_common:'isMoreExpensivePlanThan', Pa)), kb_project(triple(Pa, ocra_common:'isCheaperPlanThan', Pb)) ; 
-	kb_project(triple(Xb, ocra_common:'hasBetterQualityValueThan', Xa)), kb_project(triple(Xa, ocra_common:'hasWorseQualityValueThan', Xb)), kb_project(triple(Pa, ocra_common:'isMoreExpensivePlanThan', Pb)), kb_project(triple(Pb, ocra_common:'isCheaperPlanThan', Pa))) ; false. 
+	kb_project(triple(Xb, ocra_common:'hasBetterQualityValueThan', Xa)), kb_project(triple(Xa, ocra_common:'hasWorseQualityValueThan', Xb)), kb_project(triple(Pa, ocra_common:'isMoreExpensivePlanThan', Pb)), kb_project(triple(Pb, ocra_common:'isCheaperPlanThan', Pa)))) ; false. 
 
 
 %% compare_two_plans_based_on_number_of_tasks(?Pa, ?Pb) 
@@ -66,8 +67,9 @@ compare_two_plans_based_on_number_of_tasks(Pa, Pb) :-
 	triple(Xa, dul:'hasDataValue', Va), 
 	triple(Xb, dul:'hasDataValue', Vb), 
 	(ground(Xa), ground(Xb)) ->
+	((Va == Vb) -> kb_project(triple(Xa, ocra_common:'hasEquivalentQualityValueThan', Xb)), kb_project(triple(Xb, ocra_common:'hasEquivalentQualityValueThan', Xa)), kb_project(triple(Pb, ocra_common:'isPlanWithEqualNumberOfTasksThan', Pa)), kb_project(triple(Pa, ocra_common:'isPlanWithEqualNumberOfTasksThan', Pb)) ;
 	((Va < Vb) -> kb_project(triple(Xa, ocra_common:'hasBetterQualityValueThan', Xb)), kb_project(triple(Xb, ocra_common:'hasWorseQualityValueThan', Xa)), kb_project(triple(Pb, ocra_common:'isPlanWithMoreTasksThan', Pa)), kb_project(triple(Pa, ocra_common:'isPlanWithLessTasksThan', Pb)) ; 
-	kb_project(triple(Xb, ocra_common:'hasBetterQualityValueThan', Xa)), kb_project(triple(Xa, ocra_common:'hasWorseQualityValueThan', Xb)), kb_project(triple(Pa, ocra_common:'isPlanWithMoreTasksThan', Pb)), kb_project(triple(Pb, ocra_common:'isPlanWithLessTasksThan', Pa))) ; false. 
+	kb_project(triple(Xb, ocra_common:'hasBetterQualityValueThan', Xa)), kb_project(triple(Xa, ocra_common:'hasWorseQualityValueThan', Xb)), kb_project(triple(Pa, ocra_common:'isPlanWithMoreTasksThan', Pb)), kb_project(triple(Pb, ocra_common:'isPlanWithLessTasksThan', Pa)))) ; false. 
 
 
 %% compare_two_plans_based_on_makespan(?Pa, ?Pb) 
@@ -83,6 +85,7 @@ compare_two_plans_based_on_makespan(Pa, Pb) :-
 	triple(Xa, dul:'hasDataValue', Va), 
 	triple(Xb, dul:'hasDataValue', Vb), 
 	(ground(Xa), ground(Xb)) ->
+	((Va == Vb) -> kb_project(triple(Xa, ocra_common:'hasEquivalentQualityValueThan', Xb)), kb_project(triple(Xb, ocra_common:'hasEquivalentQualityValueThan', Xa)), kb_project(triple(Pb, ocra_common:'isPlanWithEqualExpectedMakespanThan', Pa)), kb_project(triple(Pa, ocra_common:'isPlanWithEqualExpectedMakespanThan', Pb)) ;
 	((Va < Vb) -> kb_project(triple(Xa, ocra_common:'hasBetterQualityValueThan', Xb)), kb_project(triple(Xb, ocra_common:'hasWorseQualityValueThan', Xa)), kb_project(triple(Pb, ocra_common:'isSlowerPlanThan', Pa)), kb_project(triple(Pa, ocra_common:'isFasterPlanThan', Pb)) ; 
-	kb_project(triple(Xb, ocra_common:'hasBetterQualityValueThan', Xa)), kb_project(triple(Xa, ocra_common:'hasWorseQualityValueThan', Xb)), kb_project(triple(Pa, ocra_common:'isSlowerPlanThan', Pb)), kb_project(triple(Pb, ocra_common:'isFasterPlanThan', Pa))) ; false. 
+	kb_project(triple(Xb, ocra_common:'hasBetterQualityValueThan', Xa)), kb_project(triple(Xa, ocra_common:'hasWorseQualityValueThan', Xb)), kb_project(triple(Pa, ocra_common:'isSlowerPlanThan', Pb)), kb_project(triple(Pb, ocra_common:'isFasterPlanThan', Pa)))) ; false. 
 
