@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 	<arg name="plan_adaptation_case" default="unfolded_cloth" />
+	<arg name="semantic_map_namespace"	 	default="map_piling_cloth" />
 
 	<arg name="domain_path"		default="$(find know_cra)/pddl/domain/collaborative_cloth_piling_domain.pddl" />
 	<arg name="problem_path"	default="$(find know_cra)/pddl/problem/collaborative_cloth_piling_problem_$(arg plan_adaptation_case).pddl" />
@@ -36,6 +37,7 @@
 	<!-- Include rosplan-rosprolog node -->
 	<node name="rosplan_rosprolog_node" pkg="know_cra" type="planning_and_neem_generation_for_plan_adaptation.py" output="screen">
 		<param name="plan_adaptation_case" value="$(arg plan_adaptation_case)" /> 
+		<param name="semantic_map_namespace" value="$(arg semantic_map_namespace)" />  
         </node>
 
 </launch>

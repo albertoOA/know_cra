@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <launch>
+	<arg name="semantic_map_namespace"	 	default="map_bringing_object" />
+
 	<arg name="domain_name" default="apartment_domain" />
 	<arg name="problem_name" default="apartment_problem" />
 	<arg name="evaluation"	 	default="false" />
@@ -28,7 +30,7 @@
 
 	<!-- Include rosplan-rosprolog node -->
 	<node name="rosplan_rosprolog_node" pkg="know_cra" type="planning_for_acxon_objective_evaluation.py" output="screen">
-		<!-- -->
+		<param name="semantic_map_namespace" value="$(arg semantic_map_namespace)" /> 
         </node>
 
 </launch>
