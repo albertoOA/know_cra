@@ -14,8 +14,12 @@ class ROSPrologWrapperForROSPlanCRA:
 
         # Define varibles
         self.client_rosprolog_ = Prolog()
-        self.semantic_map_namespace_ = "map_piling_cloth"
         self.current_plan_kb_uri_ = ""
+
+        if (rospy.has_param('~semantic_map_namespace')):
+            self.semantic_map_namespace_ = rospy.get_param('~semantic_map_namespace')
+        else:
+            self.semantic_map_namespace_ = "ocra_common"
 
         self.plan_types_to_ontology_classes_dict_ = {
                 "garment" : "ocra_cloth:'Garment'", 
