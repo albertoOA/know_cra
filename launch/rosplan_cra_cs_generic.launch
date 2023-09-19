@@ -2,12 +2,14 @@
 <launch>
 	<arg name="semantic_map_namespace"	 	default="map_bringing_object" />
 
-	<arg name="domain_name" default="apartment_domain" />
-	<arg name="problem_name" default="apartment_problem" />
+	<arg name="domain_name" default="match_cellar" /> <!-- "apartment_domain"    "match_cellar"  "crew_planning"   "rovers"  "office_robot" NOTE: SELECT THE PROPER PATH BELOW-->
+	<arg name="problem_name" default="instance-1" /> <!-- "apartment_problem"   "instance-1"  "instance-2"   "instance-3"-->
 	<arg name="evaluation"	 	default="false" />
 
-	<arg name="domain_path"		default="$(find know_cra)/pddl/domain/$(arg domain_name).pddl" />
-	<arg name="problem_path"	default="$(find know_cra)/pddl/problem/$(arg problem_name).pddl" />
+	<!-- <arg name="domain_path"		default="$(find know_cra)/pddl/domain/$(arg domain_name).pddl" /> -->
+	<arg name="domain_path"		default="$(find know_cra)/pddl/test-domains/$(arg domain_name)/domain.pddl" />
+	<!-- <arg name="problem_path"	default="$(find know_cra)/pddl/problem/$(arg problem_name).pddl" /> -->
+	<arg name="problem_path"	default="$(find know_cra)/pddl/test-domains/$(arg domain_name)/instances/$(arg problem_name).pddl" />
 	<arg name="narrator_name"	default="" />
 	<arg name="print_actions"	default="false" />
 
