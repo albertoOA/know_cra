@@ -121,7 +121,7 @@ This relationship is used as a primitive which means ‘following the sequence o
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan"/>
         <rdfs:label xml:lang="en">is worse plan than</rdfs:label>
     </owl:ObjectProperty>
-
+    
     
 
 
