@@ -951,6 +951,6 @@
 )
 (:goal (and
     ;; (object_at soft_drink_cola the_manager)
-    ;; (object_at matcha_tea the_manager)
+    (object_at matcha_tea the_manager)
 ))
 )
