@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019 Alberto Olivares Alarcos
+  Copyright (C) Alberto Olivares Alarcos
   All rights reserved.
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions are met:
@@ -39,9 +39,11 @@
 :- rdf_register_ns('ocra_cloth', 'http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_cloth.owl#', [keep(true)]).
 :- rdf_register_ns('ocra_home', 'http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_home.owl#', [keep(true)]).
 :- rdf_register_ns('ocra_common', 'http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_common.owl#', [keep(true)]).
+:- rdf_register_ns('ocra_plan', 'http://www.iri.upc.edu/groups/perception/OCRA/ont/ocra_plan.owl#', [keep(true)]).
 :- rdf_register_ns('map', 'http://www.iri.upc.edu/groups/perception/OCRA/maps/filling_a_tray.owl#', [keep(true)]).
 :- rdf_register_ns('map_piling_cloth', 'http://www.iri.upc.edu/groups/perception/OCRA/maps/piling_cloth.owl#', [keep(true)]).
 :- rdf_register_ns('map_bringing_object', 'http://www.iri.upc.edu/groups/perception/OCRA/maps/bringing_object.owl#', [keep(true)]).
+:- rdf_register_ns('map_generic_cs', 'http://www.iri.upc.edu/groups/perception/ont/maps/map_generic_cs.owl#', [keep(true)]).
 
 :- mng_drop(roslog, triples). /*to delete manually asserted triples using the rosprolog_commandline, which remain in the MongoDB*/
 
