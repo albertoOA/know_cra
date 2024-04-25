@@ -44,7 +44,7 @@
 		; subject = the ?g
 		(piled ?g - garment)
 
-		; Garment ?g is supported (on a surface)
+		; Garment ?g is supported (on a surface and not on a pile)
 		; verb = be (supported)
 		; subject = the ?g
 		(supported ?g - garment) 
@@ -84,7 +84,8 @@
 	)
 
 	(:functions
-		(grasp-time ?a - agent)
+		(manipulate-folded-time ?a - agent)
+		(place-unfolded-time ?a - agent)
 
 		(current-number-of-garments-on-pile ?p - pile)
 		(target-number-of-garments-on-pile ?p - pile)
@@ -97,11 +98,12 @@
 	; direct-object = the ?g
 	(:durative-action grasp-folded-garment
 		:parameters (?g - garment ?a - agent)
-		:duration (= ?duration (grasp-time ?a))
+		:duration (= ?duration (manipulate-folded-time ?a))
 		:condition (and 
 			(at start (free-to-manipulate ?a))
 			(at start (folded ?g))
 			(at start (graspable ?g))
+			(at start (supported ?g))
 		)
 		:effect (and
 			(at start (not (free-to-manipulate ?a)))
@@ -154,7 +156,7 @@
 	; prep = of garment-type ?t
 	(:durative-action pile-garment ; aka transfer
 		:parameters (?g - garment ?p - pile ?t - garment-type ?a - agent)
-		:duration (= ?duration (grasp-time ?a))
+		:duration (= ?duration (manipulate-folded-time ?a))
 		:condition (and 
 			(at start (grasped-by ?g ?a))
 			;; (at start (is-classified-by ?g ?t))
@@ -169,6 +171,29 @@
 			(at end (piled ?g))
 			(at end (on-pile ?g ?p))
 			(at end (increase (current-number-of-garments-on-pile ?p) 1))
+		)
+	)
+
+	; Handing an unfolded garment
+	; verb = hand / give / pass
+	; subject = ?r
+	; direct-object = the ?g
+	; indirect-object = to ?h
+	(:durative-action hand-unfolded-garment ; aka transfer
+		:parameters (?g - garment ?r - robot ?h - human)
+		:duration (= ?duration 50)
+		:condition (and 
+			(at start (grasped-by ?g ?r))
+			(at start (free-to-manipulate ?h))
+			(at start (lifted ?g))
+			(at start (unfolded ?g))
+		)
+		:effect (and
+			(at start (not (grasped-by ?g ?r)))
+			(at start (not (free-to-manipulate ?h)))
+			(at start (not (graspable ?g)))
+			(at end (grasped-by ?g ?h))
+			(at end (free-to-manipulate ?r))
 		)
 	)
 
@@ -191,6 +216,27 @@
 			(at end (not (grasped-by ?g ?h)))
 			(at end (graspable ?g))
 			(at end (folded ?g))
+			(at end (supported ?g))
+		)
+	)
+
+	; Placing an unfolded garment
+	; verb = place / lay / set
+	; subject = ?a
+	; direct-object = the ?g
+	(:durative-action place-unfolded-garment
+		:parameters (?g - garment ?a - agent)
+		:duration (= ?duration (place-unfolded-time ?a))
+		:condition (and 
+			(at start (unfolded ?g))
+			(at start (lifted ?g))
+			(at start (grasped-by ?g ?a))
+		)
+		:effect (and
+			(at end (free-to-manipulate ?a))
+			(at end (not (lifted ?g)))
+			(at end (not (grasped-by ?g ?a)))
+			(at end (graspable ?g))
 			(at end (supported ?g))
 		)
 	)
