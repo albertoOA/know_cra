@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <launch>
-	<arg name="semantic_map_namespace"	 	default="map_bringing_object" />
+	<arg name="semantic_map_namespace"	 	default="map_generic_cs" /> <!-- map_bringing_object -->
 
-	<arg name="domain_name" default="match_cellar" /> <!-- "apartment_domain"    "match_cellar"  "crew_planning"   "rovers"  "office_robot" NOTE: SELECT THE PROPER PATH BELOW-->
-	<arg name="problem_name" default="instance-1" /> <!-- "apartment_problem"   "instance-1"  "instance-2"   "instance-3"-->
+	<arg name="domain_name" default="apartment" /> <!-- "apartment_domain"    OR   "apartment" "match_cellar"  "crew_planning"   "rovers"  "office_robot" NOTE: SELECT THE PROPER PATH BELOW-->
+	<arg name="problem_name" default="instance-2" /> <!-- "apartment_problem"   OR   "instance-1"  "instance-2"   "instance-3"-->
 	<arg name="evaluation"	 	default="false" />
 
 	<!-- <arg name="domain_path"		default="$(find know_cra)/pddl/domain/$(arg domain_name).pddl" /> -->
