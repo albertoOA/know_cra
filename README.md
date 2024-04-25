@@ -55,10 +55,16 @@ First, we can run a knowledge base with the basic knowledge for a specific use c
 roslaunch know_cra map_cra_cs_filling_tray.launch
 ```
 
-Finally, we can run a knowledge base with all the knowledge stored in an episodic memory, *validation neem*, which is used during the validation presented in our article [1].
+Finally, one can run a knowledge base with all the knowledge stored in an episodic memory, *validation neem*, which is used during the validation presented in the article [1].
 
 ```
 roslaunch know_cra map_cra_cs_filling_tray_neem.launch
+```
+
+Alternatively, one can also run a knowledge base with all the knowledge stored in another episodic memory, *contrastive_plans/validation neem*, which is used during the validation presented in the article [2].
+
+```
+roslaunch know_cra map_cra_cs_bringing_object_plan_disambiguation_with_recorded_neem.launch
 ```
 
 ### Running an owlready2-based knowledge base for collaborative robotics and adaptation
@@ -66,13 +72,23 @@ roslaunch know_cra map_cra_cs_filling_tray_neem.launch
 rosrun konw_cra reasoning_with_owlready2.py
 ```
 
-### Running a rosplan interface for collaborative robotics and adaptation
-One can launch a general rosplan set of nodes to perform planning using a certain domain and problem (e.g., a collaborative task to fold and pile garments). 
+### Running a planning domain-agnostic knowledge base for objective evaluation of narratives 
+The idea here is to run a generic knowledge base in which knowledge about two different plans will be stored for later comparison and contrastive narration.  
 
 The next example assumes that ROSPlan is already installed, following the instructions on the gihtub README: [https://github.com/KCL-Planning/ROSPlan](https://github.com/KCL-Planning/ROSPlan).
 
 ```
-roslaunch know_cra rosplan_coherent_cloth_piling.launch
+roslaunch know_cra map_cra_cs_generic.launch
 ```
 
-**[1]** A. Olivares-Alarcos, A. Andriella, S. Foix and G. Alenyà. Robot explanatory narratives of collaborative and adaptive experiences, 40th IEEE International Conference on Robotics and Automation (ICRA), 2023, London, United Kingdom, to appear.
+Now it is time to generate a couple of plans for a target domain and problem. In order to have two different plans for the same problem, it will be necessary to run twice the launch file modifying the argument *'evaluation'*. When it is set to 'false', the planner will take the first plan that is found after 1 second of graph search, if it is set to 'true' the planner will search during 120 seconds. Very oftent, the generated plan after 120 seconds will be better, but note that it will not always be true. In any case, two plans will be generated and their knowledge asserted to the knowledge base, where they will be compared using logical reasoning rules written in Prolog. Remember, you need to run the launch with *'evaluation'* set to 'false', close the execution and run it again with the argument set to 'true'. 
+
+```
+roslaunch know_cra rosplan_cra_cs_generic.launch 
+``` 
+
+
+
+**[1]** A. Olivares-Alarcos, A. Andriella, S. Foix and G. Alenyà. Robot explanatory narratives of collaborative and adaptive experiences, 40th IEEE International Conference on Robotics and Automation (ICRA), 2023, London, United Kingdom (pp. 11964-11971).
+
+**[2]** A. Olivares-Alarcos, S. Foix, J. Borràs, G. Canal and G. Alenyà. (2024). Ontological modeling and reasoning for comparison and contrastive narration of robot plans. In Proceedings of the 2024 International Conference on Autonomous Agents and Multiagent Systems (AAMAS), 2024, Auckland, New Zealand, to appear.
