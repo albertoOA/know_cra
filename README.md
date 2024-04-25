@@ -1,5 +1,5 @@
-# KNOW-CRA
-ROS package to use a knowledge base to represent and reason with knowledge about collaborative robotics and adaptation. This package allows to run the knowledge base using two different tools: *rosprolog* and *owlready2*. The first one includes features to be used within ROS (e.g., one can query the knowledge base calling a ROS service). The second option allows to use the ontology without ROS, just as we could use other OWL apis. 
+# KNOW-PLAN
+ROS package to use a knowledge base to represent and reason with knowledge about plans for plan comparison and selection (disambiguation). This package allows to run the knowledge base using *rosprolog*, which includes features to be used within ROS (e.g., one can query the knowledge base calling a ROS service). 
 
 
 ### Dependencies to use a rosprolog-based knowledge base
